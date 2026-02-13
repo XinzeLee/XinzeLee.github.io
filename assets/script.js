@@ -263,12 +263,39 @@
     updateScholarUI({ citations, hindex, i10 }, dateLabel);
   }
 
+  function applyScholarJson(data) {
+    const c = data.citations ?? data.citation_count;
+    const h = data.h_index ?? data.hindex;
+    const i = data.i10_index ?? data.i10;
+    if (typeof c === "number" && typeof h === "number" && typeof i === "number") {
+      const dateLabel = data.updated ? `(updated ${data.updated})` : "";
+      updateScholarUI({ citations: c, hindex: h, i10: i }, dateLabel);
+      return true;
+    }
+    return false;
+  }
+
   async function fetchScholarStats() {
+    // 1. Load cached JSON first (same-origin, fast) so numbers show immediately
+    try {
+      const jsonRes = await fetch("scholar_stats.json");
+      if (jsonRes.ok) {
+        const data = await jsonRes.json();
+        if (applyScholarJson(data)) {
+          // 2. Optionally refresh from live source in background (no await)
+          refreshScholarInBackground();
+          return;
+        }
+      }
+    } catch (_) {
+      /* ignore */
+    }
+
+    // 3. No JSON or invalid: try CORS proxies (slower, may be blocked)
     const proxies = [
       () => fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(SCHOLAR_URL)}`),
       () => fetch(`https://corsproxy.io/?${encodeURIComponent(SCHOLAR_URL)}`),
     ];
-
     for (const proxy of proxies) {
       try {
         const res = await proxy();
@@ -280,29 +307,34 @@
           return;
         }
       } catch (_) {
-        /* try next proxy */
+        /* try next */
       }
     }
 
-    // Optional: load from a JSON file (e.g. updated by GitHub Actions)
-    try {
-      const jsonRes = await fetch("scholar_stats.json?t=" + Date.now());
-      if (jsonRes.ok) {
-        const data = await jsonRes.json();
-        const c = data.citations ?? data.citation_count;
-        const h = data.h_index ?? data.hindex;
-        const i = data.i10_index ?? data.i10;
-        if (typeof c === "number" && typeof h === "number" && typeof i === "number") {
-          const label = data.updated ? `(updated ${data.updated})` : "(from cache)";
-          updateScholarUI({ citations: c, hindex: h, i10: i }, label);
-          return;
+    // 4. Keep default static values (already in HTML)
+  }
+
+  function refreshScholarInBackground() {
+    const proxies = [
+      () => fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(SCHOLAR_URL)}`),
+      () => fetch(`https://corsproxy.io/?${encodeURIComponent(SCHOLAR_URL)}`),
+    ];
+    (async () => {
+      for (const proxy of proxies) {
+        try {
+          const res = await proxy();
+          if (!res.ok) continue;
+          const html = await res.text();
+          const stats = parseScholarHtml(html);
+          if (stats.citations != null && stats.hindex != null && stats.i10 != null) {
+            setScholarFromFetch(stats.citations, stats.hindex, stats.i10);
+            break;
+          }
+        } catch (_) {
+          /* try next */
         }
       }
-    } catch (_) {
-      /* ignore */
-    }
-
-    // Keep default static values (already in HTML)
+    })();
   }
 
   if (statCitationsEl && statHindexEl && statI10El) fetchScholarStats();

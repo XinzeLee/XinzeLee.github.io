@@ -1,0 +1,32 @@
+# Updates scholar_stats.json from Google Scholar so the site shows near-realtime metrics.
+# Runs every 4 hours and on manual trigger. No CORS in Actions → reliable fetch.
+name: Update Google Scholar stats
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'   # every 4 hours
+  workflow_dispatch:         # manual "Run workflow"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch and parse Google Scholar
+        id: scholar
+        run: |
+          python3 scripts/fetch_scholar_stats.py > scholar_out.txt 2>&1 || true
+          echo "updated=$(grep 'updated=' scholar_out.txt | sed 's/.*updated=//' || echo false)" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changed
+        if: steps.scholar.outputs.updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scholar_stats.json
+          git commit -m "chore: update Google Scholar stats"
+          git push
