@@ -2,26 +2,50 @@
 """Fetch Google Scholar profile and write scholar_stats.json. Used by GitHub Actions."""
 import json
 import re
+import urllib.parse
 import urllib.request
 from datetime import datetime
 from pathlib import Path
 
 SCHOLAR_USER = "YilrlZMAAAAJ"
-URL = f"https://scholar.google.com/citations?user={SCHOLAR_USER}&hl=en"
+SCHOLAR_URL = f"https://scholar.google.com/citations?user={SCHOLAR_USER}&hl=en"
 OUTPUT = Path(__file__).resolve().parent.parent / "scholar_stats.json"
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0"
 )
 
+# Proxies fetch the page from their server (avoids GitHub IP being blocked by Google)
+PROXIES = [
+    f"https://api.allorigins.win/raw?url={urllib.parse.quote(SCHOLAR_URL)}",
+    f"https://corsproxy.io/?{urllib.parse.quote(SCHOLAR_URL)}",
+]
+
+
+def fetch_html():
+    # Try direct first (works when run locally)
+    try:
+        req = urllib.request.Request(SCHOLAR_URL, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return r.read().decode("utf-8", errors="replace")
+    except Exception:
+        pass
+    # Then try via proxies (for GitHub Actions where Google blocks datacenter IPs)
+    for proxy_url in PROXIES:
+        try:
+            req = urllib.request.Request(proxy_url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                return r.read().decode("utf-8", errors="replace")
+        except Exception as e:
+            print(f"Proxy {proxy_url[:50]}... failed: {e}", file=__import__("sys").stderr)
+            continue
+    return None
+
 
 def main():
-    try:
-        req = urllib.request.Request(URL, headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(req, timeout=15) as r:
-            html = r.read().decode("utf-8", errors="replace")
-    except Exception as e:
-        print(f"Fetch failed: {e}", file=__import__("sys").stderr)
+    html = fetch_html()
+    if not html:
+        print("Fetch failed: direct and proxy requests failed", file=__import__("sys").stderr)
         print("updated=false")
         return
 
@@ -44,7 +68,8 @@ def main():
             h_index = int(nums[1])
             i10_index = int(nums[2])
     if citations is None or h_index is None or i10_index is None:
-        print("Could not parse 3 stats from HTML")
+        print("Could not parse 3 stats from HTML", file=__import__("sys").stderr)
+        print("updated=false")
         return
     updated = datetime.utcnow().strftime("%b %d, %Y")
 
