@@ -3,6 +3,9 @@
 name: Update Google Scholar stats
 
 on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/update-scholar-stats.yml', 'scripts/fetch_scholar_stats.py']
   schedule:
     - cron: '0 */4 * * *'   # every 4 hours
   workflow_dispatch:         # manual "Run workflow"
