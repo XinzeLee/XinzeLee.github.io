@@ -204,4 +204,106 @@
   });
 
   cmdkInput?.addEventListener("input", (e) => renderCmdk(e.target.value));
+
+  // ---------- Google Scholar stats (realtime from profile page) ----------
+  const SCHOLAR_USER = "YilrlZMAAAAJ";
+  const SCHOLAR_URL = `https://scholar.google.com/citations?user=${SCHOLAR_USER}&hl=en`;
+  const statCitationsEl = document.getElementById("statCitations");
+  const statHindexEl = document.getElementById("statHindex");
+  const statI10El = document.getElementById("statI10");
+  const statCitationsDateEl = document.getElementById("statCitationsDate");
+
+  const defaultStats = { citations: 731, hindex: 15, i10: 18 };
+
+  function parseScholarHtml(html) {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const stats = { citations: null, hindex: null, i10: null };
+
+    // Google Scholar profile: table id="gsc_rsb_st" with rows like "Cited by", "h-index", "i10-index"
+    const table = doc.getElementById("gsc_rsb_st");
+    if (table) {
+      const rows = table.querySelectorAll("tr");
+      rows.forEach((tr) => {
+        const cells = tr.querySelectorAll("td");
+        if (cells.length >= 2) {
+          const label = (cells[0].textContent || "").trim().toLowerCase();
+          const value = parseInt((cells[1].textContent || "").replace(/\D/g, ""), 10);
+          if (isNaN(value)) return;
+          if (label.includes("cited") || label.includes("citation")) stats.citations = value;
+          else if (label.includes("h-index") || label === "h-index") stats.hindex = value;
+          else if (label.includes("i10")) stats.i10 = value;
+        }
+      });
+    }
+
+    // Fallback: regex for gsc_rsb_std numbers (order: Cited by, h-index, i10-index)
+    if (stats.citations == null || stats.hindex == null || stats.i10 == null) {
+      const stdMatches = html.match(/gsc_rsb_std[^>]*>(\d+)</g);
+      if (stdMatches && stdMatches.length >= 3) {
+        const nums = stdMatches.map((m) => parseInt(m.replace(/\D/g, ""), 10));
+        if (stats.citations == null) stats.citations = nums[0];
+        if (stats.hindex == null) stats.hindex = nums[1];
+        if (stats.i10 == null) stats.i10 = nums[2];
+      }
+    }
+
+    return stats;
+  }
+
+  function updateScholarUI(data, dateLabel) {
+    if (data.citations != null && statCitationsEl) statCitationsEl.textContent = data.citations.toLocaleString();
+    if (data.hindex != null && statHindexEl) statHindexEl.textContent = data.hindex;
+    if (data.i10 != null && statI10El) statI10El.textContent = data.i10;
+    if (dateLabel && statCitationsDateEl) statCitationsDateEl.textContent = dateLabel;
+  }
+
+  function setScholarFromFetch(citations, hindex, i10) {
+    const d = new Date();
+    const dateLabel = `(updated ${d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })})`;
+    updateScholarUI({ citations, hindex, i10 }, dateLabel);
+  }
+
+  async function fetchScholarStats() {
+    const proxies = [
+      () => fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(SCHOLAR_URL)}`),
+      () => fetch(`https://corsproxy.io/?${encodeURIComponent(SCHOLAR_URL)}`),
+    ];
+
+    for (const proxy of proxies) {
+      try {
+        const res = await proxy();
+        if (!res.ok) continue;
+        const html = await res.text();
+        const stats = parseScholarHtml(html);
+        if (stats.citations != null && stats.hindex != null && stats.i10 != null) {
+          setScholarFromFetch(stats.citations, stats.hindex, stats.i10);
+          return;
+        }
+      } catch (_) {
+        /* try next proxy */
+      }
+    }
+
+    // Optional: load from a JSON file (e.g. updated by GitHub Actions)
+    try {
+      const jsonRes = await fetch("scholar_stats.json?t=" + Date.now());
+      if (jsonRes.ok) {
+        const data = await jsonRes.json();
+        const c = data.citations ?? data.citation_count;
+        const h = data.h_index ?? data.hindex;
+        const i = data.i10_index ?? data.i10;
+        if (typeof c === "number" && typeof h === "number" && typeof i === "number") {
+          const label = data.updated ? `(updated ${data.updated})` : "(from cache)";
+          updateScholarUI({ citations: c, hindex: h, i10: i }, label);
+          return;
+        }
+      }
+    } catch (_) {
+      /* ignore */
+    }
+
+    // Keep default static values (already in HTML)
+  }
+
+  if (statCitationsEl && statHindexEl && statI10El) fetchScholarStats();
 })();
