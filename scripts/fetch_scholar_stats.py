@@ -20,18 +20,27 @@ def main():
     with urllib.request.urlopen(req, timeout=15) as r:
         html = r.read().decode("utf-8", errors="replace")
 
-    # Table cells with stats: gsc_rsb_std (order: Cited by, h-index, i10-index)
-    nums = re.findall(r'gsc_rsb_std[^>]*>(\d+)', html)
-    if len(nums) < 3:
-        # Fallback: any digit sequence in stats area
-        nums = re.findall(r'"gsc_rsb_std">(\d+)', html)
-    if len(nums) < 3:
+    # Parse by row label so we get "All" stats, not "Since 2019"
+    def find_stat(label_pattern, text):
+        m = re.search(label_pattern + r'.*?gsc_rsb_std[^>]*>(\d+)', text, re.DOTALL | re.IGNORECASE)
+        return int(m.group(1)) if m else None
+
+    citations = find_stat(r'Cited by|Citations', html)
+    h_index = find_stat(r'h-index', html)
+    i10_index = find_stat(r'i10-index', html)
+
+    if citations is None or h_index is None or i10_index is None:
+        # Fallback: first table block
+        table_start = html.find('id="gsc_rsb_st"')
+        block = html[table_start : table_start + 2000] if table_start >= 0 else html
+        nums = re.findall(r'gsc_rsb_std[^>]*>(\d+)', block)
+        if len(nums) >= 3:
+            citations = int(nums[0])
+            h_index = int(nums[1])
+            i10_index = int(nums[2])
+    if citations is None or h_index is None or i10_index is None:
         print("Could not parse 3 stats from HTML")
         return
-
-    citations = int(nums[0])
-    h_index = int(nums[1])
-    i10_index = int(nums[2])
     updated = datetime.utcnow().strftime("%b %d, %Y")
 
     data = {
