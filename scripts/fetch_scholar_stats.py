@@ -16,9 +16,14 @@ USER_AGENT = (
 
 
 def main():
-    req = urllib.request.Request(URL, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=15) as r:
-        html = r.read().decode("utf-8", errors="replace")
+    try:
+        req = urllib.request.Request(URL, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            html = r.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        print(f"Fetch failed: {e}", file=__import__("sys").stderr)
+        print("updated=false")
+        return
 
     # Parse by row label so we get "All" stats, not "Since 2019"
     def find_stat(label_pattern, text):
@@ -50,17 +55,7 @@ def main():
         "updated": updated,
     }
 
-    prev = {}
-    if OUTPUT.exists():
-        try:
-            prev = json.loads(OUTPUT.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-
-    if prev.get("citations") == citations and prev.get("h_index") == h_index and prev.get("i10_index") == i10_index:
-        print("updated=false")
-        return
-
+    # Always write when we have valid data (refresh "updated" timestamp); report so workflow can push
     OUTPUT.write_text(json.dumps(data, indent=2), encoding="utf-8")
     print("updated=true")
 
