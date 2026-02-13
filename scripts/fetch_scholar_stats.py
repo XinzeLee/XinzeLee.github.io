@@ -16,9 +16,13 @@ USER_AGENT = (
 )
 
 # Proxies fetch the page from their server (avoids GitHub IP being blocked by Google)
+# Each is (url, None) for raw HTML or (url, 'contents') to read JSON and use key 'contents'
 PROXIES = [
-    f"https://api.allorigins.win/raw?url={urllib.parse.quote(SCHOLAR_URL)}",
-    f"https://corsproxy.io/?{urllib.parse.quote(SCHOLAR_URL)}",
+    (f"https://api.allorigins.win/raw?url={urllib.parse.quote(SCHOLAR_URL)}", None),
+    (f"https://api.allorigins.win/get?url={urllib.parse.quote(SCHOLAR_URL)}", "contents"),  # returns {"contents": "..."}
+    (f"https://corsproxy.io/?{urllib.parse.quote(SCHOLAR_URL)}", None),
+    (f"https://corsproxy.io/?{urllib.parse.quote(SCHOLAR_URL, safe='')}", None),
+    (f"https://proxy.corsfix.com/?url={urllib.parse.quote(SCHOLAR_URL)}", None),
 ]
 
 
@@ -31,13 +35,20 @@ def fetch_html():
     except Exception:
         pass
     # Then try via proxies (for GitHub Actions where Google blocks datacenter IPs)
-    for proxy_url in PROXIES:
+    for proxy_url, json_key in PROXIES:
         try:
             req = urllib.request.Request(proxy_url, headers={"User-Agent": USER_AGENT})
-            with urllib.request.urlopen(req, timeout=20) as r:
-                return r.read().decode("utf-8", errors="replace")
+            with urllib.request.urlopen(req, timeout=25) as r:
+                body = r.read().decode("utf-8", errors="replace")
+            if json_key:
+                data = json.loads(body)
+                body = data.get(json_key) or data.get("contents", "")
+            if body and "gsc_rsb_st" in body:
+                return body
+            if body and ("Cited by" in body or "h-index" in body):
+                return body
         except Exception as e:
-            print(f"Proxy {proxy_url[:50]}... failed: {e}", file=__import__("sys").stderr)
+            print(f"Proxy failed: {e}", file=__import__("sys").stderr)
             continue
     return None
 
