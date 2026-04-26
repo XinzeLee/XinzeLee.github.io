@@ -4,10 +4,24 @@
   const themeBtn = document.getElementById("themeBtn");
 
   const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) root.setAttribute("data-theme", savedTheme);
+  const isHiringPage = root.dataset.page === "hiring";
+  if (isHiringPage) {
+    if (!sessionStorage.getItem("hiringLightBoot")) {
+      root.setAttribute("data-theme", "light");
+      sessionStorage.setItem("hiringLightBoot", "1");
+    } else if (savedTheme) {
+      root.setAttribute("data-theme", savedTheme);
+    } else {
+      root.setAttribute("data-theme", "light");
+    }
+  } else if (savedTheme) {
+    root.setAttribute("data-theme", savedTheme);
+  } else {
+    root.setAttribute("data-theme", "light");
+  }
 
   function toggleTheme() {
-    const current = root.getAttribute("data-theme") || "dark";
+    const current = root.getAttribute("data-theme") || "light";
     const next = current === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
@@ -156,10 +170,12 @@
 
   if (cmdk && cmdkInput && cmdkList) {
     const commands = [
+      { title: "PhD / hiring", desc: "Open hiring page", href: "hiring.html" },
       { title: "Experience", desc: "Jump to roles & timeline", href: "#experience" },
       { title: "Education", desc: "Degrees & training", href: "#education" },
       { title: "Projects", desc: "Industry & research highlights", href: "#projects" },
       { title: "Teaching", desc: "Courses & mentoring", href: "#teaching" },
+      { title: "Open education", desc: "Fundamentals of AI for PE (GitHub)", href: "#fundamentals-ai-pe" },
       { title: "Service", desc: "Talks, chairs, editorial", href: "#service" },
       { title: "Awards", desc: "Selected awards & honors", href: "#awards" },
       { title: "Publications", desc: "Filterable selected publications", href: "#pubs" },
@@ -200,6 +216,7 @@
           const href = el.getAttribute("data-href");
           closeCmdk();
           if (href.startsWith("#")) location.hash = href;
+          else if (/\.html$/i.test(href) && !/^https?:/i.test(href)) location.href = href;
           else window.open(href, "_blank", "noopener");
         });
       });

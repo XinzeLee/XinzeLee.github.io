@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -67,6 +67,17 @@
   </header>
 
   <main id="content">
+    <div class="home-recruit-banner-wrap">
+      <a class="home-recruit-banner" href="hiring.html">
+        <span class="home-recruit-banner__badge" aria-hidden="true">Open positions</span>
+        <span class="home-recruit-banner__main">
+          <span class="home-recruit-banner__title">Now recruiting PhD students</span>
+          <span class="home-recruit-banner__sub">Join my research group — details &amp; how to apply on the hiring page.</span>
+        </span>
+        <span class="home-recruit-banner__cta" aria-hidden="true">Hiring →</span>
+      </a>
+    </div>
+
     <section class="hero">
       <div class="hero__bg" aria-hidden="true"></div>
 
@@ -76,14 +87,14 @@
             From AI-aided to AI-native power electronics life cycle management
           </h1>
           <p class="lead">
-            Postdoctoral Fellow & Lecturer @ University of Arkansas (Fayetteville).
+            Postdoctoral Fellow &amp; Lecturer @ University of Arkansas (Fayetteville).
           </p>
 
           <div class="cta">
             <a class="btn btn--primary" href="assets/CV.pdf" target="_blank" rel="noopener">
               Download CV (PDF)
             </a>
-            <a class="btn btn--ghost" href="hiring.html">PhD / hiring</a>
+            <a class="btn btn--recruit" href="hiring.html">PhD positions — apply</a>
             <a class="btn btn--ghost" href="#contact">Contact</a>
           </div>
 
@@ -150,10 +161,17 @@
           <div class="mini">
             <div class="mini__title">Research focus</div>
             <ul class="mini__list">
-              <li>Physical AI for Power Electronics Multi-Physics Simulation;</li>
-              <li>Agentic AI for Power Electronics Design Automation;</li>
-              <li>Explainable AI for Power Electronics Maintenance.</li>
+              <li><strong>AI for power electronics</strong> — simulation &amp; modeling; maintenance &amp; reliability; process automation.</li>
+              <li><strong>AI for power semiconductor manufacturing</strong> — digital twins for fabrication; fabrication process optimization.</li>
+              <li><strong>Cross-cutting AI themes</strong> — physical AI, explainable AI, and agentic AI.</li>
             </ul>
+          </div>
+
+          <div class="panel-recruit">
+            <p class="panel-recruit__text">
+              I will join the Florida State University, FL, USA, as an Assistant Professor starting August 2026, and I am recruiting motivated PhD students to join my research group.
+            </p>
+            <a class="btn btn--recruit panel-recruit__btn" href="hiring.html">PhD positions — details</a>
           </div>
         </div>
       </div>
@@ -161,11 +179,12 @@
       <!-- NAV ROW stays AFTER the meta/videos row -->
       <nav class="nav">
         <div class="container nav__inner">
-          <a href="hiring.html">Hiring</a>
+          <a class="nav__hiring" href="hiring.html">Hiring</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
           <a href="#projects">Projects</a>
           <a href="#teaching">Teaching</a>
+          <a href="#fundamentals-ai-pe">Open education</a>
           <a href="#service">Service</a>
           <a href="#awards">Awards</a>
           <a href="#pubs">Publications</a>
@@ -300,8 +319,12 @@
           </article>
         </div>
 
-        <!-- NEW: Teaching photos -->
-        <div class="photogrid" aria-label="Teaching photos">
+        <div class="teaching-media-grid" aria-label="Teaching photos and course video">
+          <figure class="photo">
+            <img src="assets/teaching_awards_2026.jpg" alt="Outstanding Mentor Award, University of Arkansas, 2026" loading="lazy" />
+            <figcaption>Outstanding Mentor Award, University of Arkansas (2026)</figcaption>
+          </figure>
+
           <figure class="photo">
             <img src="assets/teaching_grad.jpg" alt="Teaching / mentoring graduate students" loading="lazy" />
             <figcaption>Mentoring graduate students</figcaption>
@@ -311,18 +334,39 @@
             <img src="assets/teaching_reu.jpg" alt="Teaching / mentoring REU students" loading="lazy" />
             <figcaption>Mentoring REU students</figcaption>
           </figure>
-        </div>
-<!-- Row 2: videos -->
-<div class="meta meta--videos">
-  <div class="meta__item meta__item--media">
-    <div class="media__title">Outcome of Graduate Course "Fundamentals of AI for Power Electronics Design"</div>
-    <video class="metavid" controls playsinline preload="metadata">
-      <source src="assets/grad_course_outcome.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
 
+          <div class="photo teaching-media-video">
+            <div class="media__title">Outcome of Graduate Course &quot;Fundamentals of AI for Power Electronics Design&quot;</div>
+            <video class="metavid metavid--teaching" controls playsinline preload="metadata">
+              <source src="assets/grad_course_outcome.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="fundamentals-ai-pe">
+      <div class="container">
+        <h2 class="h2">Fundamentals of AI for power electronics (open education)</h2>
+        <div class="card">
+          <p>
+            I maintain an open GitHub-based resource for <strong>Fundamentals of AI for Power Electronics</strong>: a structured path of Jupyter notebooks, data, and documentation aimed at practitioners and students who want hands-on skill at the intersection of machine learning and power electronics—not only slides, but runnable code you can adapt.
+          </p>
+          <p>
+            The repo accompanies the invited tutorial article <cite>Fundamentals of Artificial Intelligences for Power Electronics</cite> (<em>IEEE Transactions on Industrial Electronics</em>, 2026). Module folders are mapped to paper sections so you can read a topic, then open the matching notebooks. There is also a companion education piece (pilot course at the University of Arkansas) in the repo’s <code>docs/</code> folder on reforming power-electronics education in the AI era.
+          </p>
+          <p class="muted">
+            <strong>What you’ll find:</strong> a progressive curriculum—from environment setup and metaheuristic optimization, through classical ML, ensembles, neural networks (including 3D thermal-field regression and sequence models), physics-informed modeling (PINN), reinforcement learning on converter examples, simulation automation (e.g. LTspice / PLECS workflows), to applied case studies on buck, DAB, IGBT health, and magnetic modeling. Most notebooks include <strong>Open in Colab</strong> flows; one automation-heavy module expects local simulators.
+          </p>
+          <p class="muted">
+            <strong>Companion tools:</strong> an interactive <a href="https://github.com/XinzeLee/AI_for_PE_Algorithm_Selector" target="_blank" rel="noopener">AI-for-PE algorithm selector</a> to narrow methods to your task, plus a documented ChatGPT-based tutor path in the repository README for deeper Q&amp;A aligned with the material. Content is actively refined; code is Apache-2.0 and educational text is CC&nbsp;BY-NC&nbsp;4.0 per the repo license files.
+          </p>
+          <p class="fundamentals-card-cta">
+            <a class="btn btn--primary" href="https://github.com/XinzeLee/Fundamentals_of_AI_for_PE" target="_blank" rel="noopener">Fundamentals_of_AI_for_PE on GitHub</a>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -335,7 +379,8 @@
             <ul class="bullets">
               <li>IEEE DMC 2025: Organizer — AI Challenge in Power Electronics Design</li>
               <li>IEEE WiPDA 2025: Tutorial — AI in Power Electronics Design</li>
-              <li>IEEE APEC 2025: 3-hour tutorial + session chair</li>
+              <li>IEEE APEC 2025: 3-hour education seminar (S0.5 AI in Power Electronics Design - Present and Future) + session chair</li>
+              <li>IEEE ECCE 2025 tutorial: Reimagine Power Electronics Design with AI</li>
               <li>IEEE ECCE 2024: Special session on next-gen AI for power electronics</li>
             </ul>
           </article>
@@ -343,7 +388,6 @@
           <article class="card">
             <h3 class="h3">Editorial roles & reviewing</h3>
             <ul class="bullets">
-              <li>Guest editor: IEEE TPEL (special section)</li>
               <li>Guest editor: Frontiers in Electronics; MDPI Mathematics</li>
               <li>90+ reviews across IEEE journals and others</li>
             </ul>
@@ -357,7 +401,7 @@
         <h2 class="h2">Awards</h2>
         <div class="card">
           <ul class="bullets bullets--cols">
-            <li>Outstanding Mentor Award, University of Arkansas (2026) — <a href="hiring.html#mentoring">photo on hiring page</a></li>
+            <li>Outstanding Mentor Award, University of Arkansas (2026) </li>
             <li>Geneva Invention Salon: Silver (Plug-and-Play device fingerprint detector + stability analysis with TinyML)</li>
             <li>ESI Highly Cited Paper (Triple Phase Shift modulation for DAB converter)</li>
             <li>IEEE IAS Prize Paper Award: Second Prize</li>
