@@ -47,9 +47,16 @@
   });
 
   // ---------- Footer ----------
-  document.getElementById("year").textContent = new Date().getFullYear();
-  document.getElementById("lastUpdated").textContent =
-    new Date(document.lastModified).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  const yearEl = document.getElementById("year");
+  const lastUpdatedEl = document.getElementById("lastUpdated");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  if (lastUpdatedEl) {
+    lastUpdatedEl.textContent = new Date(document.lastModified).toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  }
 
   document.getElementById("printBtn")?.addEventListener("click", () => window.print());
 
@@ -110,16 +117,17 @@
     return text.replace(new RegExp(safe, "ig"), (m) => `<mark>${m}</mark>`);
   }
 
-  function renderPubs(query = "") {
-    const q = query.trim().toLowerCase();
-    const filtered = pubs.filter(p =>
-      !q ||
-      p.title.toLowerCase().includes(q) ||
-      p.meta.toLowerCase().includes(q) ||
-      p.role.toLowerCase().includes(q)
-    );
+  if (listEl) {
+    function renderPubs(query = "") {
+      const q = query.trim().toLowerCase();
+      const filtered = pubs.filter(p =>
+        !q ||
+        p.title.toLowerCase().includes(q) ||
+        p.meta.toLowerCase().includes(q) ||
+        p.role.toLowerCase().includes(q)
+      );
 
-    listEl.innerHTML = filtered.map(p => `
+      listEl.innerHTML = filtered.map(p => `
       <article class="pub">
         <div class="pub__top">
           <div>
@@ -131,13 +139,14 @@
       </article>
     `).join("");
 
-    if (filtered.length === 0) {
-      listEl.innerHTML = `<div class="muted">No publications matched “${query}”.</div>`;
+      if (filtered.length === 0) {
+        listEl.innerHTML = `<div class="muted">No publications matched “${query}”.</div>`;
+      }
     }
-  }
 
-  renderPubs();
-  filterEl?.addEventListener("input", (e) => renderPubs(e.target.value));
+    renderPubs();
+    filterEl?.addEventListener("input", (e) => renderPubs(e.target.value));
+  }
 
   // ---------- Command palette (Ctrl/⌘ K) ----------
   const cmdBtn = document.getElementById("cmdBtn");
@@ -145,65 +154,76 @@
   const cmdkInput = document.getElementById("cmdkInput");
   const cmdkList = document.getElementById("cmdkList");
 
-  const commands = [
-    { title: "Experience", desc: "Jump to roles & timeline", href: "#experience" },
-    { title: "Education", desc: "Degrees & training", href: "#education" },
-    { title: "Projects", desc: "Industry & research highlights", href: "#projects" },
-    { title: "Teaching", desc: "Courses & mentoring", href: "#teaching" },
-    { title: "Service", desc: "Talks, chairs, editorial", href: "#service" },
-    { title: "Awards", desc: "Selected awards & honors", href: "#awards" },
-    { title: "Publications", desc: "Filterable selected publications", href: "#pubs" },
-    { title: "Skills", desc: "AI + power electronics toolkit", href: "#skills" },
-    { title: "Contact", desc: "Email, phone, LinkedIn, address", href: "#contact" },
-    { title: "Download CV (PDF)", desc: "Open assets/CV.pdf", href: "assets/CV.pdf" }
-  ];
+  if (cmdk && cmdkInput && cmdkList) {
+    const commands = [
+      { title: "Experience", desc: "Jump to roles & timeline", href: "#experience" },
+      { title: "Education", desc: "Degrees & training", href: "#education" },
+      { title: "Projects", desc: "Industry & research highlights", href: "#projects" },
+      { title: "Teaching", desc: "Courses & mentoring", href: "#teaching" },
+      { title: "Service", desc: "Talks, chairs, editorial", href: "#service" },
+      { title: "Awards", desc: "Selected awards & honors", href: "#awards" },
+      { title: "Publications", desc: "Filterable selected publications", href: "#pubs" },
+      { title: "Skills", desc: "AI + power electronics toolkit", href: "#skills" },
+      { title: "Contact", desc: "Email, phone, LinkedIn, address", href: "#contact" },
+      { title: "Download CV (PDF)", desc: "Open assets/CV.pdf", href: "assets/CV.pdf" },
+    ];
 
-  function openCmdk() {
-    cmdk.hidden = false;
-    cmdkInput.value = "";
-    renderCmdk("");
-    setTimeout(() => cmdkInput.focus(), 0);
-  }
-  function closeCmdk() { cmdk.hidden = true; }
+    function openCmdk() {
+      cmdk.hidden = false;
+      cmdkInput.value = "";
+      renderCmdk("");
+      setTimeout(() => cmdkInput.focus(), 0);
+    }
+    function closeCmdk() {
+      cmdk.hidden = true;
+    }
 
-  function renderCmdk(q) {
-    const query = q.trim().toLowerCase();
-    const items = commands.filter(c =>
-      !query || c.title.toLowerCase().includes(query) || c.desc.toLowerCase().includes(query)
-    );
+    function renderCmdk(q) {
+      const query = q.trim().toLowerCase();
+      const items = commands.filter(
+        c => !query || c.title.toLowerCase().includes(query) || c.desc.toLowerCase().includes(query)
+      );
 
-    cmdkList.innerHTML = items.map((c, idx) => `
+      cmdkList.innerHTML = items
+        .map(
+          (c, idx) => `
       <div class="cmdk__item" role="option" data-href="${c.href}" data-idx="${idx}">
         <div class="cmdk__itemTitle">${c.title}</div>
         <div class="cmdk__itemDesc">${c.desc}</div>
       </div>
-    `).join("");
+    `
+        )
+        .join("");
 
-    cmdkList.querySelectorAll(".cmdk__item").forEach(el => {
-      el.addEventListener("click", () => {
-        const href = el.getAttribute("data-href");
-        closeCmdk();
-        if (href.startsWith("#")) location.hash = href;
-        else window.open(href, "_blank", "noopener");
+      cmdkList.querySelectorAll(".cmdk__item").forEach(el => {
+        el.addEventListener("click", () => {
+          const href = el.getAttribute("data-href");
+          closeCmdk();
+          if (href.startsWith("#")) location.hash = href;
+          else window.open(href, "_blank", "noopener");
+        });
       });
+    }
+
+    cmdBtn?.addEventListener("click", openCmdk);
+
+    document.addEventListener("keydown", e => {
+      const isK = e.key.toLowerCase() === "k";
+      const mod = e.metaKey || e.ctrlKey;
+
+      if (mod && isK) {
+        e.preventDefault();
+        openCmdk();
+      }
+      if (e.key === "Escape" && !cmdk.hidden) closeCmdk();
     });
+
+    cmdk.addEventListener("click", e => {
+      if (e.target && e.target.matches("[data-cmdk-close]")) closeCmdk();
+    });
+
+    cmdkInput.addEventListener("input", e => renderCmdk(e.target.value));
   }
-
-  cmdBtn?.addEventListener("click", openCmdk);
-
-  document.addEventListener("keydown", (e) => {
-    const isK = (e.key.toLowerCase() === "k");
-    const mod = (e.metaKey || e.ctrlKey);
-
-    if (mod && isK) { e.preventDefault(); openCmdk(); }
-    if (e.key === "Escape" && !cmdk.hidden) closeCmdk();
-  });
-
-  cmdk?.addEventListener("click", (e) => {
-    if (e.target && e.target.matches("[data-cmdk-close]")) closeCmdk();
-  });
-
-  cmdkInput?.addEventListener("input", (e) => renderCmdk(e.target.value));
 
   // ---------- Google Scholar stats (realtime from profile page) ----------
   const SCHOLAR_USER = "YilrlZMAAAAJ";

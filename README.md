@@ -1,5 +1,17 @@
 <div align="center">
 
+### Now recruiting PhD students
+
+**AI for power electronics & semiconductor manufacturing** — Fall 2026–Fall 2027 · FAMU-FSU / CAPS
+
+[![PhD hiring page](https://img.shields.io/badge/PhD%20%2F%20hiring-%E2%86%92%20details-7c5cff?style=for-the-badge&labelColor=1a1f35)](https://xinzelee.github.io/hiring.html)
+
+<br />
+
+---
+
+<br />
+
 ## Dr. Xinze Li
 
 *From AI-aided to AI-native power electronics life cycle management*
