@@ -68,14 +68,25 @@
 
   <main id="content">
     <div class="home-recruit-banner-wrap">
-      <a class="home-recruit-banner" href="hiring.html">
-        <span class="home-recruit-banner__badge" aria-hidden="true">Open positions</span>
-        <span class="home-recruit-banner__main">
-          <span class="home-recruit-banner__title">Now recruiting PhD students at Florida State University</span>
-          <span class="home-recruit-banner__sub">Join my research group — details &amp; how to apply on the hiring page.</span>
-        </span>
-        <span class="home-recruit-banner__cta" aria-hidden="true">Hiring →</span>
-      </a>
+      <div class="home-recruit-banners">
+        <a class="home-recruit-banner" href="hiring.html">
+          <span class="home-recruit-banner__badge" aria-hidden="true">Open position</span>
+          <span class="home-recruit-banner__main">
+            <span class="home-recruit-banner__title">PhD students — Florida State University</span>
+            <span class="home-recruit-banner__sub">Details &amp; how to apply for Fall 2026–Fall 2027.</span>
+          </span>
+          <span class="home-recruit-banner__cta" aria-hidden="true">PhD →</span>
+        </a>
+
+        <a class="home-recruit-banner" href="postdoc.html">
+          <span class="home-recruit-banner__badge" aria-hidden="true">Open position</span>
+          <span class="home-recruit-banner__main">
+            <span class="home-recruit-banner__title">Postdoctoral researcher — Florida State University</span>
+            <span class="home-recruit-banner__sub">Position details &amp; how to apply (Fall 2026–Fall 2028).</span>
+          </span>
+          <span class="home-recruit-banner__cta" aria-hidden="true">Postdoc →</span>
+        </a>
+      </div>
     </div>
 
     <section class="hero">
@@ -94,7 +105,6 @@
             <a class="btn btn--primary" href="assets/CV.pdf" target="_blank" rel="noopener">
               Download CV (PDF)
             </a>
-            <a class="btn btn--recruit" href="hiring.html">PhD positions — apply</a>
             <a class="btn btn--ghost" href="#contact">Contact</a>
           </div>
 
@@ -169,9 +179,12 @@
 
           <div class="panel-recruit">
             <p class="panel-recruit__text">
-              I will join the Florida State University, FL, USA, as an Assistant Professor starting August 2026, and I am recruiting motivated PhD students to join my research group.
+              I will join the Florida State University, FL, USA, as an Assistant Professor starting August 2026, and I am recruiting motivated PhD students and postdoctoral researchers to join my research group.
             </p>
-            <a class="btn btn--recruit panel-recruit__btn" href="hiring.html">PhD positions — details</a>
+            <div class="panel-recruit__actions">
+              <a class="btn btn--recruit panel-recruit__btn" href="hiring.html">PhD — details</a>
+              <a class="btn btn--recruit panel-recruit__btn" href="postdoc.html">Postdoc — details</a>
+            </div>
           </div>
         </div>
       </div>
@@ -179,7 +192,8 @@
       <!-- NAV ROW stays AFTER the meta/videos row -->
       <nav class="nav">
         <div class="container nav__inner">
-          <a class="nav__hiring" href="hiring.html">Hiring</a>
+          <a class="nav__hiring" href="hiring.html">PhD hiring</a>
+          <a class="nav__hiring nav__postdoc" href="postdoc.html">Postdoc</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
           <a href="#projects">Projects</a>

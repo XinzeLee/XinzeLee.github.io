@@ -4,8 +4,8 @@
   const themeBtn = document.getElementById("themeBtn");
 
   const savedTheme = localStorage.getItem("theme");
-  const isHiringPage = root.dataset.page === "hiring";
-  if (isHiringPage) {
+  const isRecruitmentPage = root.dataset.page === "hiring" || root.dataset.page === "postdoc";
+  if (isRecruitmentPage) {
     if (!sessionStorage.getItem("hiringLightBoot")) {
       root.setAttribute("data-theme", "light");
       sessionStorage.setItem("hiringLightBoot", "1");
@@ -170,7 +170,8 @@
 
   if (cmdk && cmdkInput && cmdkList) {
     const commands = [
-      { title: "PhD / hiring", desc: "Open hiring page", href: "hiring.html" },
+      { title: "PhD / hiring", desc: "Open PhD hiring page", href: "hiring.html" },
+      { title: "Postdoc hiring", desc: "Open postdoctoral position page", href: "postdoc.html" },
       { title: "Experience", desc: "Jump to roles & timeline", href: "#experience" },
       { title: "Education", desc: "Degrees & training", href: "#education" },
       { title: "Projects", desc: "Industry & research highlights", href: "#projects" },

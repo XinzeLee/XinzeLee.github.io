@@ -77,6 +77,16 @@ body{
   font-size: 13px;
   padding: 10px 12px;
 }
+.panel-recruit__actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.panel-recruit__actions .panel-recruit__btn{
+  width: auto;
+  flex: 1 1 140px;
+  min-width: 0;
+}
 
 .fundamentals-card-cta{
   margin-top: 14px;
@@ -174,13 +184,22 @@ body{
   box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
 }
 
+.home-recruit-banners{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 18px;
+}
+
 .home-recruit-banner{
   display: flex;
   align-items: center;
   gap: 14px 18px;
   flex-wrap: wrap;
-  margin: 0 auto;
-  max-width: 1100px;
+  margin: 0;
+  width: 100%;
   padding: 12px 18px;
   border-radius: var(--radius);
   text-decoration: none;
@@ -721,9 +740,10 @@ body{
 .hiring-hero-actions{
   margin: 0 0 22px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 .hiring-pdf-note{
   font-size: 12px;
@@ -807,6 +827,31 @@ body{
 .hiring-body{
   max-width: 720px;
   padding-top: 40px;
+}
+
+/* Postdoc page: document-style header (no hero/chips) */
+.postdoc-doc-head{
+  margin: 0 0 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.postdoc-doc-head__title{
+  margin: 0 0 14px;
+  font-size: clamp(22px, 3.2vw, 30px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 850;
+}
+.postdoc-doc-head__meta{
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.postdoc-doc-head__actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
 }
 .hiring-section{
   margin-bottom: 52px;
@@ -909,7 +954,6 @@ body{
   display: block;
   width: 100%;
   height: auto;
-  vertical-align: middle;
 }
 .hiring-figure figcaption{
   padding: 12px 16px;
