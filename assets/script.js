@@ -171,7 +171,6 @@
   if (cmdk && cmdkInput && cmdkList) {
     const commands = [
       { title: "PhD / hiring", desc: "Open PhD hiring page", href: "hiring.html" },
-      { title: "Postdoc hiring", desc: "Open postdoctoral position page", href: "postdoc.html" },
       { title: "Experience", desc: "Jump to roles & timeline", href: "#experience" },
       { title: "Education", desc: "Degrees & training", href: "#education" },
       { title: "Projects", desc: "Industry & research highlights", href: "#projects" },
