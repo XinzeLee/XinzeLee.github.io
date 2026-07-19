@@ -1,0 +1,212 @@
+/* Light editorial treatment for active and retained recruitment pages. */
+html[data-page="hiring"],
+html[data-page="postdoc"] {
+  --bg: #f7f7f4;
+  --surface: #fff;
+  --surface2: #fafafa;
+  --text: #202327;
+  --muted: #777d84;
+  --line: #e5e6e4;
+  --brand: #173f5f;
+  --brand2: #173f5f;
+  --accent: #173f5f;
+}
+
+html[data-page="hiring"] body,
+html[data-page="postdoc"] body {
+  color: var(--text);
+  background: var(--bg);
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+}
+
+html[data-page="hiring"] .topbar,
+html[data-page="postdoc"] .topbar {
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.96);
+  box-shadow: none;
+}
+html[data-page="hiring"] .topbar__inner,
+html[data-page="postdoc"] .topbar__inner {
+  max-width: 920px;
+}
+html[data-page="hiring"] .brand__mark,
+html[data-page="postdoc"] .brand__mark {
+  border-color: var(--line);
+  color: var(--brand);
+  background: transparent;
+}
+html[data-page="hiring"] .brand__name,
+html[data-page="postdoc"] .brand__name { color: var(--text); }
+html[data-page="hiring"] .brand__tag,
+html[data-page="postdoc"] .brand__tag { color: var(--muted); }
+
+html[data-page="hiring"] .hiring-hero,
+html[data-page="postdoc"] .hiring-hero {
+  padding-block: 2.4rem 1.8rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+html[data-page="hiring"] .hiring-hero__inner,
+html[data-page="postdoc"] .hiring-hero__inner {
+  max-width: 920px;
+}
+html[data-page="hiring"] .hiring-title,
+html[data-page="postdoc"] .hiring-title {
+  max-width: 800px;
+  color: #181b1e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+html[data-page="hiring"] .hiring-kicker,
+html[data-page="postdoc"] .hiring-kicker {
+  color: var(--brand);
+  letter-spacing: .16em;
+}
+
+html[data-page="hiring"] .hiring-chips,
+html[data-page="postdoc"] .hiring-chips {
+  position: static;
+  gap: 0;
+  margin: 1.25rem 0 0;
+  padding-top: .7rem;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+html[data-page="hiring"] .hiring-chip,
+html[data-page="postdoc"] .hiring-chip {
+  padding: .32rem .85rem .32rem 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--muted);
+  background: transparent;
+  box-shadow: none;
+}
+html[data-page="hiring"] .hiring-chip:hover,
+html[data-page="postdoc"] .hiring-chip:hover {
+  color: var(--brand);
+  background: transparent;
+}
+
+html[data-page="hiring"] .hiring-body,
+html[data-page="postdoc"] .hiring-body {
+  max-width: 920px;
+  padding-top: 0;
+  padding-bottom: 5rem;
+  background: var(--surface);
+}
+html[data-page="hiring"] .hiring-page,
+html[data-page="postdoc"] .hiring-page {
+  background: var(--surface);
+}
+html[data-page="hiring"] .hiring-section,
+html[data-page="postdoc"] .hiring-section {
+  margin: 0;
+  padding: 2.6rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+html[data-page="hiring"] .hiring-section:last-child,
+html[data-page="postdoc"] .hiring-section:last-child { border-bottom: 0; }
+html[data-page="hiring"] .hiring-h2,
+html[data-page="postdoc"] .hiring-h2 {
+  border-bottom: 1px solid var(--line);
+  border-image: none;
+  color: #181b1e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+html[data-page="hiring"] .hiring-cols,
+html[data-page="postdoc"] .hiring-cols,
+html[data-page="hiring"] .hiring-linkgrid,
+html[data-page="postdoc"] .hiring-linkgrid {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+html[data-page="hiring"] .hiring-col,
+html[data-page="postdoc"] .hiring-col,
+html[data-page="hiring"] .hiring-cardlink,
+html[data-page="postdoc"] .hiring-cardlink {
+  padding: .85rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+html[data-page="hiring"] .hiring-cardlink:hover,
+html[data-page="postdoc"] .hiring-cardlink:hover {
+  transform: none;
+  background: transparent;
+}
+
+html[data-page="hiring"] .hiring-pull,
+html[data-page="postdoc"] .hiring-pull {
+  padding: 1rem 1.15rem;
+  border: 0;
+  border-left: 3px solid var(--brand);
+  border-radius: 0;
+  color: var(--text);
+  background: #f5f8fa;
+  box-shadow: none;
+}
+html[data-page="hiring"] .hiring-pull--inline,
+html[data-page="postdoc"] .hiring-pull--inline {
+  display: inline;
+  padding: .1rem .28rem;
+  border: 0;
+  border-radius: 3px;
+  line-height: inherit;
+  background: var(--navy-soft, #eaf0f4);
+}
+html[data-page="hiring"] .hiring-underline,
+html[data-page="postdoc"] .hiring-underline {
+  text-decoration-color: rgba(23, 63, 95, .45);
+}
+html[data-page="hiring"] .btn,
+html[data-page="postdoc"] .btn {
+  border-radius: 5px;
+  box-shadow: none;
+}
+html[data-page="hiring"] .btn--primary,
+html[data-page="postdoc"] .btn--primary,
+html[data-page="hiring"] .hiring-mailto,
+html[data-page="postdoc"] .hiring-mailto {
+  border-color: var(--brand);
+  color: #fff;
+  background: var(--brand);
+}
+html[data-page="hiring"] .btn--primary:hover,
+html[data-page="postdoc"] .btn--primary:hover,
+html[data-page="hiring"] .btn--primary:focus,
+html[data-page="postdoc"] .btn--primary:focus,
+html[data-page="hiring"] .hiring-mailto:hover,
+html[data-page="postdoc"] .hiring-mailto:hover,
+html[data-page="hiring"] .hiring-mailto:focus,
+html[data-page="postdoc"] .hiring-mailto:focus {
+  color: #fff;
+}
+html[data-page="hiring"] .hiring-section--apply,
+html[data-page="postdoc"] .hiring-section--apply {
+  margin-top: 1rem;
+  padding: 2rem;
+  border: 1px solid #d8e1e8;
+  border-left: 4px solid var(--brand);
+  border-radius: 7px;
+  background: #f8fafb;
+}
+html[data-page="hiring"] .hiring-float-panel,
+html[data-page="postdoc"] .hiring-float-panel {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  html[data-page="hiring"] .hiring-section--apply,
+  html[data-page="postdoc"] .hiring-section--apply {
+    padding: 1.25rem;
+  }
+}

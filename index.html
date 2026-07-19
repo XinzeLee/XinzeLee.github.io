@@ -1,550 +1,95 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b1020" />
-  <title>Dr. Xinze Li — From AI-aided to AI-native power electronics life cycle management</title>
-  <meta name="description" content="Dr. Xinze Li — From AI-aided to AI-native power electronics life cycle management. Academic CV, publications, projects, teaching, and service. This site is AI-generated from the official CV PDF." />
-
-  <meta property="og:title" content="Dr. Xinze Li — From AI-aided to AI-native power electronics life cycle management" />
-  <meta property="og:description" content="Academic CV, publications, projects, teaching, and service. AI-generated site with official PDF." />
-  <meta property="og:type" content="website" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24282c">
+  <title>Home — Xinze Li</title>
+  <meta name="description" content="Xinze Li is an Assistant Professor at Florida State University researching next-generation AI for power electronics and semiconductor technologies.">
+  <meta property="og:title" content="Home — Xinze Li">
+  <meta property="og:description" content="Xinze Li is an Assistant Professor at Florida State University researching next-generation AI for power electronics and semiconductor technologies.">
+  <meta property="og:type" content="website">
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Xinze Li",
-    "jobTitle":"Postdoctoral Fellow, Lecturer",
-    "affiliation":"University of Arkansas",
-    "email":"mailto:xinzel@uark.edu",
-    "telephone":"+1 4797992542",
-    "url":"https://xinzelee.github.io/",
-    "sameAs":[
-      "https://www.linkedin.com/in/xinze-li-8199561b0/",
-      "https://scholar.google.com/citations?user=YilrlZMAAAAJ"
-    ]
-  }
-  </script>
-
-  <link rel="preload" href="assets/style.css" as="style" />
-  <link rel="stylesheet" href="assets/style.css" />
+{"@context":"https://schema.org","@type":"Person","name":"Xinze Li","jobTitle":"Assistant Professor","affiliation":{"@type":"CollegeOrUniversity","name":"Florida State University"},"email":"mailto:xinzeli831@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Tallahassee","addressRegion":"FL","addressCountry":"US"},"url":"https://xinzelee.github.io/","sameAs":["https://www.linkedin.com/in/xinze-li-8199561b0/","https://github.com/XinzeLee","https://scholar.google.com/citations?user=YilrlZMAAAAJ"]}
+</script>
+  <link rel="stylesheet" href="assets/redesign.css">
 </head>
-
 <body>
-  <a class="skip" href="#content">Skip to content</a>
-
-  <header class="topbar">
-    <div class="topbar__inner">
-      <div class="brand">
-        <div class="brand__mark" aria-hidden="true">XL</div>
-        <div class="brand__text">
-          <div class="brand__name">Dr. Xinze Li</div>
-          <div class="brand__tag">From AI-aided to AI-native power electronics life cycle management</div>
-        </div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
+    <button class="mobile-toggle" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false">☰</button>
+    <div class="overlay" data-nav-close></div>
+    <aside class="sidebar" aria-label="Profile and main navigation">
+      <a href="index.html"><img class="profile-photo" src="assets/XZL_photo.png" alt="Portrait of Xinze Li"></a>
+      <div class="identity">
+        <p class="identity__name">Xinze Li</p>
+        <p class="identity__role">Assistant Professor<br>Electrical &amp; Computer Engineering<br>Florida State University</p>
       </div>
-
-      <div class="actions">
-        <button class="chip chip--ai" id="aiChip" type="button" aria-haspopup="dialog" aria-controls="aiDialog">
-          <span class="dot" aria-hidden="true"></span>
-          AI-generated page
-        </button>
-
-        <button class="iconbtn" id="themeBtn" type="button" title="Toggle theme" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0 4a1 1 0 0 1-1-1v-1a1 1 0 1 1 2 0v1a1 1 0 0 1-1 1ZM12 4a1 1 0 0 1-1-1V2a1 1 0 1 1 2 0v1a1 1 0 0 1-1 1Zm10 9a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1ZM4 13a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm15.07 6.07a1 1 0 0 1-1.41 0l-.7-.7a1 1 0 0 1 1.41-1.41l.7.7a1 1 0 0 1 0 1.41ZM7.45 7.45a1 1 0 0 1-1.41 0l-.7-.7A1 1 0 1 1 6.75 5.34l.7.7a1 1 0 0 1 0 1.41Zm11.62-1.41a1 1 0 0 1 0 1.41l-.7.7a1 1 0 0 1-1.41-1.41l.7-.7a1 1 0 0 1 1.41 0ZM7.45 18.36a1 1 0 0 1 0 1.41l-.7.7a1 1 0 1 1-1.41-1.41l.7-.7a1 1 0 0 1 1.41 0Z"></path>
-          </svg>
-        </button>
-
-        <button class="iconbtn" id="cmdBtn" type="button" title="Command palette (Ctrl/⌘ K)" aria-label="Open command palette">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <path d="M4 7a3 3 0 0 1 5.17-2H20a1 1 0 1 1 0 2H9.17A3 3 0 0 1 4 7Zm3 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-3 8a3 3 0 0 0 5.17 2H20a1 1 0 1 0 0-2H9.17A3 3 0 0 0 4 17Zm3 2a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm4-7a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2h-8a1 1 0 0 1-1-1Zm-2 0a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2h4a1 1 0 0 1 1 1Z"></path>
-          </svg>
-        </button>
+      <nav class="site-nav" aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="group.html">Group</a><a href="research.html">Selected Research</a><a href="teaching.html">Teaching</a><a href="publications.html">Publications</a><a href="service.html">Academic Services</a><a href="opensource.html">Open-source Projects</a></nav>
+      <div class="rail-links">
+        <a href="assets/CV.pdf">CV</a>
+        <a href="https://scholar.google.com/citations?user=YilrlZMAAAAJ" target="_blank" rel="noopener">Scholar</a>
+        <a href="https://github.com/XinzeLee" target="_blank" rel="noopener">GitHub</a>
+        <a href="hiring.html">PhD opening</a>
       </div>
-    </div>
-  </header>
+    </aside>
+    <main class="main-content" id="main-content">
+    <header class="page-header">
+      <p class="eyebrow">Florida State University</p>
+      <h1>Xinze Li</h1>
+      <p class="lead">Next-generation AI for power electronics technologies</p>
+    </header>
 
-  <main id="content">
-    <div class="home-recruit-banner-wrap">
-      <div class="home-recruit-banners">
-        <a class="home-recruit-banner" href="hiring.html">
-          <span class="home-recruit-banner__badge" aria-hidden="true">Open position</span>
-          <span class="home-recruit-banner__main">
-            <span class="home-recruit-banner__title">PhD students — Florida State University</span>
-            <span class="home-recruit-banner__sub">Details &amp; how to apply for Spring 2027–Spring 2028.</span>
-          </span>
-          <span class="home-recruit-banner__cta" aria-hidden="true">PhD →</span>
-        </a>
-      </div>
-    </div>
-
-    <section class="hero">
-      <div class="hero__bg" aria-hidden="true"></div>
-
-      <div class="container hero__grid">
-        <div>
-          <h1 class="h1">
-            From AI-aided to AI-native power electronics life cycle management
-          </h1>
-          <p class="lead">
-            Postdoctoral Fellow &amp; Lecturer @ University of Arkansas (Fayetteville).
-          </p>
-          <p class="lead">
-            Incoming Assistant Professor @ Florida State University (Tallahassee).
-          </p>
-
-          <div class="cta">
-            <a class="btn btn--primary" href="assets/CV.pdf" target="_blank" rel="noopener">
-              Download CV (PDF)
-            </a>
-            <a class="btn btn--ghost" href="#contact">Contact</a>
-          </div>
-
-          <!-- META ROW (now 6 items: email/phone/location/scholar + 2 videos) -->
-          <!-- Row 1: contact meta -->
-<div class="meta meta--contact">
-  <div class="meta__item">
-    <span class="k">Email</span>
-    <button class="linklike" data-copy="xinzel@uark.edu" type="button">xinzel@uark.edu</button>
-  </div>
-  <div class="meta__item">
-    <span class="k">GitHub</span>
-    <a class="linklike" href="https://github.com/XinzeLee" target="_blank" rel="noopener">XinzeLee</a>
-  </div>
-  <div class="meta__item">
-    <span class="k">Location</span>
-    <span class="v">Fayetteville, AR, USA</span>
-  </div>
-  <div class="meta__item">
-    <span class="k">Google Scholar</span>
-    <a class="linklike" href="https://scholar.google.com/citations?user=YilrlZMAAAAJ" target="_blank" rel="noopener">Profile</a>
-  </div>
-</div>
-
-<!-- Row 2: videos -->
-<div class="meta meta--videos">
-  <div class="meta__item meta__item--media">
-    <span class="k">Video</span>
-    <div class="media__title">AI-generated page note</div>
-    <video class="metavid" controls playsinline preload="metadata">
-      <source src="assets/intro.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <div class="meta__item meta__item--media">
-    <span class="k">Video</span>
-    <div class="media__title">How the site was generated</div>
-    <video class="metavid" controls playsinline preload="metadata">
-      <source src="assets/website_gen.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
-
-        </div>
-
-        <div class="panel">
-          <div class="stats">
-            <div class="stat">
-              <div class="stat__n" id="statCitations">810</div>
-              <div class="stat__k">Citations <span id="statCitationsDate">(as of Feb-13-2026)</span></div>
-            </div>
-            <div class="stat">
-              <div class="stat__n" id="statHindex">16</div>
-              <div class="stat__k">h-index</div>
-            </div>
-            <div class="stat">
-              <div class="stat__n" id="statI10">19</div>
-              <div class="stat__k">i10-index</div>
-            </div>
-          </div>
-
-          <div class="mini">
-            <div class="mini__title">Research focus</div>
-            <ul class="mini__list">
-              <li><strong>AI for power electronics</strong> — simulation &amp; modeling; maintenance &amp; reliability; process automation.</li>
-              <li><strong>AI for power semiconductor manufacturing</strong> — digital twins for fabrication; fabrication process optimization.</li>
-              <li><strong>Cross-cutting AI themes</strong> — physical AI, explainable AI, and agentic AI.</li>
-            </ul>
-          </div>
-
-          <div class="panel-recruit">
-            <p class="panel-recruit__text">
-              I will join the Florida State University, FL, USA, as an Assistant Professor starting August 2026, and I am recruiting motivated PhD students to join my research group.
-            </p>
-            <div class="panel-recruit__actions">
-              <a class="btn btn--recruit panel-recruit__btn" href="hiring.html">PhD — details</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- NAV ROW stays AFTER the meta/videos row -->
-      <nav class="nav">
-        <div class="container nav__inner">
-          <a class="nav__hiring" href="hiring.html">PhD hiring</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#projects">Projects</a>
-          <a href="#teaching">Teaching</a>
-          <a href="#fundamentals-ai-pe">Open education</a>
-          <a href="#service">Service</a>
-          <a href="#awards">Awards</a>
-          <a href="#pubs">Publications</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+    <section class="section" id="about">
+      <h2 class="rule-title">About Me</h2>
+      <p>Xinze Li (Member, IEEE) received the bachelor’s degree in Electrical Engineering from Shandong University, Shandong, China, in 2018, and the Ph.D. degree in Electrical and Electronic Engineering from Nanyang Technological University, Singapore, in 2023. He joined the University of Arkansas, USA, as a postdoctoral research fellow in 2024 and a lecturer in 2025. He is currently an Assistant Professor with the Department of Electrical and Computer Engineering, Florida State University, Tallahassee, FL, USA.</p>
+      <p>His research interests center on next-generation AI for power electronics technologies, including AI for power electronics simulation and modeling, maintenance and reliability, and process automation, as well as digital twins and process optimization for semiconductor fabrication. His work is driven by three core AI themes: physical AI, explainable AI, and agentic AI.</p>
     </section>
 
-    <section class="section" id="experience">
-      <div class="container">
-        <h2 class="h2">Experience</h2>
-
-        <div class="timeline">
-          <article class="card">
-            <div class="card__top">
-              <h3 class="h3">Post Doctoral Fellow, Lecturer — University of Arkansas</h3>
-              <div class="pill">Jul 2024 – Jul 2026 (Expected)</div>
-            </div>
-            <ul class="bullets">
-              <li>Supervisor: Alan Mantooth, IEEE Fellow, IEEE Division II Director, NAI Fellow</li>
-              <li>Project: Machine Learning Optimized Power Electronics (DoD-funded; collaboration with Eaton, UWM, MetaMorph)</li>
-              <li>Scope: Explainable AI-based PHM of power semiconductors</li>
-              <li>Teaching: “Fundamentals of AI for Power Electronics Design” (3 credits, 40 hours)</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <h3 class="h3">Research Fellow — Nanyang Technological University (Singapore)</h3>
-              <div class="pill">Oct 2023 – Jun 2024</div>
-            </div>
-            <ul class="bullets">
-              <li>Project: AI for high-frequency & 3D wireless power transfer</li>
-              <li>Scope: Physics-informed AI for power electronics modeling & design</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <h3 class="h3">AI Engineer — Singtel (Singapore)</h3>
-              <div class="pill">May 2021 – Sep 2021</div>
-            </div>
-            <ul class="bullets">
-              <li>Computer-vision patient anomaly behavior monitoring (polygon object detection + pose detection)</li>
-              <li>Open-sourced project: PolygonObjectDetection</li>
-            </ul>
-          </article>
-        </div>
-      </div>
+    <section class="section" id="news">
+      <h2 class="rule-title">News and Updates</h2>
+      <ol class="news-feed">
+        <li><span class="news-date">August 2026</span><span class="news-tag">[Appointment]</span><span class="news-copy">I joined Florida State University as an Assistant Professor in Electrical and Computer Engineering.</span></li>
+        <li><span class="news-date">July 2026</span><span class="news-tag">[Publication]</span><span class="news-copy">“Quantum Computing for Smart Grid” is the cover story of the July 2026 issue of <em>Nature Reviews Electrical Engineering</em>. <a href="https://doi.org/10.1038/s44287-026-00295-6">Paper</a></span></li>
+        <li><span class="news-date">May 2026</span><span class="news-tag">[Publication]</span><span class="news-copy">Our roadmap review “Quantum Computing for Smart Grid” was published in <em>Nature Reviews Electrical Engineering</em>. <a href="https://doi.org/10.1038/s44287-026-00295-6">Paper</a></span></li>
+        <li><span class="news-date">March 2026</span><span class="news-tag">[Award]</span><span class="news-copy">Our physics-informed autonomous-agent research received the IAAI Deployed Application Award at AAAI 2026. <a href="https://doi.org/10.1609/aaai.v40i47.41441">Paper</a></span></li>
+        <li><span class="news-date">October 2025</span><span class="news-tag">[Tutorial]</span><span class="news-copy">We presented the IEEE ECCE tutorial “Reimagine Power Electronics Design with Artificial Intelligence.” <a href="https://doi.org/10.5281/zenodo.17922626">Slides</a></span></li>
+        <li><span class="news-date">March 2025</span><span class="news-tag">[Tutorial]</span><span class="news-copy">We delivered the IEEE APEC Professional Education Seminar “AI in Power Electronics Design: Present and Future.” <a href="https://doi.org/10.5281/zenodo.17922174">Slides</a></span></li>
+        <li><span class="news-date">October 2024</span><span class="news-tag">[Publication]</span><span class="news-copy">“PE-GPT: A New Paradigm for Power Electronics Design” introduced a domain-specific generative-AI framework for power-electronics design. <a href="https://doi.org/10.1109/TIE.2024.3454408">Paper</a></span></li>
+        <li><span class="news-date">March 2024</span><span class="news-tag">[Publication]</span><span class="news-copy">Our PANN paper established physics-in-architecture recurrent modeling for power converters. <a href="https://doi.org/10.1109/TIE.2024.3352119">Paper</a></span></li>
+        <li><span class="news-date">July 2023</span><span class="news-tag">[Award]</span><span class="news-copy">I was the sole recipient of the NTU Graduate College Collaborative Research Award for the 2023–2024 academic year.</span></li>
+        <li><span class="news-date">March 2023</span><span class="news-tag">[Award]</span><span class="news-copy">Our work on data-driven ZVS modeling received an APEC Outstanding Presentation Award. <a href="https://doi.org/10.1109/APEC43580.2023.10131519">Paper</a></span></li>
+        <li><span class="news-date">September 2022</span><span class="news-tag">[Award]</span><span class="news-copy">“Automatic Triple Phase-Shift Modulation for DAB Converter With Minimized Power Loss” received an IEEE IAS Prize Paper Award, Second Prize. <a href="https://doi.org/10.1109/TIA.2021.3136501">Paper</a></span></li>
+      </ol>
     </section>
 
-    <section class="section" id="education">
-      <div class="container">
-        <h2 class="h2">Education</h2>
-        <div class="grid2">
-          <article class="card">
-            <h3 class="h3">Ph.D., Electrical & Electronic Engineering — NTU Singapore</h3>
-            <p class="muted">Jul 2018 – Mar 2023 • GPA: 4.75/5 (top 1%)</p>
-            <ul class="bullets">
-              <li>Thesis topic: AI applications in circuit & modulation design of DC-DC converters</li>
-              <li>Supervisor: Prof. Kezhi Mao</li>
-              <li>Also: text style transfer under low-data regime (NLP)</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3 class="h3">B.Eng., Electrical & Electronic Engineering — Shandong University</h3>
-            <p class="muted">Sep 2014 – Jun 2018 • GPA: 94/100 (top 1%)</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <h2 class="h2">Industry & Project Highlights</h2>
-        <div class="grid2">
-          <article class="card">
-            <h3 class="h3">Eaton — ML optimized power electronics</h3>
-            <ul class="bullets">
-              <li>Led a 3-engineer team; coordinated collaborators; built multi-physics multi-objective design tools</li>
-              <li>Coordinated DPT and 300-kW high-power test for hardware prototype</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3 class="h3">PHM for power semiconductors</h3>
-            <ul class="bullets">
-              <li>Light AI solutions to predict remaining useful life of SiC power modules / traction inverters</li>
-              <li>Collaborations include Toyota America</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3 class="h3">Wireless power transfer optimization</h3>
-            <ul class="bullets">
-              <li>Multi-physics AI to improve magnetic field uniformity for 3D spatial & PCB coils</li>
-              <li>AI-based adaptive controller improving transient dynamics</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3 class="h3">Rolls-Royce @ NTU Corporate Lab</h3>
-            <ul class="bullets">
-              <li>Probabilistic AI optimization for fleet fuel consumption (Germany)</li>
-              <li>AI-optimized DAB-inverter cascaded system; controllability analysis</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="teaching">
-      <div class="container">
-        <h2 class="h2">Teaching & Mentoring</h2>
-        <div class="grid2">
-          <article class="card">
-            <h3 class="h3">Lecturer — Fundamentals of AI for Power Electronics Design</h3>
-            <p class="muted">University of Arkansas • 3 credits • 40 hours</p>
-            <ul class="bullets">
-              <li>Meta-heuristics, ML, generative AI engineering, RL for control</li>
-              <li>Project-based learning; hands-on coding/debugging mindset</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3 class="h3">Student supervision</h3>
-            <ul class="bullets">
-              <li>Mentoring PhD + undergrads; REU supervision; publication outcomes</li>
-              <li>Topics: failure mechanism analysis, RUL prediction, converter control/modulation</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="teaching-media-grid" aria-label="Teaching photos and course video">
-          <figure class="photo">
-            <img src="assets/teaching_awards_2026.jpg" alt="Outstanding Mentor Award, University of Arkansas, 2026" loading="lazy" />
-            <figcaption>Outstanding Mentor Award, University of Arkansas (2026)</figcaption>
-          </figure>
-
-          <figure class="photo">
-            <img src="assets/teaching_grad.jpg" alt="Teaching / mentoring graduate students" loading="lazy" />
-            <figcaption>Mentoring graduate students</figcaption>
-          </figure>
-
-          <figure class="photo">
-            <img src="assets/teaching_reu.jpg" alt="Teaching / mentoring REU students" loading="lazy" />
-            <figcaption>Mentoring REU students</figcaption>
-          </figure>
-
-          <div class="photo teaching-media-video">
-            <div class="media__title">Outcome of Graduate Course &quot;Fundamentals of AI for Power Electronics Design&quot;</div>
-            <video class="metavid metavid--teaching" controls playsinline preload="metadata">
-              <source src="assets/grad_course_outcome.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section" id="fundamentals-ai-pe">
-      <div class="container">
-        <h2 class="h2">Fundamentals of AI for power electronics (open education)</h2>
-        <div class="card">
-          <p>
-            I maintain an open GitHub-based resource for <strong>Fundamentals of AI for Power Electronics</strong>: a structured path of Jupyter notebooks, data, and documentation aimed at practitioners and students who want hands-on skill at the intersection of machine learning and power electronics—not only slides, but runnable code you can adapt.
-          </p>
-          <p>
-            The repo accompanies the invited tutorial article <cite>Fundamentals of Artificial Intelligences for Power Electronics</cite> (<em>IEEE Transactions on Industrial Electronics</em>, 2026). Module folders are mapped to paper sections so you can read a topic, then open the matching notebooks. There is also a companion education piece (pilot course at the University of Arkansas) in the repo’s <code>docs/</code> folder on reforming power-electronics education in the AI era.
-          </p>
-          <p class="muted">
-            <strong>What you’ll find:</strong> a progressive curriculum—from environment setup and metaheuristic optimization, through classical ML, ensembles, neural networks (including 3D thermal-field regression and sequence models), physics-informed modeling (PINN), reinforcement learning on converter examples, simulation automation (e.g. LTspice / PLECS workflows), to applied case studies on buck, DAB, IGBT health, and magnetic modeling. Most notebooks include <strong>Open in Colab</strong> flows; one automation-heavy module expects local simulators.
-          </p>
-          <p class="muted">
-            <strong>Companion tools:</strong> an interactive <a href="https://github.com/XinzeLee/AI_for_PE_Algorithm_Selector" target="_blank" rel="noopener">AI-for-PE algorithm selector</a> to narrow methods to your task, plus a documented ChatGPT-based tutor path in the repository README for deeper Q&amp;A aligned with the material. Content is actively refined; code is Apache-2.0 and educational text is CC&nbsp;BY-NC&nbsp;4.0 per the repo license files.
-          </p>
-          <p class="fundamentals-card-cta">
-            <a class="btn btn--primary" href="https://github.com/XinzeLee/Fundamentals_of_AI_for_PE" target="_blank" rel="noopener">Fundamentals_of_AI_for_PE on GitHub</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="service">
-      <div class="container">
-        <h2 class="h2">Academic Service</h2>
-        <div class="grid2">
-          <article class="card">
-            <h3 class="h3">Invited talks / tutorials / chairs</h3>
-            <ul class="bullets">
-              <li>IEEE DMC 2025: Organizer — AI Challenge in Power Electronics Design</li>
-              <li>IEEE WiPDA 2025: Tutorial — AI in Power Electronics Design</li>
-              <li>IEEE APEC 2025: 3-hour education seminar (S0.5 AI in Power Electronics Design - Present and Future) + session chair</li>
-              <li>IEEE ECCE 2025 tutorial: Reimagine Power Electronics Design with AI</li>
-              <li>IEEE ECCE 2024: Special session on next-gen AI for power electronics</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3 class="h3">Editorial roles & reviewing</h3>
-            <ul class="bullets">
-              <li>Guest editor: Frontiers in Electronics; MDPI Mathematics</li>
-              <li>90+ reviews across IEEE journals and others</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="awards">
-      <div class="container">
-        <h2 class="h2">Awards</h2>
-        <div class="card">
-          <ul class="bullets bullets--cols">
-            <li>Outstanding Mentor Award, University of Arkansas (2026) </li>
-            <li>Geneva Invention Salon: Silver (Plug-and-Play device fingerprint detector + stability analysis with TinyML)</li>
-            <li>ESI Highly Cited Paper (Triple Phase Shift modulation for DAB converter)</li>
-            <li>IEEE IAS Prize Paper Award: Second Prize</li>
-            <li>NTU Graduate College Collaborative Research Award (2023–2024)</li>
-            <li>APEC 2023 Outstanding presentation award</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="pubs">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Selected Publications</h2>
-          <div class="pubtools">
-            <input id="pubFilter" class="input" type="search" placeholder="Filter by keyword (e.g., DAB, physics, explainable)…" />
-            <a class="btn btn--ghost" href="https://scholar.google.com/citations?user=YilrlZMAAAAJ" target="_blank" rel="noopener">Full list on Google Scholar</a>
-            <a class="btn btn--ghost" href="assets/CV.pdf" target="_blank" rel="noopener">Full list in PDF</a>
-          </div>
-        </div>
-
-        <div id="pubList" class="publist" aria-live="polite"></div>
-
-        <details class="details">
-          <summary>AI transparency note (what “AI-generated” means here)</summary>
-          <div class="details__body">
-            <p>
-              This page was generated from the official PDF CV and then formatted into a web layout.
-              The PDF is the source of truth. If anything looks off, update the text in <code>assets/script.js</code> or replace <code>assets/CV.pdf</code>.
-            </p>
-            <p class="muted">
-              Tip: keep the PDF link so reviewers can cite/verify details quickly.
-            </p>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="section" id="skills">
-      <div class="container">
-        <h2 class="h2">Skills</h2>
-        <div class="grid2">
-          <article class="card">
-            <h3 class="h3">Artificial Intelligence</h3>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Deep Learning</span>
-              <span class="tag">Computer Vision</span><span class="tag">NLP</span><span class="tag">GANs</span>
-              <span class="tag">Metaheuristics</span><span class="tag">Lightweight / deployable AI</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3 class="h3">Power Electronics</h3>
-            <div class="tags">
-              <span class="tag">Hardware design</span><span class="tag">FPGA</span><span class="tag">DSP</span>
-              <span class="tag">HIL (Opal-RT)</span><span class="tag">dSPACE</span><span class="tag">Matlab</span>
-              <span class="tag">PLECS</span><span class="tag">LTspice</span><span class="tag">Ansys</span>
-            </div>
-          </article>
-        </div>
-      </div>
+    <section class="section" id="openings">
+      <h2 class="rule-title">Openings</h2>
+      <div class="opening"><h3>PhD students · Spring 2027–Spring 2028</h3><p>I am recruiting motivated PhD students to join my research group at Florida State University in AI for power electronics and semiconductor manufacturing.</p><a class="button button--primary" href="hiring.html">View position and application details</a></div>
     </section>
 
     <section class="section" id="contact">
-      <div class="container">
-        <h2 class="h2">Contact</h2>
-        <div class="card contact">
-          <div>
-            <div class="k">Email</div>
-            <div class="v"><button class="linklike" data-copy="xinzel@uark.edu" type="button">xinzel@uark.edu</button></div>
-          </div>
-          <div>
-            <div class="k">LinkedIn</div>
-            <div class="v">
-              <a class="linklike" href="https://www.linkedin.com/in/xinze-li-8199561b0/" target="_blank" rel="noopener">xinze-li-8199561b0</a>
-            </div>
-          </div>
-          <div>
-            <div class="k">GitHub</div>
-            <div class="v">
-              <a class="linklike" href="https://github.com/XinzeLee" target="_blank" rel="noopener">XinzeLee</a>
-            </div>
-          </div>
-          <div>
-            <div class="k">Address</div>
-            <div class="v">University of Arkansas, Fayetteville, USA</div>
-          </div>
-
-          <div class="contact__btns">
-            <a class="btn btn--primary" href="assets/CV.pdf" target="_blank" rel="noopener">Download CV</a>
-            <button class="btn btn--ghost" id="printBtn" type="button">Print</button>
-          </div>
-        </div>
-
-        <footer class="footer">
-          <span>© <span id="year"></span> Xinze Li • Built for GitHub Pages</span>
-          <span class="muted">Last updated: <span id="lastUpdated"></span></span>
-        </footer>
-      </div>
-    </section>
-  </main>
-
-  <dialog class="dialog" id="aiDialog" aria-labelledby="aiTitle">
-    <div class="dialog__inner">
-      <div class="dialog__head">
-        <h3 class="h3" id="aiTitle">About this AI-generated page</h3>
-        <button class="iconbtn" id="aiClose" type="button" aria-label="Close dialog">✕</button>
-      </div>
-      <div class="dialog__body">
-        <p>
-          This site is intentionally labeled <strong>AI-generated</strong>: it was produced from the official PDF CV
-          and formatted into an interactive web CV with search/filter tools.
-        </p>
-        <ul class="bullets">
-          <li><strong>Source of truth:</strong> the PDF (<code>assets/CV.pdf</code>)</li>
-          <li><strong>Editable content:</strong> publication list in <code>assets/script.js</code></li>
-          <li><strong>Goal:</strong> fast scanning for humans + verifiable details</li>
+      <h2 class="rule-title">Contact</h2>
+      <div class="contact-columns">
+        <ul class="contact-list">
+          <li><span class="contact-label">Email</span><a href="mailto:xinzeli831@gmail.com">xinzeli831@gmail.com</a></li>
+          <li><span class="contact-label">Location</span><span>Tallahassee, Florida, USA</span></li>
+          <li><span class="contact-label">LinkedIn</span><a href="https://www.linkedin.com/in/xinze-li-8199561b0/">Profile</a></li>
+        </ul>
+        <ul class="contact-list">
+          <li><span class="contact-label">GitHub</span><a href="https://github.com/XinzeLee">XinzeLee</a></li>
+          <li><span class="contact-label">Scholar</span><a href="https://scholar.google.com/citations?user=YilrlZMAAAAJ">Google Scholar</a></li>
+          <li><span class="contact-label">CV</span><a href="assets/CV.pdf">Download PDF</a></li>
         </ul>
       </div>
-      <div class="dialog__foot">
-        <button class="btn btn--primary" id="aiOk" type="button">Got it</button>
-      </div>
-    </div>
-  </dialog>
+    </section>
 
-  <div class="cmdk" id="cmdk" hidden>
-    <div class="cmdk__backdrop" data-cmdk-close></div>
-    <div class="cmdk__panel" role="dialog" aria-label="Command palette">
-      <div class="cmdk__top">
-        <input class="cmdk__input" id="cmdkInput" type="search" placeholder="Type to navigate… (e.g., publications, skills, contact)" />
-        <div class="cmdk__hint">Esc to close</div>
-      </div>
-      <div class="cmdk__list" id="cmdkList" role="listbox" aria-label="Commands"></div>
-    </div>
+    <section class="section page-notes" id="page-notes">
+      <h2 class="rule-title">Page Notes</h2>
+      <details class="page-note"><summary>AI-generated page note</summary><video controls playsinline preload="metadata"><source src="assets/intro.mp4" type="video/mp4">Your browser does not support video.</video></details>
+      <details class="page-note"><summary>How the site was generated (legacy version)</summary><video controls playsinline preload="metadata"><source src="assets/website_gen.mp4" type="video/mp4">Your browser does not support video.</video></details>
+    </section><footer class="site-footer" aria-hidden="true"><!-- Reserved for the future group name. --></footer></main>
   </div>
-
-  <script src="assets/script.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

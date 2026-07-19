@@ -1,33 +1,4 @@
 (() => {
-  // ---------- Theme ----------
-  const root = document.documentElement;
-  const themeBtn = document.getElementById("themeBtn");
-
-  const savedTheme = localStorage.getItem("theme");
-  const isRecruitmentPage = root.dataset.page === "hiring" || root.dataset.page === "postdoc";
-  if (isRecruitmentPage) {
-    if (!sessionStorage.getItem("hiringLightBoot")) {
-      root.setAttribute("data-theme", "light");
-      sessionStorage.setItem("hiringLightBoot", "1");
-    } else if (savedTheme) {
-      root.setAttribute("data-theme", savedTheme);
-    } else {
-      root.setAttribute("data-theme", "light");
-    }
-  } else if (savedTheme) {
-    root.setAttribute("data-theme", savedTheme);
-  } else {
-    root.setAttribute("data-theme", "light");
-  }
-
-  function toggleTheme() {
-    const current = root.getAttribute("data-theme") || "light";
-    const next = current === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  }
-  themeBtn?.addEventListener("click", toggleTheme);
-
   // ---------- Copy-to-clipboard ----------
   function toast(msg) {
     const el = document.createElement("div");
