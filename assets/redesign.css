@@ -8,14 +8,18 @@
   --navy: #173f5f;
   --navy-soft: #eaf0f4;
   --warm: #8a5a3b;
-  --sidebar: 270px;
+  --sidebar: 240px;
   --reading: 900px;
   --radius: 7px;
   --column-gap: 5rem;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
 body {
   margin: 0;
   overflow-x: hidden;
@@ -45,14 +49,24 @@ button, input { font: inherit; }
 }
 .skip-link:focus { top: 1rem; }
 
+.formula-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 .site-shell {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: var(--sidebar) minmax(0, 1fr);
   column-gap: var(--column-gap);
   width: 100%;
   min-height: 100vh;
   margin: 0;
-  padding-left: max(1.5rem, calc((100vw - 1280px) / 2));
+  padding-left: max(1.5rem, calc((100% - 1280px) / 2));
   background: transparent;
 }
 
@@ -436,9 +450,10 @@ p { margin: .55rem 0 1rem; }
     position: fixed;
     inset: 0 auto 0 0;
     z-index: 25;
-    width: var(--sidebar);
+    width: min(var(--sidebar), 86vw);
     height: 100vh;
-    padding-inline: 2rem;
+    height: 100dvh;
+    padding-inline: 1rem;
     transform: translateX(-105%);
     background: var(--paper);
     box-shadow: 10px 0 35px rgba(0,0,0,.13);
@@ -468,14 +483,17 @@ p { margin: .55rem 0 1rem; }
   }
   .main-content {
     width: 100%;
-    padding: 5rem clamp(1.5rem, 6vw, 4rem) 3rem;
+    margin-top: 4.6rem;
+    min-height: calc(100vh - 4.6rem);
+    min-height: calc(100dvh - 4.6rem);
+    padding: 1.15rem clamp(1.15rem, 4vw, 2rem) 2.5rem;
   }
   .main-content > * { margin-inline: auto; }
 }
 
 @media (max-width: 680px) {
-  body { background: #fff; font-size: 15px; }
-  .main-content { padding: 4.8rem 1.2rem 2.5rem; }
+  body { background: var(--canvas); font-size: 15px; }
+  .main-content { margin-top: 4.35rem; min-height: calc(100vh - 4.35rem); min-height: calc(100dvh - 4.35rem); padding: 1.05rem 1.05rem 2.5rem; }
   h1 { font-size: 2rem; }
   h2 { margin-top: 2.35rem; }
   .news-feed li {
@@ -757,7 +775,7 @@ p { margin: .55rem 0 1rem; }
 
 @media print {
   body { background: #fff; }
-  .sidebar, .mobile-toggle, .overlay, .pub-tools { display: none !important; }
+  .formula-field, .sidebar, .mobile-toggle, .overlay, .pub-tools { display: none !important; }
   .site-shell { display: block; width: auto; box-shadow: none; }
   .main-content { padding: 0; }
   a { color: #000; }
