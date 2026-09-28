@@ -30,7 +30,13 @@
   const canvas = document.createElement("canvas");
   canvas.className = "formula-field";
   canvas.setAttribute("aria-hidden", "true");
+  canvas.style.position = "fixed";
+  canvas.style.inset = "0";
+  canvas.style.zIndex = "0";
+  canvas.style.pointerEvents = "none";
   document.body.prepend(canvas);
+  root.style.position = "relative";
+  root.style.zIndex = "1";
 
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
