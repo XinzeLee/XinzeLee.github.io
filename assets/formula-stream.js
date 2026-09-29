@@ -10,6 +10,7 @@
     "∇ × B = μ₀J + μ₀ε₀ ∂E/∂t",
     "iℏ ∂Ψ/∂t = ĤΨ",
     "Ad Astra per Aspera",
+    "知行合一",
     "E = ℏω",
     "Δx Δp ≥ ℏ/2",
     "nᵢ² = np",
@@ -21,6 +22,7 @@
   const NAVY = [23, 63, 95];
   const WARM = [138, 90, 59];
   const MOTTO = "Ad Astra per Aspera";
+  const ZH = "知行合一";
   const LANES = 7;
   const REACH = 168;
   const PUSH = 22;
@@ -64,9 +66,16 @@
     return width <= 980;
   }
 
+  function face(size, text) {
+    const cjk = text === ZH ? ', "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif' : "";
+    return `italic ${size}px Georgia, "Times New Roman", serif${cjk}`;
+  }
+
   function measure(size) {
-    ctx.font = `italic ${size}px Georgia, "Times New Roman", serif`;
-    return FORMULAS.map((text) => ctx.measureText(text).width);
+    return FORMULAS.map((text) => {
+      ctx.font = face(size, text);
+      return ctx.measureText(text).width;
+    });
   }
 
   let widths = tiers.map((tier) => measure(tier.size));
@@ -129,7 +138,7 @@
   }
 
   function color(text, alpha, tint) {
-    if (text === MOTTO) {
+    if (text === MOTTO || text === ZH) {
       const strength = Math.min(0.88, 0.78 + 0.1 * tint);
       return `rgba(${WARM[0]}, ${WARM[1]}, ${WARM[2]}, ${strength.toFixed(3)})`;
     }
@@ -154,10 +163,12 @@
     ctx.beginPath();
     ctx.rect(left, 0, room, band);
     ctx.clip();
-    ctx.font = `italic ${size}px Georgia, "Times New Roman", serif`;
     ctx.textAlign = "left";
     ctx.textBaseline = "middle";
-    const measured = FORMULAS.map((text) => ctx.measureText(text).width);
+    const measured = FORMULAS.map((text) => {
+      ctx.font = face(size, text);
+      return ctx.measureText(text).width;
+    });
     const period = measured.reduce((sum, item) => sum + item + gap, 0) || 1;
     let cursor = -((phase * 22) % period);
     let index = 0;
@@ -165,6 +176,7 @@
       const text = FORMULAS[index % FORMULAS.length];
       const textWidth = measured[index % FORMULAS.length];
       if (cursor + textWidth > left) {
+        ctx.font = face(size, text);
         ctx.fillStyle = color(text, 0.5, 0);
         ctx.fillText(text, cursor, y);
       }
@@ -194,7 +206,6 @@
       const bow = BOW * (0.55 + (lane % active.length) * 0.25);
       let cursor = -((phase * tier.speed) % period);
       let index = lane % FORMULAS.length;
-      ctx.font = `italic ${tier.size}px Georgia, "Times New Roman", serif`;
       ctx.textAlign = "left";
       ctx.textBaseline = "middle";
       while (cursor < width + 40) {
@@ -205,6 +216,7 @@
         const y = baseY - Math.sin(along) * bow;
         if (cursor < width && cursor + textWidth > -20 && !crossesProfile(cursor, y, textWidth)) {
           const moved = displace(center, y);
+          ctx.font = face(tier.size, text);
           ctx.fillStyle = color(text, tier.alpha, moved.tint);
           ctx.fillText(text, moved.x - textWidth / 2, moved.y);
         }
