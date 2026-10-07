@@ -107,8 +107,7 @@
     };
   }
 
-  function crossesProfile(x, y, textWidth) {
-    const zone = profileZone();
+  function crossesProfile(zone, x, y, textWidth) {
     if (!zone) return false;
     return x < zone.right && x + textWidth > zone.left && y + 12 > zone.top && y - 12 < zone.bottom;
   }
@@ -192,6 +191,7 @@
       drawPhone();
       return;
     }
+    const zone = profileZone();
     const active = tiers;
     const lanes = LANES;
     const gap = GAP;
@@ -214,7 +214,7 @@
         const center = cursor + textWidth / 2;
         const along = (center / Math.max(width, 1)) * Math.PI;
         const y = baseY - Math.sin(along) * bow;
-        if (cursor < width && cursor + textWidth > -20 && !crossesProfile(cursor, y, textWidth)) {
+        if (cursor < width && cursor + textWidth > -20 && !crossesProfile(zone, cursor, y, textWidth)) {
           const moved = displace(center, y);
           ctx.font = face(tier.size, text);
           ctx.fillStyle = color(text, tier.alpha, moved.tint);

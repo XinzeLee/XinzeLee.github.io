@@ -139,7 +139,18 @@ function latLngToPosition(lat, lng) {
 
 function tubeFromPoints(points, radius) {
   const curve = new CatmullRomCurve3(points);
-  return new TubeGeometry(curve, points.length * 2, radius, 8, false);
+  return new TubeGeometry(curve, Math.max(8, points.length), radius, 4, false);
+}
+
+function rayHitsSphere(ray, radius) {
+  const origin = ray.origin;
+  const direction = ray.direction;
+  const b = origin.dot(direction);
+  const c = origin.lengthSq() - radius * radius;
+  const discriminant = b * b - c;
+  if (discriminant < 0) return false;
+  const root = Math.sqrt(discriminant);
+  return -b - root >= 0 || -b + root >= 0;
 }
 
 function glowTexture() {
@@ -254,7 +265,7 @@ export function createGlobe(container, {
   const fillRgba = parseColorToRgba(fillColor);
 
   const oceanMesh = new Mesh(
-    new SphereGeometry(globeRadius, 64, 64),
+    new SphereGeometry(globeRadius, 40, 40),
     new MeshBasicMaterial({
       color: oceanColor ? new Color(oceanColor) : new Color(0, 0, 0),
       transparent: oceanRgba.a < 1 || oceanRgba.a === 0,
@@ -305,6 +316,7 @@ export function createGlobe(container, {
   let isDragging = false;
   let isHovering = false;
   let animationFrameId = null;
+  let paused = false;
   const lerpFactor = smoothingN === 0 ? 1 : mapLinear(smoothingN, 0, 1, 0.4, 0.03);
   const velocityDecay = mapLinear(smoothingN, 0, 1, 0.7, 0.96);
 
@@ -461,8 +473,8 @@ export function createGlobe(container, {
         }
       }
 
-      const bitmapWidth = 2048;
-      const bitmapHeight = 1024;
+      const bitmapWidth = 1024;
+      const bitmapHeight = 512;
       const offscreenCanvas = document.createElement("canvas");
       offscreenCanvas.width = bitmapWidth;
       offscreenCanvas.height = bitmapHeight;
@@ -597,16 +609,34 @@ export function createGlobe(container, {
       globeGroup.rotation.x = rotation.y;
       renderer.render(scene, camera);
     }
-    updateTooltip();
+    if (!paused) updateTooltip();
     const hasVelocity = Math.abs(velocity.x) > threshold || Math.abs(velocity.y) > threshold;
     const hasLerpDelta = Math.abs(dx) > threshold || Math.abs(dy) > threshold;
-    const needsContinue = isDragging || rotationSpeed !== 0 || hasVelocity || hasLerpDelta;
+    const needsContinue = !paused && (isDragging || rotationSpeed !== 0 || hasVelocity || hasLerpDelta);
     animationFrameId = needsContinue ? requestAnimationFrame(animate) : null;
   };
 
   function startAnimation() {
-    if (animationFrameId === null) animationFrameId = requestAnimationFrame(animate);
+    if (!paused && animationFrameId === null) animationFrameId = requestAnimationFrame(animate);
   }
+
+  let onScreen = true;
+  const syncPlayback = () => {
+    paused = document.hidden || !onScreen;
+    if (paused) {
+      if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+      return;
+    }
+    startAnimation();
+  };
+  const onVisibility = () => syncPlayback();
+  document.addEventListener("visibilitychange", onVisibility);
+  const viewObserver = new IntersectionObserver(entries => {
+    onScreen = entries.some(entry => entry.isIntersecting);
+    syncPlayback();
+  }, { threshold: 0.08 });
+  viewObserver.observe(container);
   if (rotationSpeed !== 0) startAnimation();
 
   const raycaster = new Raycaster();
@@ -616,23 +646,24 @@ export function createGlobe(container, {
     mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
     mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects([oceanMesh, ...hitSpheres], false);
-    const first = intersects[0];
-    return {
-      onGlobe: intersects.length > 0,
-      marker: first && first.object !== oceanMesh ? first.object : null,
-    };
+    const onGlobe = rayHitsSphere(raycaster.ray, globeRadius);
+    const marker = onGlobe && hitSpheres.length
+      ? raycaster.intersectObjects(hitSpheres, false)[0]?.object || null
+      : null;
+    return { onGlobe, marker };
   };
 
   const markerScreen = new Vector3();
+  const cameraDirection = new Vector3();
   const pickNearest = (event, maxDistance) => {
     const rect = canvas.getBoundingClientRect();
-    const cameraDirection = camera.position.clone().normalize();
+    cameraDirection.copy(camera.position).normalize();
     let best = null;
     let bestDistance = maxDistance;
     hitSpheres.forEach(hit => {
       hit.getWorldPosition(markerScreen);
-      if (markerScreen.clone().normalize().dot(cameraDirection) <= 0.05) return;
+      const facing = markerScreen.dot(cameraDirection) / markerScreen.length();
+      if (facing <= 0.05) return;
       markerScreen.project(camera);
       const x = rect.left + ((markerScreen.x + 1) / 2) * rect.width;
       const y = rect.top + ((1 - markerScreen.y) / 2) * rect.height;
@@ -741,7 +772,10 @@ export function createGlobe(container, {
 
   return {
     destroy() {
+      paused = true;
       if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
+      document.removeEventListener("visibilitychange", onVisibility);
+      viewObserver.disconnect();
       canvas.removeEventListener("pointerdown", handlePointerDown);
       canvas.removeEventListener("pointermove", handlePointerMove);
       canvas.removeEventListener("pointerup", handlePointerUp);
