@@ -1,7 +1,24 @@
 {
   "since": "2026-10-07",
-  "total_hits": 0,
-  "unique_visitors": 0,
-  "updated_at": null,
-  "locations": []
+  "total_hits": 13,
+  "unique_visitors": 3,
+  "updated_at": "2026-10-07T15:44:28.797Z",
+  "locations": [
+    {
+      "country": "United States",
+      "province": "Florida",
+      "lat": 27.76,
+      "lon": -81.46,
+      "visitors": 2,
+      "hits": 12
+    },
+    {
+      "country": "United States",
+      "province": "Mississippi",
+      "lat": 32.97,
+      "lon": -89.73,
+      "visitors": 1,
+      "hits": 1
+    }
+  ]
 }

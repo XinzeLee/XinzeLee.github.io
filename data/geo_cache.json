@@ -6,5 +6,9 @@
   "United States / Florida": {
     "lat": 27.76,
     "lon": -81.46
+  },
+  "United States / Mississippi": {
+    "lat": 32.97,
+    "lon": -89.73
   }
 }
