@@ -1,17 +1,17 @@
 {
   "ok": true,
   "since": "2026-10-07",
-  "total_hits": 13,
+  "total_hits": 23,
   "unique_visitors": 3,
   "daily": {
     "2026-10-07": {
-      "hits": 13,
+      "hits": 23,
       "uniques": 3
     }
   },
   "provinces": {
     "United States / Florida": {
-      "hits": 12,
+      "hits": 22,
       "uniques": 2
     },
     "United States / Mississippi": {
@@ -20,15 +20,15 @@
     }
   },
   "pages": {
-    "/index.html": 3,
-    "/group.html": 2,
-    "/opensource.html": 2,
-    "/service.html": 2,
-    "/publications.html": 1,
-    "/research.html": 1,
-    "/sitestats.html": 1,
+    "/index.html": 5,
+    "/opensource.html": 4,
+    "/group.html": 3,
+    "/service.html": 3,
+    "/sitestats.html": 3,
+    "/publications.html": 2,
+    "/research.html": 2,
     "/teaching.html": 1
   },
-  "updated_at": "2026-10-07T15:09:32.000Z",
-  "exported_at": "2026-10-07T15:44:28.797Z"
+  "updated_at": "2026-10-07T16:34:02.000Z",
+  "exported_at": "2026-10-07T16:34:30.603Z"
 }
