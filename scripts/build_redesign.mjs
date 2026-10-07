@@ -15,6 +15,7 @@ const pages = [
   ["publications.html", "Publications"],
   ["service.html", "Academic Services"],
   ["opensource.html", "Open-source Projects"],
+  ["sitestats.html", "Site-stats"],
 ];
 
 const escapeHtml = value => String(value ?? "")
@@ -49,7 +50,7 @@ function footer() {
   return `<footer class="site-footer" aria-hidden="true"><!-- Reserved for the future group name. --></footer>`;
 }
 
-function layout({ title, description, active, content, schema = "" }) {
+function layout({ title, description, active, content, schema = "", head = "", scripts = "" }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -62,7 +63,7 @@ function layout({ title, description, active, content, schema = "" }) {
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="website">
   ${schema}
-  <link rel="stylesheet" href="assets/redesign.css">
+  <link rel="stylesheet" href="assets/redesign.css">${head}
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -71,6 +72,8 @@ function layout({ title, description, active, content, schema = "" }) {
     <main class="main-content" id="main-content">${content}${footer()}</main>
   </div>
   <script src="assets/site.js"></script>
+  <script src="assets/formula-stream.js?v=20260929"></script>
+  <script src="assets/counter.js" defer></script>${scripts}
 </body>
 </html>
 `;
@@ -148,7 +151,12 @@ const group = layout({
   description: "Research group information and PhD opportunities with Xinze Li at Florida State University.",
   active: "Group",
   content: `
-    <header class="page-header"><p class="eyebrow">People</p><h1>Group</h1></header>
+    <header class="page-header">
+      <p class="eyebrow">Group · People</p>
+      <h1>ASTRA Lab</h1>
+      <p class="lab-expansion">Next-generation <u>A</u>I for <u>S</u>emiconductors and power elec<u>T</u>ronics - <u>R</u>esearch and <u>A</u>dvancements</p>
+      <p class="lab-slogan">Ad Astra Per Aspera — To the Stars through Hardships</p>
+    </header>
     <div class="placeholder">
       <h2>Group information coming soon</h2>
       <p class="muted">This page will introduce students, collaborators, and alumni as the group grows.</p>
@@ -448,6 +456,50 @@ const opensource = layout({
     </div></section>`
 });
 
+const siteStatsPath = path.join(root, "data", "site_stats.json");
+const siteStats = fs.existsSync(siteStatsPath)
+  ? JSON.parse(fs.readFileSync(siteStatsPath, "utf8"))
+  : { total_hits: 0, unique_visitors: 0, locations: [] };
+function formatCount(value) {
+  const n = Math.max(0, Math.round(Number(value) || 0));
+  if (n < 1000) return String(n);
+  const trim = tenths => String(tenths / 10).replace(/\.0$/, "");
+  const thousands = Math.round(n / 100);
+  if (thousands < 10000) return `${trim(thousands)}k`;
+  return `${trim(Math.round(n / 100000))}M`;
+}
+function formatSince(value) {
+  const date = new Date(value);
+  if (!value || Number.isNaN(date.getTime())) return "the counter launch";
+  return date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+}
+const locationList = siteStats.locations.map(location =>
+  `<li>${escapeHtml([location.province, location.country].filter(Boolean).join(", "))} — ${formatCount(location.visitors)} visitor${location.visitors === 1 ? "" : "s"}</li>`
+).join("");
+
+const sitestats = layout({
+  title: "Site-stats",
+  description: "Visit totals and a globe of visitor locations for Xinze Li's website, updated weekly.",
+  active: "Site-stats",
+  scripts: `
+  <script type="application/json" id="site-stats-data">${JSON.stringify(siteStats).replaceAll("<", "\\u003c")}</script>
+  <script src="assets/geo/ne_50m_land.js" defer></script>
+  <script src="assets/sitestats.bundle.js" defer></script>`,
+  content: `
+    <header class="page-header"><p class="eyebrow">Audience</p><h1>Site-stats</h1><p class="lead">Who has been visiting this site since <span data-stats-since>${escapeHtml(formatSince(siteStats.since))}</span>.</p></header>
+    <section aria-label="Visit totals"><div class="stats-row">
+      <div class="stat-card"><span class="stat-card__value" data-stat="total_hits">${formatCount(siteStats.total_hits)}</span><span class="stat-card__label">Total Site Visits</span></div>
+      <div class="stat-card"><span class="stat-card__value" data-stat="unique_visitors">${formatCount(siteStats.unique_visitors)}</span><span class="stat-card__label">Total Visitors</span></div>
+    </div></section>
+    <section><h2 class="rule-title">Visitors Around the World</h2>
+      <div class="globe-panel">
+        <div class="globe-stage" data-visit-globe role="img" aria-label="Interactive globe of visitor locations"><div class="globe-tooltip" data-globe-tooltip hidden></div></div>
+      </div>
+      <p class="globe-note">Drag to spin. Hover or tap a light to see its province, country, and visitor count; brighter lights mean more visitors. Updated weekly<span data-stats-updated></span>.</p>
+      <noscript><ul class="globe-fallback">${locationList}</ul></noscript>
+    </section>`
+});
+
 const output = new Map([
   ["index.html", home],
   ["group.html", group],
@@ -456,6 +508,7 @@ const output = new Map([
   ["publications.html", pubs],
   ["service.html", service],
   ["opensource.html", opensource],
+  ["sitestats.html", sitestats],
 ]);
 
 for (const [filename, html] of output) {

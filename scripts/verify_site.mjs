@@ -11,6 +11,7 @@ const mainPages = [
   "publications.html",
   "service.html",
   "opensource.html",
+  "sitestats.html",
 ];
 const allPages = [...mainPages, "hiring.html", "postdoc.html"];
 const errors = [];
@@ -49,6 +50,38 @@ for (const [file, text] of publicFiles) {
   if (/Built for GitHub Pages|©\s*(?:<[^>]+>)*\s*Xinze Li/i.test(text)) {
     errors.push(`${file}: retired footer text found`);
   }
+}
+
+for (const file of allPages) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  if (!html.includes('src="assets/counter.js"')) errors.push(`${file}: missing visit counter beacon`);
+}
+if (/infinityfree/i.test(fs.readFileSync(path.join(root, "assets", "site.js"), "utf8"))) {
+  errors.push("assets/site.js still references the retired InfinityFree counter");
+}
+
+const sitestats = fs.readFileSync(path.join(root, "sitestats.html"), "utf8");
+const navOpen = sitestats.indexOf('href="opensource.html"');
+const navStats = sitestats.indexOf('href="sitestats.html"');
+if (navOpen < 0 || navStats < navOpen) errors.push("Site-stats nav link must follow Open-source Projects");
+for (const marker of ['data-stat="total_hits"', 'data-stat="unique_visitors"', "data-visit-globe", "data-globe-tooltip", "data-stats-since", 'id="site-stats-data"', "assets/geo/ne_50m_land.js", "assets/sitestats.bundle.js"]) {
+  if (!sitestats.includes(marker)) errors.push(`sitestats.html is missing ${marker}`);
+}
+if (/type="module"|importmap/.test(sitestats)) errors.push("sitestats.html must use classic scripts so it also works from file://");
+for (const asset of ["assets/sitestats.bundle.js", "assets/geo/ne_50m_land.js", "src/sitestats/globe.js", "src/sitestats/main.js"]) {
+  if (!fs.existsSync(path.join(root, asset))) errors.push(`Missing ${asset}`);
+}
+try {
+  const siteStatsData = JSON.parse(fs.readFileSync(path.join(root, "data", "site_stats.json"), "utf8"));
+  if (!Number.isFinite(siteStatsData.total_hits) || !Number.isFinite(siteStatsData.unique_visitors)) {
+    errors.push("data/site_stats.json is missing numeric totals");
+  }
+  if (!Array.isArray(siteStatsData.locations) ||
+      siteStatsData.locations.some(location => "lat" in location && (typeof location.lat !== "number" || typeof location.lon !== "number"))) {
+    errors.push("data/site_stats.json locations need numeric lat/lon");
+  }
+} catch {
+  errors.push("data/site_stats.json is missing or invalid");
 }
 
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
@@ -178,6 +211,53 @@ if (!redesignCss.includes("research-highlight__cue") ||
     !redesignCss.includes("aspect-ratio: 3 / 4") ||
     !redesignCss.includes("research-lightbox")) {
   errors.push("redesign.css is missing highlight polish styles");
+}
+
+for (const file of mainPages) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  if (!html.includes('src="assets/formula-stream.js')) errors.push(`${file}: missing formula field script`);
+}
+if (/province level|refreshed every week/.test(sitestats)) {
+  errors.push("sitestats.html lead should end after the since-date");
+}
+const globePanelCss = redesignCss.match(/\.globe-panel\s*\{[^}]*\}/)?.[0] || "";
+if (!globePanelCss || /#000\b/.test(globePanelCss)) errors.push("Globe panel must not use the dark #000 background");
+const globeBundle = fs.readFileSync(path.join(root, "assets", "sitestats.bundle.js"), "utf8");
+if (/00f7ff/i.test(globeBundle) || !/d7e6f0/i.test(globeBundle)) {
+  errors.push("sitestats.bundle.js is stale; run npm run bundle for the Ink Map palette");
+}
+
+const groupPage = fs.readFileSync(path.join(root, "group.html"), "utf8");
+for (const marker of [
+  "Group · People",
+  "<h1>ASTRA Lab</h1>",
+  "Next-generation <u>A</u>I for <u>S</u>emiconductors and power elec<u>T</u>ronics - <u>R</u>esearch and <u>A</u>dvancements",
+  "Ad Astra Per Aspera — To the Stars through Hardships",
+]) {
+  if (!groupPage.includes(marker)) errors.push(`group.html is missing ${marker}`);
+}
+if (!/<a href="group\.html"[^>]*>Group<\/a>/.test(groupPage)) errors.push("Nav label for group.html must stay Group");
+
+const gitignore = fs.readFileSync(path.join(root, ".gitignore"), "utf8");
+if (!/^hosting\/\*$/m.test(gitignore) || !/^!hosting\/README\.md$/m.test(gitignore)) {
+  errors.push(".gitignore must ignore hosting/* while keeping hosting/README.md");
+}
+if (!/^\.dev\.vars$/m.test(gitignore) || !/^\.env$/m.test(gitignore)) {
+  errors.push(".gitignore must ignore .dev.vars and .env");
+}
+const visitStats = JSON.parse(fs.readFileSync(path.join(root, "data", "visit_stats.json"), "utf8").replace(/^\uFEFF/, ""));
+if (visitStats.ok !== true || typeof visitStats.total_hits !== "number") {
+  errors.push("data/visit_stats.json must be a weekly Cloudflare /stats copy with ok:true");
+}
+if (visitStats.visitors || /"hash"\s*:/.test(JSON.stringify(visitStats))) {
+  errors.push("data/visit_stats.json must not include raw visitor hashes");
+}
+if (!fs.existsSync(path.join(root, ".github", "workflows", "update-visit-stats.yml"))) {
+  errors.push("Missing weekly visit-stats workflow");
+}
+const workflow = fs.readFileSync(path.join(root, ".github", "workflows", "update-visit-stats.yml"), "utf8");
+for (const marker of ["secrets.COUNTER_API_KEY", "data/visit_stats.json", "data/site_stats.json", "scripts/geocode_visits.mjs", "0 12 * * 1"]) {
+  if (!workflow.includes(marker)) errors.push(`update-visit-stats.yml is missing ${marker}`);
 }
 
 if (errors.length) {

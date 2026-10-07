@@ -1,0 +1,11 @@
+# Counter hosting code stays on your machine only; see hosting/README.md.
+hosting/*
+!hosting/README.md
+
+# Local secrets / Cloudflare tooling — never commit
+.dev.vars
+.env
+.env.*
+*.pem
+.wrangler/
+node_modules/

@@ -1,0 +1,14 @@
+{
+  "name": "xinzelee-github-io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bundle": "esbuild src/sitestats/main.js --bundle --minify --format=iife --target=es2020 --legal-comments=none --outfile=assets/sitestats.bundle.js",
+    "build": "npm run bundle && node scripts/build_redesign.mjs && node scripts/verify_site.mjs"
+  },
+  "devDependencies": {
+    "d3-geo": "3.1.1",
+    "esbuild": "0.25.10",
+    "three": "0.169.0"
+  }
+}

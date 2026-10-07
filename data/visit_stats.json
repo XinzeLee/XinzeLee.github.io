@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "since": "2026-10-07",
+  "total_hits": 4,
+  "unique_visitors": 1,
+  "daily": {
+    "2026-10-07": {
+      "hits": 4,
+      "uniques": 1
+    }
+  },
+  "provinces": {
+    "United States / Florida": {
+      "hits": 4,
+      "uniques": 1
+    }
+  },
+  "pages": {
+    "/validate-check.html": 2,
+    "/index.html": 1,
+    "/publications.html": 1
+  },
+  "updated_at": "2026-10-07T13:42:33.000Z",
+  "exported_at": "2026-10-07T13:50:41.027Z"
+}

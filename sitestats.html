@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24282c">
+  <title>Site-stats — Xinze Li</title>
+  <meta name="description" content="Visit totals and a globe of visitor locations for Xinze Li's website, updated weekly.">
+  <meta property="og:title" content="Site-stats — Xinze Li">
+  <meta property="og:description" content="Visit totals and a globe of visitor locations for Xinze Li's website, updated weekly.">
+  <meta property="og:type" content="website">
+  
+  <link rel="stylesheet" href="assets/redesign.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
+    <button class="mobile-toggle" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false">☰</button>
+    <div class="overlay" data-nav-close></div>
+    <aside class="sidebar" aria-label="Profile and main navigation">
+      <a href="index.html"><img class="profile-photo" src="assets/XZL_photo.png" alt="Portrait of Xinze Li"></a>
+      <div class="identity">
+        <p class="identity__name">Xinze Li</p>
+        <p class="identity__role">Assistant Professor<br>Electrical &amp; Computer Engineering<br>Florida State University</p>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="group.html">Group</a><a href="research.html">Selected Research</a><a href="teaching.html">Teaching</a><a href="publications.html">Publications</a><a href="service.html">Academic Services</a><a href="opensource.html">Open-source Projects</a><a href="sitestats.html" aria-current="page">Site-stats</a></nav>
+      <div class="rail-links">
+        <a href="assets/CV.pdf">CV</a>
+        <a href="https://scholar.google.com/citations?user=YilrlZMAAAAJ" target="_blank" rel="noopener">Scholar</a>
+        <a href="https://github.com/XinzeLee" target="_blank" rel="noopener">GitHub</a>
+        <a href="hiring.html">PhD opening</a>
+      </div>
+    </aside>
+    <main class="main-content" id="main-content">
+    <header class="page-header"><p class="eyebrow">Audience</p><h1>Site-stats</h1><p class="lead">Who has been visiting this site since <span data-stats-since>October 7, 2026</span>.</p></header>
+    <section aria-label="Visit totals"><div class="stats-row">
+      <div class="stat-card"><span class="stat-card__value" data-stat="total_hits">2</span><span class="stat-card__label">Total Site Visits</span></div>
+      <div class="stat-card"><span class="stat-card__value" data-stat="unique_visitors">2</span><span class="stat-card__label">Total Visitors</span></div>
+    </div></section>
+    <section><h2 class="rule-title">Visitors Around the World</h2>
+      <div class="globe-panel">
+        <div class="globe-stage" data-visit-globe role="img" aria-label="Interactive globe of visitor locations"><div class="globe-tooltip" data-globe-tooltip hidden></div></div>
+      </div>
+      <p class="globe-note">Drag to spin. Hover or tap a light to see its province, country, and visitor count; brighter lights mean more visitors. Updated weekly<span data-stats-updated></span>.</p>
+      <noscript><ul class="globe-fallback"><li>Florida, United States — 2 visitors</li></ul></noscript>
+    </section><footer class="site-footer" aria-hidden="true"><!-- Reserved for the future group name. --></footer></main>
+  </div>
+  <script src="assets/site.js"></script>
+  <script src="assets/formula-stream.js?v=20260929"></script>
+  <script src="assets/counter.js" defer></script>
+  <script type="application/json" id="site-stats-data">{"since":"2026-10-07","total_hits":2,"unique_visitors":2,"updated_at":"2026-10-07T02:23:09+00:00","locations":[{"country":"United States","province":"Florida","lat":27.76,"lon":-81.46,"visitors":2,"hits":2}]}</script>
+  <script src="assets/geo/ne_50m_land.js" defer></script>
+  <script src="assets/sitestats.bundle.js" defer></script>
+</body>
+</html>

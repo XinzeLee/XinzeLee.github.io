@@ -1,0 +1,55 @@
+# Pull visit stats from the Cloudflare Worker counter into this repo weekly.
+name: Update visit stats
+
+on:
+  schedule:
+    - cron: "0 12 * * 1" # Mondays 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch visit stats from the Cloudflare counter
+        id: stats
+        env:
+          COUNTER_API_KEY: ${{ secrets.COUNTER_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${COUNTER_API_KEY}" ]; then
+            echo "COUNTER_API_KEY secret is missing."
+            exit 1
+          fi
+          COUNTER_URL="$(sed -n 's/.*const COUNTER_URL = "\([^"]*\)".*/\1/p' assets/counter.js)"
+          case "$COUNTER_URL" in
+            ""|*REPLACE_WITH*) echo "Set COUNTER_URL in assets/counter.js first."; exit 1 ;;
+          esac
+          curl -fsS --retry 3 -H "Authorization: Bearer ${COUNTER_API_KEY}" "${COUNTER_URL}/stats" -o /tmp/visit_stats.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("/tmp/visit_stats.json").read_text(encoding="utf-8"))
+          assert data.get("ok") is True, data
+          print(
+              f"hits={data.get('total_hits')} uniques={data.get('unique_visitors')} "
+              f"provinces={len(data.get('provinces') or {})} pages={len(data.get('pages') or {})}"
+          )
+          PY
+          cp /tmp/visit_stats.json data/visit_stats.json
+          node scripts/geocode_visits.mjs
+          echo "updated=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push if changed
+        if: steps.stats.outputs.updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/visit_stats.json data/geo_cache.json data/site_stats.json
+          git diff --staged --quiet || (git commit -m "chore: update visit stats" && git push)
