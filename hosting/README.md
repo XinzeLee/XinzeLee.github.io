@@ -11,6 +11,8 @@ refused inside a cross-site iframe by Chrome, Edge and Safari).
   Only requests whose `Origin` is in `ALLOWED_ORIGINS` and that do not look like bots are counted.
 - `GET /stats` — totals, daily, province and per-page aggregates. Requires
   `Authorization: Bearer <COUNTER_API_KEY>`.
+- `GET /profile.svg?theme=dark` — live visit badge for the GitHub profile README. A countable image fetch adds one profile visit. The drawn number is stored profile visits plus a base of 22, truncated to one decimal with a `k` or `M` suffix from 1,000 upward.
+- `GET /profile/stats` — profile visit total, daily counts, and province aggregates. Requires `Authorization: Bearer <COUNTER_API_KEY>`. These rows are separate from the website tables.
 - `GET /ping` — health check.
 
 Location is province level, taken from Cloudflare's own `request.cf` data. Raw IPs are
@@ -39,3 +41,4 @@ Run these in `hosting/cloudflare-counter/` (a free Cloudflare account is enough)
 - Beacon: `assets/counter.js` (included by every page, including `hiring.html` and `postdoc.html`)
 - Weekly sync: `.github/workflows/update-visit-stats.yml` writes `data/visit_stats.json`, then
   `scripts/geocode_visits.mjs` writes `data/geo_cache.json` and `data/site_stats.json`
+- Profile badge: `GET /profile.svg` on the same worker. The XinzeLee/XinzeLee README shows that image to the right of Stars. Its weekly workflow saves `data/profile_visits.json` on Mondays at 12:00 UTC and needs the same `COUNTER_API_KEY` repository secret. No GitHub personal access token is required.
