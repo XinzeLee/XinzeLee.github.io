@@ -1,24 +1,7 @@
 {
   "since": "2026-10-07",
-  "total_hits": 102,
-  "unique_visitors": 4,
-  "updated_at": "2026-10-07T14:12:41.801Z",
-  "locations": [
-    {
-      "country": "United States",
-      "province": "Florida",
-      "lat": 27.76,
-      "lon": -81.46,
-      "visitors": 3,
-      "hits": 95
-    },
-    {
-      "country": "Japan",
-      "province": "Tokyo",
-      "lat": 35.68,
-      "lon": 139.76,
-      "visitors": 1,
-      "hits": 7
-    }
-  ]
+  "total_hits": 0,
+  "unique_visitors": 0,
+  "updated_at": null,
+  "locations": []
 }

@@ -1,35 +1,11 @@
 {
   "ok": true,
   "since": "2026-10-07",
-  "total_hits": 102,
-  "unique_visitors": 4,
-  "daily": {
-    "2026-10-07": {
-      "hits": 102,
-      "uniques": 4
-    }
-  },
-  "provinces": {
-    "United States / Florida": {
-      "hits": 95,
-      "uniques": 3
-    },
-    "Japan / Tokyo": {
-      "hits": 7,
-      "uniques": 1
-    }
-  },
-  "pages": {
-    "/index.html": 23,
-    "/sitestats.html": 20,
-    "/research.html": 18,
-    "/publications.html": 14,
-    "/group.html": 8,
-    "/opensource.html": 8,
-    "/service.html": 7,
-    "/teaching.html": 2,
-    "/validate-check.html": 2
-  },
-  "updated_at": "2026-10-07T14:10:00.000Z",
-  "exported_at": "2026-10-07T14:12:41.801Z"
+  "total_hits": 0,
+  "unique_visitors": 0,
+  "daily": {},
+  "provinces": {},
+  "pages": {},
+  "updated_at": null,
+  "exported_at": "2026-10-07T14:26:12.000Z"
 }

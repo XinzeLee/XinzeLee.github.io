@@ -14,7 +14,7 @@ refused inside a cross-site iframe by Chrome, Edge and Safari).
 - `GET /ping` — health check.
 
 Location is province level, taken from Cloudflare's own `request.cf` data. Raw IPs are
-never stored; a visitor is a salted SHA-256 of IP + user agent, counted once per 12 hours.
+never stored; a visitor is a salted SHA-256 of IP + user agent. Each page counts separately. A repeat of the same page by that visitor within 30 minutes counts as one visit. A unique visitor is counted again only after 12 hours.
 
 ## One-time deploy
 
