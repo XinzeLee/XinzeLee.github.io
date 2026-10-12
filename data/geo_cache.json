@@ -1,14 +1,74 @@
 {
+  "Bangladesh / Dhaka Division": {
+    "lat": 23.95,
+    "lon": 90.25
+  },
+  "Bangladesh / Mymensingh Division": {
+    "lat": 24.89,
+    "lon": 90.38
+  },
+  "Germany / Hesse": {
+    "lat": 50.61,
+    "lon": 9.03
+  },
+  "Japan / Hyōgo": {
+    "lat": 34.91,
+    "lon": 134.86
+  },
+  "Japan / Osaka": {
+    "lat": 34.62,
+    "lon": 135.49
+  },
+  "Japan / Shiga": {
+    "lat": 35.25,
+    "lon": 136.11
+  },
   "Japan / Tokyo": {
     "lat": 35.68,
     "lon": 139.76
+  },
+  "Singapore": {
+    "lat": 1.36,
+    "lon": 103.82
+  },
+  "United States / California": {
+    "lat": 36.7,
+    "lon": -118.76
   },
   "United States / Florida": {
     "lat": 27.76,
     "lon": -81.46
   },
+  "United States / Iowa": {
+    "lat": 41.92,
+    "lon": -93.31
+  },
   "United States / Mississippi": {
     "lat": 32.97,
     "lon": -89.73
+  },
+  "United States / New York": {
+    "lat": 43.16,
+    "lon": -75.84
+  },
+  "United States / North Carolina": {
+    "lat": 35.67,
+    "lon": -79.04
+  },
+  "United States / Oklahoma": {
+    "lat": 34.96,
+    "lon": -97.27
+  },
+  "United States / Pennsylvania": {
+    "lat": 40.97,
+    "lon": -77.73
+  },
+  "United States / Texas": {
+    "lat": 31.26,
+    "lon": -98.55
+  },
+  "United States / Washington": {
+    "lat": 47.29,
+    "lon": -120.21
   }
 }

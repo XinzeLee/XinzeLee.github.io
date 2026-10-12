@@ -1,22 +1,150 @@
 {
   "since": "2026-10-07",
-  "total_hits": 23,
-  "unique_visitors": 3,
-  "updated_at": "2026-10-07T16:34:30.603Z",
+  "total_hits": 143,
+  "unique_visitors": 48,
+  "updated_at": "2026-10-12T17:22:06.585Z",
   "locations": [
     {
       "country": "United States",
       "province": "Florida",
       "lat": 27.76,
       "lon": -81.46,
+      "visitors": 12,
+      "hits": 82
+    },
+    {
+      "country": "United States",
+      "province": "California",
+      "lat": 36.7,
+      "lon": -118.76,
+      "visitors": 10,
+      "hits": 17
+    },
+    {
+      "country": "United States",
+      "province": "New York",
+      "lat": 43.16,
+      "lon": -75.84,
+      "visitors": 3,
+      "hits": 3
+    },
+    {
+      "country": "United States",
+      "province": "Texas",
+      "lat": 31.26,
+      "lon": -98.55,
       "visitors": 2,
-      "hits": 22
+      "hits": 9
+    },
+    {
+      "country": "Bangladesh",
+      "province": "Dhaka Division",
+      "lat": 23.95,
+      "lon": 90.25,
+      "visitors": 2,
+      "hits": 5
+    },
+    {
+      "country": "Bangladesh",
+      "province": "Mymensingh Division",
+      "lat": 24.89,
+      "lon": 90.38,
+      "visitors": 2,
+      "hits": 4
+    },
+    {
+      "country": "Japan",
+      "province": "Hyōgo",
+      "lat": 34.91,
+      "lon": 134.86,
+      "visitors": 2,
+      "hits": 4
+    },
+    {
+      "country": "Japan",
+      "province": "Shiga",
+      "lat": 35.25,
+      "lon": 136.11,
+      "visitors": 2,
+      "hits": 3
+    },
+    {
+      "country": "Japan",
+      "province": "Tokyo",
+      "lat": 35.68,
+      "lon": 139.76,
+      "visitors": 2,
+      "hits": 3
+    },
+    {
+      "country": "Singapore",
+      "province": "",
+      "lat": 1.36,
+      "lon": 103.82,
+      "visitors": 2,
+      "hits": 2
+    },
+    {
+      "country": "United States",
+      "province": "Oklahoma",
+      "lat": 34.96,
+      "lon": -97.27,
+      "visitors": 2,
+      "hits": 2
+    },
+    {
+      "country": "Germany",
+      "province": "Hesse",
+      "lat": 50.61,
+      "lon": 9.03,
+      "visitors": 1,
+      "hits": 2
+    },
+    {
+      "country": "United States",
+      "province": "Iowa",
+      "lat": 41.92,
+      "lon": -93.31,
+      "visitors": 1,
+      "hits": 2
+    },
+    {
+      "country": "Japan",
+      "province": "Osaka",
+      "lat": 34.62,
+      "lon": 135.49,
+      "visitors": 1,
+      "hits": 1
     },
     {
       "country": "United States",
       "province": "Mississippi",
       "lat": 32.97,
       "lon": -89.73,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "United States",
+      "province": "North Carolina",
+      "lat": 35.67,
+      "lon": -79.04,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "United States",
+      "province": "Pennsylvania",
+      "lat": 40.97,
+      "lon": -77.73,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "United States",
+      "province": "Washington",
+      "lat": 47.29,
+      "lon": -120.21,
       "visitors": 1,
       "hits": 1
     }
