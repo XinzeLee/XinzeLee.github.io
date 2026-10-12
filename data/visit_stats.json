@@ -1,8 +1,8 @@
 {
   "ok": true,
   "since": "2026-10-07",
-  "total_hits": 143,
-  "unique_visitors": 48,
+  "total_hits": 147,
+  "unique_visitors": 49,
   "daily": {
     "2026-10-07": {
       "hits": 31,
@@ -25,14 +25,14 @@
       "uniques": 7
     },
     "2026-10-12": {
-      "hits": 30,
-      "uniques": 10
+      "hits": 34,
+      "uniques": 11
     }
   },
   "provinces": {
     "United States / Florida": {
-      "hits": 82,
-      "uniques": 12
+      "hits": 86,
+      "uniques": 13
     },
     "United States / California": {
       "hits": 17,
@@ -104,16 +104,16 @@
     }
   },
   "pages": {
-    "/index.html": 54,
-    "/sitestats.html": 35,
+    "/index.html": 56,
+    "/sitestats.html": 36,
     "/opensource.html": 11,
     "/group.html": 8,
     "/hiring.html": 8,
     "/service.html": 8,
     "/teaching.html": 8,
     "/publications.html": 6,
-    "/research.html": 5
+    "/research.html": 6
   },
-  "updated_at": "2026-10-12T17:20:05.000Z",
-  "exported_at": "2026-10-12T17:22:06.585Z"
+  "updated_at": "2026-10-12T19:06:21.000Z",
+  "exported_at": "2026-10-12T20:31:24.604Z"
 }
