@@ -1,8 +1,8 @@
 {
   "ok": true,
   "since": "2026-10-07",
-  "total_hits": 147,
-  "unique_visitors": 49,
+  "total_hits": 353,
+  "unique_visitors": 126,
   "daily": {
     "2026-10-07": {
       "hits": 31,
@@ -25,36 +25,108 @@
       "uniques": 7
     },
     "2026-10-12": {
-      "hits": 34,
-      "uniques": 11
+      "hits": 35,
+      "uniques": 12
+    },
+    "2026-10-13": {
+      "hits": 22,
+      "uniques": 7
+    },
+    "2026-10-14": {
+      "hits": 49,
+      "uniques": 19
+    },
+    "2026-10-15": {
+      "hits": 48,
+      "uniques": 13
+    },
+    "2026-10-16": {
+      "hits": 25,
+      "uniques": 13
+    },
+    "2026-10-17": {
+      "hits": 23,
+      "uniques": 9
+    },
+    "2026-10-18": {
+      "hits": 8,
+      "uniques": 3
+    },
+    "2026-10-19": {
+      "hits": 30,
+      "uniques": 12
     }
   },
   "provinces": {
     "United States / Florida": {
-      "hits": 86,
-      "uniques": 13
+      "hits": 172,
+      "uniques": 33
     },
     "United States / California": {
-      "hits": 17,
-      "uniques": 10
+      "hits": 27,
+      "uniques": 16
+    },
+    "Singapore": {
+      "hits": 19,
+      "uniques": 8
     },
     "United States / Texas": {
+      "hits": 13,
+      "uniques": 6
+    },
+    "United States / Iowa": {
+      "hits": 10,
+      "uniques": 6
+    },
+    "Italy / Lombardy": {
       "hits": 9,
+      "uniques": 3
+    },
+    "Japan / Shiga": {
+      "hits": 9,
+      "uniques": 4
+    },
+    "United Kingdom / England": {
+      "hits": 9,
+      "uniques": 5
+    },
+    "Sweden / Västra Götaland": {
+      "hits": 8,
+      "uniques": 1
+    },
+    "Macao": {
+      "hits": 7,
       "uniques": 2
+    },
+    "United States / Indiana": {
+      "hits": 7,
+      "uniques": 1
     },
     "Bangladesh / Dhaka Division": {
       "hits": 5,
       "uniques": 2
     },
+    "Hong Kong": {
+      "hits": 5,
+      "uniques": 5
+    },
+    "Japan / Hyōgo": {
+      "hits": 5,
+      "uniques": 3
+    },
     "Bangladesh / Mymensingh Division": {
       "hits": 4,
       "uniques": 2
     },
-    "Japan / Hyōgo": {
+    "Japan / Osaka": {
       "hits": 4,
       "uniques": 2
     },
-    "Japan / Shiga": {
+    "Australia / Queensland": {
+      "hits": 3,
+      "uniques": 1
+    },
+    "Japan / Kyoto": {
       "hits": 3,
       "uniques": 2
     },
@@ -62,27 +134,51 @@
       "hits": 3,
       "uniques": 2
     },
+    "Switzerland / Zurich": {
+      "hits": 3,
+      "uniques": 1
+    },
+    "United States / Kansas": {
+      "hits": 3,
+      "uniques": 1
+    },
     "United States / New York": {
       "hits": 3,
       "uniques": 3
+    },
+    "United States / Virginia": {
+      "hits": 3,
+      "uniques": 2
     },
     "Germany / Hesse": {
       "hits": 2,
       "uniques": 1
     },
-    "Singapore": {
-      "hits": 2,
-      "uniques": 2
-    },
-    "United States / Iowa": {
+    "South Korea / Seoul": {
       "hits": 2,
       "uniques": 1
+    },
+    "United States / North Carolina": {
+      "hits": 2,
+      "uniques": 2
     },
     "United States / Oklahoma": {
       "hits": 2,
       "uniques": 2
     },
-    "Japan / Osaka": {
+    "United States / Utah": {
+      "hits": 2,
+      "uniques": 1
+    },
+    "Vietnam / Thừa Thiên Huế Province": {
+      "hits": 2,
+      "uniques": 1
+    },
+    "Italy / Emilia-Romagna": {
+      "hits": 1,
+      "uniques": 1
+    },
+    "Italy / Lazio": {
       "hits": 1,
       "uniques": 1
     },
@@ -90,7 +186,11 @@
       "hits": 1,
       "uniques": 1
     },
-    "United States / North Carolina": {
+    "United States / Missouri": {
+      "hits": 1,
+      "uniques": 1
+    },
+    "United States / Oregon": {
       "hits": 1,
       "uniques": 1
     },
@@ -104,16 +204,16 @@
     }
   },
   "pages": {
-    "/index.html": 56,
-    "/sitestats.html": 36,
-    "/opensource.html": 11,
-    "/group.html": 8,
-    "/hiring.html": 8,
-    "/service.html": 8,
-    "/teaching.html": 8,
-    "/publications.html": 6,
-    "/research.html": 6
+    "/index.html": 135,
+    "/sitestats.html": 66,
+    "/opensource.html": 28,
+    "/group.html": 25,
+    "/publications.html": 21,
+    "/research.html": 20,
+    "/teaching.html": 20,
+    "/hiring.html": 19,
+    "/service.html": 19
   },
-  "updated_at": "2026-10-12T19:06:21.000Z",
-  "exported_at": "2026-10-12T20:31:24.604Z"
+  "updated_at": "2026-10-19T15:21:27.000Z",
+  "exported_at": "2026-10-19T17:52:49.517Z"
 }

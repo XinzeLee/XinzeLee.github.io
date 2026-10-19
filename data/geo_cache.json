@@ -1,4 +1,8 @@
 {
+  "Australia / Queensland": {
+    "lat": -22.16,
+    "lon": 144.58
+  },
   "Bangladesh / Dhaka Division": {
     "lat": 23.95,
     "lon": 90.25
@@ -11,9 +15,25 @@
     "lat": 50.61,
     "lon": 9.03
   },
+  "Italy / Emilia-Romagna": {
+    "lat": 44.53,
+    "lon": 11.04
+  },
+  "Italy / Lazio": {
+    "lat": 41.98,
+    "lon": 12.77
+  },
+  "Italy / Lombardy": {
+    "lat": 45.57,
+    "lon": 9.77
+  },
   "Japan / Hyōgo": {
     "lat": 34.91,
     "lon": 134.86
+  },
+  "Japan / Kyoto": {
+    "lat": 35.01,
+    "lon": 135.77
   },
   "Japan / Osaka": {
     "lat": 34.62,
@@ -31,6 +51,22 @@
     "lat": 1.36,
     "lon": 103.82
   },
+  "South Korea / Seoul": {
+    "lat": 37.57,
+    "lon": 126.98
+  },
+  "Sweden / Västra Götaland": {
+    "lat": 58.22,
+    "lon": 12.65
+  },
+  "Switzerland / Zurich": {
+    "lat": 47.41,
+    "lon": 8.66
+  },
+  "United Kingdom / England": {
+    "lat": 52.53,
+    "lon": -1.26
+  },
   "United States / California": {
     "lat": 36.7,
     "lon": -118.76
@@ -39,13 +75,25 @@
     "lat": 27.76,
     "lon": -81.46
   },
+  "United States / Indiana": {
+    "lat": 40.33,
+    "lon": -86.17
+  },
   "United States / Iowa": {
     "lat": 41.92,
     "lon": -93.31
   },
+  "United States / Kansas": {
+    "lat": 38.27,
+    "lon": -98.58
+  },
   "United States / Mississippi": {
     "lat": 32.97,
     "lon": -89.73
+  },
+  "United States / Missouri": {
+    "lat": 38.76,
+    "lon": -92.56
   },
   "United States / New York": {
     "lat": 43.16,
@@ -59,6 +107,10 @@
     "lat": 34.96,
     "lon": -97.27
   },
+  "United States / Oregon": {
+    "lat": 43.98,
+    "lon": -120.74
+  },
   "United States / Pennsylvania": {
     "lat": 40.97,
     "lon": -77.73
@@ -67,8 +119,20 @@
     "lat": 31.26,
     "lon": -98.55
   },
+  "United States / Utah": {
+    "lat": 39.42,
+    "lon": -111.71
+  },
+  "United States / Virginia": {
+    "lat": 37.12,
+    "lon": -78.49
+  },
   "United States / Washington": {
     "lat": 47.29,
     "lon": -120.21
+  },
+  "Vietnam / Thừa Thiên Huế Province": {
+    "lat": 15.93,
+    "lon": 107.97
   }
 }

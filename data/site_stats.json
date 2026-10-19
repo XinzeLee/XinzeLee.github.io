@@ -1,24 +1,86 @@
 {
   "since": "2026-10-07",
-  "total_hits": 147,
-  "unique_visitors": 49,
-  "updated_at": "2026-10-12T20:31:24.604Z",
+  "total_hits": 353,
+  "unique_visitors": 126,
+  "updated_at": "2026-10-19T17:52:49.517Z",
   "locations": [
     {
       "country": "United States",
       "province": "Florida",
       "lat": 27.76,
       "lon": -81.46,
-      "visitors": 13,
-      "hits": 86
+      "visitors": 33,
+      "hits": 172
     },
     {
       "country": "United States",
       "province": "California",
       "lat": 36.7,
       "lon": -118.76,
-      "visitors": 10,
-      "hits": 17
+      "visitors": 16,
+      "hits": 27
+    },
+    {
+      "country": "Singapore",
+      "province": "",
+      "lat": 1.36,
+      "lon": 103.82,
+      "visitors": 8,
+      "hits": 19
+    },
+    {
+      "country": "United States",
+      "province": "Texas",
+      "lat": 31.26,
+      "lon": -98.55,
+      "visitors": 6,
+      "hits": 13
+    },
+    {
+      "country": "United States",
+      "province": "Iowa",
+      "lat": 41.92,
+      "lon": -93.31,
+      "visitors": 6,
+      "hits": 10
+    },
+    {
+      "country": "United Kingdom",
+      "province": "England",
+      "lat": 52.53,
+      "lon": -1.26,
+      "visitors": 5,
+      "hits": 9
+    },
+    {
+      "country": "Hong Kong",
+      "province": "",
+      "visitors": 5,
+      "hits": 5
+    },
+    {
+      "country": "Japan",
+      "province": "Shiga",
+      "lat": 35.25,
+      "lon": 136.11,
+      "visitors": 4,
+      "hits": 9
+    },
+    {
+      "country": "Italy",
+      "province": "Lombardy",
+      "lat": 45.57,
+      "lon": 9.77,
+      "visitors": 3,
+      "hits": 9
+    },
+    {
+      "country": "Japan",
+      "province": "Hyōgo",
+      "lat": 34.91,
+      "lon": 134.86,
+      "visitors": 3,
+      "hits": 5
     },
     {
       "country": "United States",
@@ -29,12 +91,10 @@
       "hits": 3
     },
     {
-      "country": "United States",
-      "province": "Texas",
-      "lat": 31.26,
-      "lon": -98.55,
+      "country": "Macao",
+      "province": "",
       "visitors": 2,
-      "hits": 9
+      "hits": 7
     },
     {
       "country": "Bangladesh",
@@ -54,17 +114,17 @@
     },
     {
       "country": "Japan",
-      "province": "Hyōgo",
-      "lat": 34.91,
-      "lon": 134.86,
+      "province": "Osaka",
+      "lat": 34.62,
+      "lon": 135.49,
       "visitors": 2,
       "hits": 4
     },
     {
       "country": "Japan",
-      "province": "Shiga",
-      "lat": 35.25,
-      "lon": 136.11,
+      "province": "Kyoto",
+      "lat": 35.01,
+      "lon": 135.77,
       "visitors": 2,
       "hits": 3
     },
@@ -77,10 +137,18 @@
       "hits": 3
     },
     {
-      "country": "Singapore",
-      "province": "",
-      "lat": 1.36,
-      "lon": 103.82,
+      "country": "United States",
+      "province": "Virginia",
+      "lat": 37.12,
+      "lon": -78.49,
+      "visitors": 2,
+      "hits": 3
+    },
+    {
+      "country": "United States",
+      "province": "North Carolina",
+      "lat": 35.67,
+      "lon": -79.04,
       "visitors": 2,
       "hits": 2
     },
@@ -93,6 +161,46 @@
       "hits": 2
     },
     {
+      "country": "Sweden",
+      "province": "Västra Götaland",
+      "lat": 58.22,
+      "lon": 12.65,
+      "visitors": 1,
+      "hits": 8
+    },
+    {
+      "country": "United States",
+      "province": "Indiana",
+      "lat": 40.33,
+      "lon": -86.17,
+      "visitors": 1,
+      "hits": 7
+    },
+    {
+      "country": "Australia",
+      "province": "Queensland",
+      "lat": -22.16,
+      "lon": 144.58,
+      "visitors": 1,
+      "hits": 3
+    },
+    {
+      "country": "Switzerland",
+      "province": "Zurich",
+      "lat": 47.41,
+      "lon": 8.66,
+      "visitors": 1,
+      "hits": 3
+    },
+    {
+      "country": "United States",
+      "province": "Kansas",
+      "lat": 38.27,
+      "lon": -98.58,
+      "visitors": 1,
+      "hits": 3
+    },
+    {
       "country": "Germany",
       "province": "Hesse",
       "lat": 50.61,
@@ -101,18 +209,42 @@
       "hits": 2
     },
     {
-      "country": "United States",
-      "province": "Iowa",
-      "lat": 41.92,
-      "lon": -93.31,
+      "country": "South Korea",
+      "province": "Seoul",
+      "lat": 37.57,
+      "lon": 126.98,
       "visitors": 1,
       "hits": 2
     },
     {
-      "country": "Japan",
-      "province": "Osaka",
-      "lat": 34.62,
-      "lon": 135.49,
+      "country": "United States",
+      "province": "Utah",
+      "lat": 39.42,
+      "lon": -111.71,
+      "visitors": 1,
+      "hits": 2
+    },
+    {
+      "country": "Vietnam",
+      "province": "Thừa Thiên Huế Province",
+      "lat": 15.93,
+      "lon": 107.97,
+      "visitors": 1,
+      "hits": 2
+    },
+    {
+      "country": "Italy",
+      "province": "Emilia-Romagna",
+      "lat": 44.53,
+      "lon": 11.04,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "Italy",
+      "province": "Lazio",
+      "lat": 41.98,
+      "lon": 12.77,
       "visitors": 1,
       "hits": 1
     },
@@ -126,9 +258,17 @@
     },
     {
       "country": "United States",
-      "province": "North Carolina",
-      "lat": 35.67,
-      "lon": -79.04,
+      "province": "Missouri",
+      "lat": 38.76,
+      "lon": -92.56,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "United States",
+      "province": "Oregon",
+      "lat": 43.98,
+      "lon": -120.74,
       "visitors": 1,
       "hits": 1
     },
