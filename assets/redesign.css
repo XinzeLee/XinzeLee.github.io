@@ -443,6 +443,24 @@ p { margin: .55rem 0 1rem; }
   border-bottom: 1px solid var(--line);
 }
 .citation__title { font-weight: 700; }
+.citation__note { margin-top: .2rem; color: var(--navy); font-size: .8rem; font-weight: 700; }
+.citation__links { margin-top: .35rem; font-size: .84rem; }
+.session-list { border: 1px solid #d9e8e3; border-radius: var(--radius); background: #f0f7f5; }
+.session { padding: 1rem 1.2rem; border-bottom: 1px solid #d9e8e3; }
+.session:last-child { border-bottom: 0; }
+.session__type { margin: 0 0 .4rem; color: var(--muted); font-size: .8rem; }
+.session h3 { margin: 0; font-size: 1rem; line-height: 1.5; }
+.session__description { margin: .65rem 0 0; font-size: .875rem; line-height: 1.7; }
+.session__description a { font-weight: 600; }
+.group-member { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 1.75rem; align-items: start; }
+.group-member__photo { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+.group-member__bio { font-size: .875rem; line-height: 1.7; }
+.group-member__bio h3 { margin: 0 0 .3rem; font-size: 1.3rem; }
+.group-member__role { margin-top: 0; color: var(--navy); font-size: .85rem; font-weight: 700; }
+@media (max-width: 680px) {
+  .group-member { grid-template-columns: 1fr; gap: 1.2rem; }
+  .group-member__photo { width: min(180px, 100%); }
+}
 .citation__meta {
   margin-top: .22rem;
   color: var(--muted);
@@ -858,6 +876,13 @@ p { margin: .55rem 0 1rem; }
   font-size: .88rem;
 }
 .globe-fallback { margin-top: 1rem; }
+.globe-status { position: absolute; inset: 0; display: grid; place-content: center; margin: 0; padding: 2rem; text-align: center; color: var(--muted); }
+.globe-status[hidden], .globe-legend[hidden] { display: none; }
+.globe-status--fallback { inset: auto 0 0; z-index: 1; padding: .5rem; background: rgba(255,255,255,.92); font-size: .8rem; }
+.globe-legend { display: flex; align-items: center; justify-content: center; gap: .65rem; margin: 1rem 0; font-size: .75rem; color: var(--muted); }
+.globe-legend__scale { width: min(160px, 30vw); height: 7px; border-radius: 4px; }
+.globe-locations { margin-top: 1rem; color: var(--muted); font-size: .85rem; }
+.globe-locations summary { cursor: pointer; }
 
 @media (max-width: 560px) {
   .stats-row { gap: .65rem; }

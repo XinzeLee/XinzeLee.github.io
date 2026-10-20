@@ -11,8 +11,8 @@ refused inside a cross-site iframe by Chrome, Edge and Safari).
   Only requests whose `Origin` is in `ALLOWED_ORIGINS` and that do not look like bots are counted.
 - `GET /stats` — totals, daily, province and per-page aggregates. Requires
   `Authorization: Bearer <COUNTER_API_KEY>`.
-- `GET /profile.svg?theme=dark` — live visit badge for the GitHub profile README. A countable image fetch adds one profile visit. The drawn number is stored profile visits plus a base of 22, truncated to one decimal with a `k` or `M` suffix from 1,000 upward.
-- `GET /profile/stats` — profile visit total, daily counts, and province aggregates. Requires `Authorization: Bearer <COUNTER_API_KEY>`. These rows are separate from the website tables.
+- `GET /profile.svg?theme=dark` — live visit badge for the GitHub profile README. A countable image fetch adds one profile visit. A repeat within 30 minutes does not. GitHub fetches this image through its own proxy and changes that proxy's address on refresh, so those proxy fetches share one 30-minute window. The drawn number is stored profile visits plus a base of 22, truncated to one decimal with a `k` or `M` suffix from 1,000 upward.
+- `GET /profile/stats` — profile visit total, daily counts, and province aggregates. Requires `Authorization: Bearer <PROFILE_API_KEY>`. This key is the XinzeLee/XinzeLee Actions secret and is not the website key.
 - `GET /ping` — health check.
 
 Location is province level, taken from Cloudflare's own `request.cf` data. Raw IPs are
@@ -25,10 +25,11 @@ Run these in `hosting/cloudflare-counter/` (a free Cloudflare account is enough)
 1. `npx wrangler login`
 2. `npx wrangler d1 create xinzelee-counter`, then paste the printed `database_id` into `wrangler.toml`.
 3. `npx wrangler d1 execute xinzelee-counter --remote --file=schema.sql`
-4. `npx wrangler secret put COUNTER_API_KEY` (same value as the GitHub secret `COUNTER_API_KEY`)
-5. `npx wrangler secret put HASH_SALT` (any long random string; keep it fixed)
-6. `npx wrangler deploy`, which prints `https://xinzelee-counter.<your-subdomain>.workers.dev`.
-7. Put that URL in `COUNTER_URL` in `assets/counter.js` and push. The weekly workflow reads the
+4. `npx wrangler secret put COUNTER_API_KEY` (same value as the xinzelee.github.io Actions secret `COUNTER_API_KEY`)
+5. `npx wrangler secret put PROFILE_API_KEY` (same value as the XinzeLee/XinzeLee Actions secret; it is a different key)
+6. `npx wrangler secret put HASH_SALT` (any long random string; keep it fixed)
+7. `npx wrangler deploy`, which prints `https://xinzelee-counter.<your-subdomain>.workers.dev`.
+8. Put that URL in `COUNTER_URL` in `assets/counter.js` and push. The weekly workflow reads the
    same constant, so there is nothing else to configure.
 
 ## Local testing
@@ -41,4 +42,4 @@ Run these in `hosting/cloudflare-counter/` (a free Cloudflare account is enough)
 - Beacon: `assets/counter.js` (included by every page, including `hiring.html` and `postdoc.html`)
 - Weekly sync: `.github/workflows/update-visit-stats.yml` writes `data/visit_stats.json`, then
   `scripts/geocode_visits.mjs` writes `data/geo_cache.json` and `data/site_stats.json`
-- Profile badge: `GET /profile.svg` on the same worker. The XinzeLee/XinzeLee README shows that image to the right of Stars. Its weekly workflow saves `data/profile_visits.json` on Mondays at 12:00 UTC and needs the same `COUNTER_API_KEY` repository secret. No GitHub personal access token is required.
+- Profile badge: `GET /profile.svg` on the same worker. The XinzeLee/XinzeLee README shows that image to the right of Stars. Its weekly workflow saves `data/profile_visits.json` on Mondays at 12:00 UTC. That repository secret is named `COUNTER_API_KEY` there, but its value is `PROFILE_API_KEY` on the worker, not the website key. No GitHub personal access token is required.

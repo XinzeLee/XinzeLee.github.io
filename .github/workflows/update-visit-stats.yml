@@ -44,6 +44,8 @@ jobs:
           PY
           cp /tmp/visit_stats.json data/visit_stats.json
           node scripts/geocode_visits.mjs
+          # Keep the offline/first-render snapshot in step with the weekly JSON.
+          node scripts/build_redesign.mjs
           echo "updated=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push if changed
@@ -51,5 +53,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/visit_stats.json data/geo_cache.json data/site_stats.json
+          git add data/visit_stats.json data/geo_cache.json data/site_stats.json sitestats.html
           git diff --staged --quiet || (git commit -m "chore: update visit stats" && git push)

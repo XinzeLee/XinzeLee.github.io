@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const mainPages = [
@@ -85,7 +86,7 @@ try {
 }
 
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
-const homeOrder = ["id=\"about\"", "id=\"news\"", "id=\"openings\"", "id=\"contact\"", "id=\"page-notes\""];
+const homeOrder = ["id=\"about\"", "id=\"news\"", "id=\"upcoming-sessions\"", "id=\"openings\"", "id=\"contact\"", "id=\"page-notes\""];
 const homePositions = homeOrder.map(marker => home.indexOf(marker));
 if (homePositions.some(position => position < 0) ||
     homePositions.some((position, index) => index > 0 && position < homePositions[index - 1])) {
@@ -223,8 +224,27 @@ if (/province level|refreshed every week/.test(sitestats)) {
 const globePanelCss = redesignCss.match(/\.globe-panel\s*\{[^}]*\}/)?.[0] || "";
 if (!globePanelCss || /#000\b/.test(globePanelCss)) errors.push("Globe panel must not use the dark #000 background");
 const globeBundle = fs.readFileSync(path.join(root, "assets", "sitestats.bundle.js"), "utf8");
-if (/00f7ff/i.test(globeBundle) || !/d7e6f0/i.test(globeBundle)) {
-  errors.push("sitestats.bundle.js is stale; run npm run bundle for the Ink Map palette");
+if (!globeBundle.includes("teal-amber") || !globeBundle.includes("garnet-gold")) {
+  errors.push("sitestats.bundle.js is stale; run npm run bundle for the current marker styles");
+}
+// Cache versions must describe the actual file, not a manually maintained date.
+for (const file of mainPages) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  for (const match of html.matchAll(/(?:href|src)="(assets\/[^"?]+)\?v=([a-f0-9]{12})"/g)) {
+    const hash = createHash("sha256").update(fs.readFileSync(path.join(root, match[1]))).digest("hex").slice(0, 12);
+    if (hash !== match[2]) errors.push(`${file}: stale cache version for ${match[1]}`);
+  }
+}
+for (const asset of ["assets/geo/ne_50m_land.js", "assets/sitestats.bundle.js"]) {
+  if (!sitestats.includes(`${asset}?v=`)) errors.push(`Site-stats must version ${asset}`);
+}
+const embeddedStats = JSON.parse(sitestats.match(/<script type="application\/json" id="site-stats-data">([\s\S]*?)<\/script>/)?.[1] || "null");
+const latestStats = JSON.parse(fs.readFileSync(path.join(root, "data", "site_stats.json"), "utf8"));
+if (JSON.stringify(embeddedStats) !== JSON.stringify(latestStats)) errors.push("Site-stats embedded snapshot is stale; rebuild the pages");
+if (!workflowIncludesBuild()) errors.push("Weekly visit-stats sync must rebuild and commit sitestats.html");
+function workflowIncludesBuild() {
+  const workflow = fs.readFileSync(path.join(root, ".github", "workflows", "update-visit-stats.yml"), "utf8");
+  return workflow.includes("node scripts/build_redesign.mjs") && /git add[^\n]+sitestats\.html/.test(workflow);
 }
 
 const groupPage = fs.readFileSync(path.join(root, "group.html"), "utf8");

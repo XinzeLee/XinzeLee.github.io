@@ -1,11 +1,18 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publications = JSON.parse(
   fs.readFileSync(path.join(root, "assets", "publications.json"), "utf8").replace(/^\uFEFF/, "")
 );
+
+// A changed asset gets a new URL, including for visitors with a warm cache.
+function versionedAsset(relativePath) {
+  const hash = createHash("sha256").update(fs.readFileSync(path.join(root, relativePath))).digest("hex").slice(0, 12);
+  return `${relativePath}?v=${hash}`;
+}
 
 const pages = [
   ["index.html", "Home"],
@@ -63,7 +70,7 @@ function layout({ title, description, active, content, schema = "", head = "", s
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="website">
   ${schema}
-  <link rel="stylesheet" href="assets/redesign.css">${head}
+  <link rel="stylesheet" href="${versionedAsset("assets/redesign.css")}">${head}
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -71,8 +78,8 @@ function layout({ title, description, active, content, schema = "", head = "", s
     ${sidebar(active)}
     <main class="main-content" id="main-content">${content}${footer()}</main>
   </div>
-  <script src="assets/site.js"></script>
-  <script src="assets/formula-stream.js?v=20260929"></script>
+  <script src="${versionedAsset("assets/site.js")}"></script>
+  <script src="${versionedAsset("assets/formula-stream.js")}"></script>
   <script src="assets/counter.js" defer></script>${scripts}
 </body>
 </html>
@@ -92,7 +99,7 @@ const home = layout({
     <header class="page-header">
       <p class="eyebrow">Florida State University</p>
       <h1>Xinze Li</h1>
-      <p class="lead">Next-generation AI for power electronics technologies</p>
+      <p class="lead">Next-generation AI for semiconductor and power electronics technologies</p>
     </header>
 
     <section class="section" id="about">
@@ -104,6 +111,8 @@ const home = layout({
     <section class="section" id="news">
       <h2 class="rule-title">News and Updates</h2>
       <ol class="news-feed">
+        <li><span class="news-date">September 2026</span><span class="news-tag">[Publication]</span><span class="news-copy">Our invited paper “Fundamentals of Artificial Intelligence for Power Electronics” is published (early access) in <em>IEEE Transactions on Industrial Electronics</em>. <a href="https://ieeexplore.ieee.org/document/11707256">IEEE Xplore</a> · <a href="https://www.researchgate.net/publication/411564495_Fundamentals_of_Artificial_Intelligence_for_Power_Electronics">ResearchGate</a></span></li>
+        <li><span class="news-date">September 2026</span><span class="news-tag">[Publication]</span><span class="news-copy">“Reforming Power Electronics Education in the Era of AI: A Pilot Course by the University of Arkansas Power Group [Expert View]” is published in <em>IEEE Power Electronics Magazine</em>. <a href="https://ieeexplore.ieee.org/document/11676384">IEEE Xplore</a></span></li>
         <li><span class="news-date">August 2026</span><span class="news-tag">[Appointment]</span><span class="news-copy">I joined Florida State University as an Assistant Professor in Electrical and Computer Engineering.</span></li>
         <li><span class="news-date">July 2026</span><span class="news-tag">[Publication]</span><span class="news-copy">“Quantum Computing for Smart Grid” is the cover story of the July 2026 issue of <em>Nature Reviews Electrical Engineering</em>. <a href="https://doi.org/10.1038/s44287-026-00295-6">Paper</a></span></li>
         <li><span class="news-date">May 2026</span><span class="news-tag">[Publication]</span><span class="news-copy">Our roadmap review “Quantum Computing for Smart Grid” was published in <em>Nature Reviews Electrical Engineering</em>. <a href="https://doi.org/10.1038/s44287-026-00295-6">Paper</a></span></li>
@@ -116,6 +125,21 @@ const home = layout({
         <li><span class="news-date">March 2023</span><span class="news-tag">[Award]</span><span class="news-copy">Our work on data-driven ZVS modeling received an APEC Outstanding Presentation Award. <a href="https://doi.org/10.1109/APEC43580.2023.10131519">Paper</a></span></li>
         <li><span class="news-date">September 2022</span><span class="news-tag">[Award]</span><span class="news-copy">“Automatic Triple Phase-Shift Modulation for DAB Converter With Minimized Power Loss” received an IEEE IAS Prize Paper Award, Second Prize. <a href="https://doi.org/10.1109/TIA.2021.3136501">Paper</a></span></li>
       </ol>
+    </section>
+
+    <section class="section" id="upcoming-sessions">
+      <h2 class="rule-title">Upcoming Sessions</h2>
+      <div class="session-list">
+        <article class="session">
+          <p class="session__type">IEEE APEC 2027 · Professional Education Seminar</p>
+          <h3>S02 - Learning AI for Power Electronics from an Algorithmic Perspective: A Practitioner’s Guide</h3>
+          <p class="session__description">The hands-on session will use an AI coding agent and Google Colab to build a neural-network model of magnetic core loss. Experiments cover data exploration, comparison with the generalized Steinmetz equation, feature scaling, and validation. <a href="https://xinzelee.github.io/Vibe-Coding-AI-CoreLoss-Modeling/">Hands-on preparation guide and lab preview</a></p>
+        </article>
+        <article class="session">
+          <p class="session__type">IEEE APEC 2027 · Industry Session</p>
+          <h3>IS08 - Advancing Power Electronics with Artificial Intelligence: From Research Frontiers to Industry Applications</h3>
+        </article>
+      </div>
     </section>
 
     <section class="section" id="openings">
@@ -157,11 +181,22 @@ const group = layout({
       <p class="lab-expansion">Next-generation <u>A</u>I for <u>S</u>emiconductors and power elec<u>T</u>ronics - <u>R</u>esearch and <u>A</u>dvancements</p>
       <p class="lab-slogan">Ad Astra Per Aspera — To the Stars through Hardships</p>
     </header>
-    <div class="placeholder">
-      <h2>Group information coming soon</h2>
-      <p class="muted">This page will introduce students, collaborators, and alumni as the group grows.</p>
+    <section class="section" id="phd-students">
+      <h2 class="rule-title">Ph.D. Students</h2>
+      <article class="group-member" aria-labelledby="sagar-name">
+        <img class="group-member__photo" src="assets/sagar.jpg" alt="Portrait of Sagar Kumar Das" width="1024" height="1248">
+        <div class="group-member__bio">
+          <h3 id="sagar-name">Sagar Kumar Das</h3>
+          <p class="group-member__role">Incoming Ph.D. student · Spring 2027</p>
+          <p>Sagar Kumar Das received the bachelor's and master's degrees in Electrical and Electronic Engineering from Bangladesh University of Engineering and Technology (BUET), Dhaka, Bangladesh, in 2022 and 2025, respectively. He will join the Department of Electrical and Computer Engineering, Florida State University, Tallahassee, FL, USA, as a Ph.D. student in Spring 2027, under the supervision of Prof. Xinze Li.</p>
+          <p>His research interests center on AI for power electronics and semiconductor technologies. These include AI-driven modeling and optimization of power electronic converters, physics-informed machine learning, and AI-assisted semiconductor device fabrication and process automation. He is also interested in extending these approaches to emerging ultra-wide bandgap (UWBG) devices, such as diamond.</p>
+        </div>
+      </article>
+    </section>
+    <section class="section" id="join-us">
+      <h2 class="rule-title">Join the Group</h2>
       <a class="button button--primary" href="hiring.html">PhD openings · Spring 2027–Spring 2028</a>
-    </div>`
+    </section>`
 });
 
 function assetUrl(relativePath) {
@@ -372,10 +407,13 @@ function citationMarkup(item) {
     item.publisher && !item.publication.includes(item.publisher) && item.publisher,
     item.year,
   ].filter(Boolean).join(", ");
+  const links = (item.links || []).map(link =>
+    `<a href="${escapeHtml(link.url)}">${escapeHtml(link.label)}</a>`
+  ).join(" · ");
   return `<article class="citation" data-citation data-category="${item.category}">
-    <div class="citation__title">${escapeHtml(item.title)}</div>
+    <div class="citation__title">${escapeHtml(item.title)}</div>${item.note ? `\n    <div class="citation__note">${escapeHtml(item.note)}</div>` : ""}
     <div>${escapeHtml(item.authors)}</div>
-    <div class="citation__meta">${escapeHtml(issue)}</div>
+    <div class="citation__meta">${escapeHtml(issue)}</div>${links ? `\n    <div class="citation__links">${links}</div>` : ""}
   </article>`;
 }
 
@@ -483,8 +521,8 @@ const sitestats = layout({
   active: "Site-stats",
   scripts: `
   <script type="application/json" id="site-stats-data">${JSON.stringify(siteStats).replaceAll("<", "\\u003c")}</script>
-  <script src="assets/geo/ne_50m_land.js" defer></script>
-  <script src="assets/sitestats.bundle.js" defer></script>`,
+  <script src="${versionedAsset("assets/geo/ne_50m_land.js")}" defer></script>
+  <script src="${versionedAsset("assets/sitestats.bundle.js")}" defer></script>`,
   content: `
     <header class="page-header"><p class="eyebrow">Audience</p><h1>Site-stats</h1><p class="lead">Who has been visiting this site since <span data-stats-since>${escapeHtml(formatSince(siteStats.since))}</span>.</p></header>
     <section aria-label="Visit totals"><div class="stats-row">
@@ -493,10 +531,11 @@ const sitestats = layout({
     </div></section>
     <section><h2 class="rule-title">Visitors Around the World</h2>
       <div class="globe-panel">
-        <div class="globe-stage" data-visit-globe role="img" aria-label="Interactive globe of visitor locations"><div class="globe-tooltip" data-globe-tooltip hidden></div></div>
+        <div class="globe-stage" data-visit-globe role="img" aria-label="Interactive globe of visitor locations"><p class="globe-status" data-globe-status role="status">Loading visitor globe…</p><div class="globe-tooltip" data-globe-tooltip hidden></div></div>
       </div>
-      <p class="globe-note">Drag to spin. Hover or tap a light to see its province, country, and visitor count; brighter lights mean more visitors. Updated weekly<span data-stats-updated></span>.</p>
-      <noscript><ul class="globe-fallback">${locationList}</ul></noscript>
+      <p class="globe-note">Drag to spin. Hover or tap a light to see its province, country, and visitor count; the color scale indicates more visitors. Updated weekly<span data-stats-updated></span>.</p>
+      <div class="globe-legend" data-globe-legend hidden><span>Fewer visitors</span><span class="globe-legend__scale" data-globe-scale></span><span>More visitors</span></div>
+      <details class="globe-locations" data-globe-locations><summary>Visitor locations as a list</summary><ul class="globe-fallback" data-location-list>${locationList}</ul></details>
     </section>`
 });
 

@@ -1,5 +1,37 @@
 [
   {
+    "authors": "Li, Xinze; Lin, Fanfan; Rodríguez-Andina, Juan J.; Vazquez, Sergio; Mantooth, Homer Alan; Franquelo, Leopoldo García;",
+    "title": "Fundamentals of Artificial Intelligence for Power Electronics",
+    "publication": "IEEE Transactions on Industrial Electronics",
+    "volume": "",
+    "number": "",
+    "pages": "",
+    "year": "2026",
+    "publisher": "IEEE",
+    "category": "journal",
+    "note": "Invited paper",
+    "doi": "10.1109/TIE.2026.3715958",
+    "links": [
+      { "label": "IEEE Xplore", "url": "https://ieeexplore.ieee.org/document/11707256" },
+      { "label": "ResearchGate", "url": "https://www.researchgate.net/publication/411564495_Fundamentals_of_Artificial_Intelligence_for_Power_Electronics" }
+    ]
+  },
+  {
+    "authors": "Li, Xinze; Mantooth, H. Alan;",
+    "title": "Reforming Power Electronics Education in the Era of AI: A Pilot Course by the University of Arkansas Power Group [Expert View]",
+    "publication": "IEEE Power Electronics Magazine",
+    "volume": "13",
+    "number": "3",
+    "pages": "122-129",
+    "year": "2026",
+    "publisher": "IEEE",
+    "category": "other",
+    "doi": "10.1109/MPEL.2026.3702234",
+    "links": [
+      { "label": "IEEE Xplore", "url": "https://ieeexplore.ieee.org/document/11676384" }
+    ]
+  },
+  {
     "authors": "Zhang, Xin; Li, Xinze; Ma, Hao; Huang, Jingjing; Zheng, Zeng;",
     "title": "Automated Design of Electrical Converters with Advanced AI Algorithms",
     "publication": "",

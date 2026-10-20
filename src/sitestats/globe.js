@@ -22,6 +22,7 @@ import {
 } from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 import { geoEquirectangular, geoPath } from "d3-geo";
+import { colorAt, markerStyles, defaultMarkerStyle } from "./marker-styles.js";
 
 function parseColorToRgba(input) {
   if (!input || input.trim() === "") return { r: 0, g: 0, b: 0, a: 0 };
@@ -169,15 +170,9 @@ function glowTexture() {
   return new CanvasTexture(canvas);
 }
 
-const MARKER_DIM = new Color("#1a4a6b");
-const MARKER_MID = new Color("#173f5f");
-const MARKER_BRIGHT = new Color("#d7e6f0");
-const MARKER_HALO = new Color("#173f5f");
-
-function markerColor(t) {
-  return t < 0.5
-    ? MARKER_DIM.clone().lerp(MARKER_MID, t / 0.5)
-    : MARKER_MID.clone().lerp(MARKER_BRIGHT, (t - 0.5) / 0.5);
+function markerColor(colors, t) {
+  const { from, to, mix } = colorAt(colors, t);
+  return new Color(from).lerp(new Color(to), mix);
 }
 
 export function formatCompact(value) {
@@ -203,7 +198,7 @@ export function createGlobe(container, {
   fillColor = "#173f5f",
   scale = 8,
   stopOnHover = true,
-  markerConfig = { markers: [], color: "#173f5f", size: 40 },
+  markerConfig = { ...markerStyles[defaultMarkerStyle], markers: [] },
   direction = "left",
   initialLatitude = 23,
   initialLongitude = -23,
@@ -217,6 +212,9 @@ export function createGlobe(container, {
   detail = 5,
   tooltip = null,
   landData = null,
+  onReady = () => {},
+  onError = () => {},
+  onContextLost = () => {},
 } = {}) {
   const dotColor = dots.color;
   const dotSize = dots.size;
@@ -317,6 +315,8 @@ export function createGlobe(container, {
   let isHovering = false;
   let animationFrameId = null;
   let paused = false;
+  let contextLost = false;
+  let recoveryTimeout = null;
   const lerpFactor = smoothingN === 0 ? 1 : mapLinear(smoothingN, 0, 1, 0.4, 0.03);
   const velocityDecay = mapLinear(smoothingN, 0, 1, 0.7, 0.96);
 
@@ -334,7 +334,22 @@ export function createGlobe(container, {
   let pinned = false;
   const glowMap = glowTexture();
 
+  const disposeObjects = objects => {
+    const geometries = new Set();
+    const materials = new Set();
+    objects.forEach(object => object.traverse(child => {
+      if (child.geometry) geometries.add(child.geometry);
+      if (child.material) (Array.isArray(child.material) ? child.material : [child.material]).forEach(material => materials.add(material));
+    }));
+    geometries.forEach(geometry => geometry.dispose());
+    materials.forEach(material => material.dispose());
+  };
+
   const updateMarkers = () => {
+    activeMarker = null;
+    pinned = false;
+    if (tooltip) tooltip.hidden = true;
+    disposeObjects(markerObjects);
     markerObjects.forEach(object => globeGroup.remove(object));
     markerObjects = [];
     hitSpheres = [];
@@ -343,12 +358,14 @@ export function createGlobe(container, {
     );
     if (markers.length === 0) return;
     const maxVisitors = Math.max(1, ...markers.map(marker => marker.visitors || 0));
-    const markerSize = 0.01 * markerRadiusMultiplier;
+    // Keep small markers legible when the globe is viewed on a narrow screen.
+    const screenScale = Math.max(1, Math.min(2, 700 / (container.clientWidth || 700)));
+    const markerSize = 0.01 * markerRadiusMultiplier * screenScale;
     const hitGeometry = new SphereGeometry(0.06, 8, 8);
     const hitMaterial = new MeshBasicMaterial({ visible: false });
     markers.forEach(marker => {
       const t = Math.log(1 + (marker.visitors || 0)) / Math.log(1 + maxVisitors);
-      const color = markerColor(t);
+      const color = markerColor(markerConfig.colors || markerStyles[defaultMarkerStyle].colors, t);
       const pos = latLngToPosition(marker.lat, marker.lng);
       const surface = new Vector3(pos.x, pos.y, pos.z).multiplyScalar(globeRadius);
 
@@ -362,13 +379,13 @@ export function createGlobe(container, {
       // Normal blending: additive light disappears against the pale ocean.
       const glow = new Sprite(new SpriteMaterial({
         map: glowMap,
-        color: MARKER_HALO,
+        color,
         transparent: true,
-        opacity: mapLinear(t, 0, 1, 0.35, 0.85),
+        opacity: mapLinear(t, 0, 1, 0.2, 0.5),
         blending: NormalBlending,
         depthWrite: false,
       }));
-      const glowSize = mapLinear(t, 0, 1, 0.05, 0.13);
+      const glowSize = mapLinear(t, 0, 1, 0.035, 0.065) * (markerConfig.halo ?? 0.45) * screenScale;
       glow.scale.set(glowSize, glowSize, 1);
       glow.position.copy(surface).multiplyScalar(1.01);
       glow.renderOrder = 2;
@@ -569,12 +586,10 @@ export function createGlobe(container, {
       renderer.render(scene, camera);
       canvas.style.opacity = "1";
       canvas.style.visibility = "visible";
+      onReady();
       startAnimation();
     } catch (err) {
-      const message = document.createElement("div");
-      message.className = "globe-error";
-      message.innerHTML = "<strong>Error loading Earth visualization</strong><span>Failed to load land map data</span>";
-      container.appendChild(message);
+      onError(err);
     }
   };
 
@@ -622,7 +637,7 @@ export function createGlobe(container, {
 
   let onScreen = true;
   const syncPlayback = () => {
-    paused = document.hidden || !onScreen;
+    paused = document.hidden || !onScreen || contextLost;
     if (paused) {
       if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
       animationFrameId = null;
@@ -631,6 +646,27 @@ export function createGlobe(container, {
     startAnimation();
   };
   const onVisibility = () => syncPlayback();
+  const handleContextLost = event => {
+    event.preventDefault();
+    contextLost = true;
+    syncPlayback();
+    onContextLost();
+    recoveryTimeout = window.setTimeout(() => onError(new Error("WebGL context did not recover")), 3000);
+  };
+  const handleContextRestored = () => {
+    clearTimeout(recoveryTimeout);
+    contextLost = false;
+    renderer.render(scene, camera);
+    onReady();
+    syncPlayback();
+  };
+  const onPageShow = () => {
+    if (!contextLost) renderer.render(scene, camera);
+    syncPlayback();
+  };
+  canvas.addEventListener("webglcontextlost", handleContextLost);
+  canvas.addEventListener("webglcontextrestored", handleContextRestored);
+  window.addEventListener("pageshow", onPageShow);
   document.addEventListener("visibilitychange", onVisibility);
   const viewObserver = new IntersectionObserver(entries => {
     onScreen = entries.some(entry => entry.isIntersecting);
@@ -761,6 +797,7 @@ export function createGlobe(container, {
     camera.aspect = newWidth / newHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(newWidth, newHeight);
+    updateMarkers();
     camera.position.set(0, 0, 2.5 / scaleMultiplier);
     camera.lookAt(0, 0, 0);
     renderer.render(scene, camera);
@@ -771,10 +808,19 @@ export function createGlobe(container, {
   loadWorldData();
 
   return {
+    setMarkers(markers) {
+      markerConfig.markers = markers;
+      updateMarkers();
+      if (!contextLost) renderer.render(scene, camera);
+    },
     destroy() {
       paused = true;
       if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
       document.removeEventListener("visibilitychange", onVisibility);
+      clearTimeout(recoveryTimeout);
+      window.removeEventListener("pageshow", onPageShow);
+      canvas.removeEventListener("webglcontextlost", handleContextLost);
+      canvas.removeEventListener("webglcontextrestored", handleContextRestored);
       viewObserver.disconnect();
       canvas.removeEventListener("pointerdown", handlePointerDown);
       canvas.removeEventListener("pointermove", handlePointerMove);
@@ -782,6 +828,8 @@ export function createGlobe(container, {
       canvas.removeEventListener("pointercancel", handlePointerUp);
       canvas.removeEventListener("pointerleave", handlePointerLeave);
       resizeObserver.disconnect();
+      disposeObjects([scene]);
+      glowMap.dispose();
       renderer.dispose();
       container.removeChild(canvas);
     },
