@@ -531,7 +531,7 @@ const sitestats = layout({
     </div></section>
     <section><h2 class="rule-title">Visitors Around the World</h2>
       <div class="globe-panel">
-        <div class="globe-stage" data-visit-globe role="img" aria-label="Interactive globe of visitor locations"><p class="globe-status" data-globe-status role="status">Loading visitor globe…</p><div class="globe-tooltip" data-globe-tooltip hidden></div></div>
+        <div class="globe-stage" data-visit-globe role="group" aria-label="Interactive globe of visitor locations"><p class="globe-status" data-globe-status role="status">Loading visitor globe…</p><div class="globe-tooltip" data-globe-tooltip hidden></div></div>
       </div>
       <p class="globe-note">Drag to spin. Hover or tap a light to see its province, country, and visitor count; the color scale indicates more visitors. Updated weekly<span data-stats-updated></span>.</p>
       <div class="globe-legend" data-globe-legend hidden><span>Fewer visitors</span><span class="globe-legend__scale" data-globe-scale></span><span>More visitors</span></div>

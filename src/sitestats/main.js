@@ -1,5 +1,5 @@
 import { createGlobe, formatCompact as formatCount } from "./globe.js";
-import { createFallbackMap } from "./fallback.js";
+import { createFallbackGlobe } from "./fallback.js";
 import { markerStyles, defaultMarkerStyle } from "./marker-styles.js";
 
 const container = document.querySelector("[data-visit-globe]");
@@ -29,15 +29,18 @@ function embeddedStats() {
   }
 }
 
-function showFallback() {
+function showFallback(error) {
+  if (!container || container.dataset.globeRenderer === "svg") return;
   visualization?.destroy();
   if (tooltip) tooltip.hidden = true;
-  visualization = createFallbackMap(container, window.NE_50M_LAND, style);
+  visualization = createFallbackGlobe(container, window.NE_50M_LAND, style, tooltip);
   visualization.setMarkers(currentMarkers);
   container.dataset.globeState = "fallback";
+  container.dataset.globeRenderer = "svg";
+  container.dataset.globeError = error?.message || "WebGL rendering unavailable";
   if (status) {
     status.hidden = false;
-    status.textContent = "Showing a world map. The 3D globe is unavailable in this browser.";
+    status.textContent = "Interactive globe · compatibility mode";
     status.classList.add("globe-status--fallback");
   }
 }
@@ -85,9 +88,11 @@ function render(stats) {
       initialLongitude: 75,
       onReady() {
         container.dataset.globeState = "ready";
+        container.dataset.globeRenderer = "webgl";
+        delete container.dataset.globeError;
         if (status) status.hidden = true;
       },
-      onError: () => queueMicrotask(showFallback),
+      onError: error => queueMicrotask(() => showFallback(error)),
       onContextLost() {
         container.dataset.globeState = "recovering";
         if (status) {
@@ -96,8 +101,8 @@ function render(stats) {
         }
       },
     });
-  } catch {
-    showFallback();
+  } catch (error) {
+    showFallback(error);
   }
 }
 

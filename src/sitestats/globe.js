@@ -73,6 +73,11 @@ function parseColorToRgba(input) {
   return { r: 0, g: 0, b: 0, a: 1 };
 }
 
+// Materials receive alpha separately through opacity.
+function opaqueColor({ r, g, b }) {
+  return new Color(`rgb(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)})`);
+}
+
 function mapLinear(value, inMin, inMax, outMin, outMax) {
   if (inMax === inMin) return outMin;
   const t = (value - inMin) / (inMax - inMin);
@@ -240,11 +245,25 @@ export function createGlobe(container, {
   camera.position.set(0, 0, cameraDistance);
   camera.lookAt(0, 0, 0);
 
-  const renderer = new WebGLRenderer({ antialias: true, alpha: true });
+  const canvas = document.createElement("canvas");
+  let creationError = "";
+  const recordCreationError = event => { creationError = event.statusMessage || creationError; };
+  canvas.addEventListener("webglcontextcreationerror", recordCreationError);
+  let context = null;
+  for (const antialias of [true, false]) {
+    try {
+      context = canvas.getContext("webgl2", { alpha: true, antialias });
+    } catch (error) {
+      creationError = error.message;
+    }
+    if (context) break;
+  }
+  canvas.removeEventListener("webglcontextcreationerror", recordCreationError);
+  if (!context) throw new Error(creationError || "WebGL 2 is unavailable or disabled");
+  const renderer = new WebGLRenderer({ canvas, context, alpha: true, antialias: context.getContextAttributes()?.antialias ?? false });
   renderer.setSize(containerWidth, containerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.outputColorSpace = "srgb";
-  const canvas = renderer.domElement;
   canvas.style.position = "absolute";
   canvas.style.inset = "0";
   canvas.style.width = "100%";
@@ -276,7 +295,7 @@ export function createGlobe(container, {
 
   if (showGrid && graticuleColor && graticuleRgba.a > 0) {
     const graticuleMaterial = new MeshBasicMaterial({
-      color: new Color(graticuleColor),
+      color: opaqueColor(graticuleRgba),
       transparent: graticuleRgba.a < 1 || graticuleRgba.a === 0,
       opacity: graticuleRgba.a,
     });
@@ -447,7 +466,7 @@ export function createGlobe(container, {
       }
       if (showOutline && outlineColor && outlineRgba.a > 0) {
         const outlineMaterial = new MeshBasicMaterial({
-          color: new Color(outlineColor),
+          color: opaqueColor(outlineRgba),
           transparent: outlineRgba.a < 1,
           opacity: outlineRgba.a,
           depthTest: true,
@@ -651,7 +670,8 @@ export function createGlobe(container, {
     contextLost = true;
     syncPlayback();
     onContextLost();
-    recoveryTimeout = window.setTimeout(() => onError(new Error("WebGL context did not recover")), 3000);
+    clearTimeout(recoveryTimeout);
+    recoveryTimeout = window.setTimeout(() => onError(new Error("WebGL context did not recover within 10 seconds")), 10000);
   };
   const handleContextRestored = () => {
     clearTimeout(recoveryTimeout);
@@ -831,6 +851,7 @@ export function createGlobe(container, {
       disposeObjects([scene]);
       glowMap.dispose();
       renderer.dispose();
+      if (!context.isContextLost() && context.getExtension("WEBGL_lose_context")) renderer.forceContextLoss();
       container.removeChild(canvas);
     },
   };
