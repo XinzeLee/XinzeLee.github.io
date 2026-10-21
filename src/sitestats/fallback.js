@@ -27,7 +27,7 @@ export function createFallbackMap(container, landData, style) {
         const [cx, cy] = projection([item.lng, item.lat]);
         const t = Math.log1p(item.visitors || 0) / Math.log1p(max);
         const { from, to, mix } = colorAt(style.colors, t);
-        const circle = element("circle", { cx, cy, r: 2.5 + t, fill: mix < .5 ? from : to, stroke: "#fff", "stroke-width": ".7" });
+        const circle = element("circle", { cx, cy, r: (2.5 + t) * ((style.size || 20) / 20), fill: mix < .5 ? from : to, stroke: "#fff", "stroke-width": ".7" });
         const title = element("title");
         title.textContent = `${[item.province, item.country].filter(Boolean).join(", ")}: ${item.visitors} visitors`;
         circle.appendChild(title);

@@ -188,7 +188,7 @@ const group = layout({
         <div class="group-member__bio">
           <h3 id="sagar-name">Sagar Kumar Das</h3>
           <p class="group-member__role">Incoming Ph.D. student · Spring 2027</p>
-          <p>Sagar Kumar Das received the bachelor's and master's degrees in Electrical and Electronic Engineering from Bangladesh University of Engineering and Technology (BUET), Dhaka, Bangladesh, in 2022 and 2025, respectively. He will join the Department of Electrical and Computer Engineering, Florida State University, Tallahassee, FL, USA, as a Ph.D. student in Spring 2027, under the supervision of Prof. Xinze Li.</p>
+          <p>Sagar Kumar Das received the bachelor's and master's degrees in Electrical and Electronic Engineering from Bangladesh University of Engineering and Technology (BUET), Dhaka, Bangladesh, in 2022 and 2025, respectively. He will join the Department of Electrical and Computer Engineering, Florida State University, Tallahassee, FL, USA, as a Ph.D. student in Spring 2027.</p>
           <p>His research interests center on AI for power electronics and semiconductor technologies. These include AI-driven modeling and optimization of power electronic converters, physics-informed machine learning, and AI-assisted semiconductor device fabrication and process automation. He is also interested in extending these approaches to emerging ultra-wide bandgap (UWBG) devices, such as diamond.</p>
         </div>
       </article>
