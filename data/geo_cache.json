@@ -7,6 +7,10 @@
     "lat": 23.95,
     "lon": 90.25
   },
+  "Bangladesh / Khulna Division": {
+    "lat": 22.94,
+    "lon": 89.29
+  },
   "Bangladesh / Mymensingh Division": {
     "lat": 24.89,
     "lon": 90.38
@@ -14,6 +18,14 @@
   "Germany / Hesse": {
     "lat": 50.61,
     "lon": 9.03
+  },
+  "Germany / North Rhine-Westphalia": {
+    "lat": 51.48,
+    "lon": 7.55
+  },
+  "India / Delhi": {
+    "lat": 28.63,
+    "lon": 77.22
   },
   "Italy / Emilia-Romagna": {
     "lat": 44.53,
@@ -47,9 +59,21 @@
     "lat": 35.68,
     "lon": 139.76
   },
+  "Pakistan / Islamabad": {
+    "lat": 33.64,
+    "lon": 73.2
+  },
   "Singapore": {
     "lat": 1.36,
     "lon": 103.82
+  },
+  "South Korea / Gwangju": {
+    "lat": 35.16,
+    "lon": 126.83
+  },
+  "South Korea / Incheon": {
+    "lat": 37.46,
+    "lon": 126.71
   },
   "South Korea / Seoul": {
     "lat": 37.57,
@@ -67,6 +91,10 @@
     "lat": 52.53,
     "lon": -1.26
   },
+  "United States / Arkansas": {
+    "lat": 35.2,
+    "lon": -92.45
+  },
   "United States / California": {
     "lat": 36.7,
     "lon": -118.76
@@ -74,6 +102,10 @@
   "United States / Florida": {
     "lat": 27.76,
     "lon": -81.46
+  },
+  "United States / Illinois": {
+    "lat": 40.08,
+    "lon": -89.43
   },
   "United States / Indiana": {
     "lat": 40.33,
@@ -87,6 +119,18 @@
     "lat": 38.27,
     "lon": -98.58
   },
+  "United States / Maryland": {
+    "lat": 39.52,
+    "lon": -76.94
+  },
+  "United States / Michigan": {
+    "lat": 43.62,
+    "lon": -84.68
+  },
+  "United States / Minnesota": {
+    "lat": 45.99,
+    "lon": -94.61
+  },
   "United States / Mississippi": {
     "lat": 32.97,
     "lon": -89.73
@@ -94,6 +138,10 @@
   "United States / Missouri": {
     "lat": 38.76,
     "lon": -92.56
+  },
+  "United States / Nevada": {
+    "lat": 39.52,
+    "lon": -116.85
   },
   "United States / New York": {
     "lat": 43.16,

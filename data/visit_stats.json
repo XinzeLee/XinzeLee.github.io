@@ -1,8 +1,8 @@
 {
   "ok": true,
   "since": "2026-10-07",
-  "total_hits": 353,
-  "unique_visitors": 126,
+  "total_hits": 579,
+  "unique_visitors": 207,
   "daily": {
     "2026-10-07": {
       "hits": 31,
@@ -53,48 +53,108 @@
       "uniques": 3
     },
     "2026-10-19": {
-      "hits": 30,
-      "uniques": 12
+      "hits": 60,
+      "uniques": 15
+    },
+    "2026-10-20": {
+      "hits": 50,
+      "uniques": 14
+    },
+    "2026-10-21": {
+      "hits": 62,
+      "uniques": 22
+    },
+    "2026-10-22": {
+      "hits": 14,
+      "uniques": 7
+    },
+    "2026-10-23": {
+      "hits": 10,
+      "uniques": 6
+    },
+    "2026-10-24": {
+      "hits": 18,
+      "uniques": 9
+    },
+    "2026-10-25": {
+      "hits": 20,
+      "uniques": 9
+    },
+    "2026-10-26": {
+      "hits": 22,
+      "uniques": 11
     }
   },
   "provinces": {
     "United States / Florida": {
-      "hits": 172,
-      "uniques": 33
+      "hits": 261,
+      "uniques": 47
     },
     "United States / California": {
-      "hits": 27,
-      "uniques": 16
+      "hits": 43,
+      "uniques": 25
     },
     "Singapore": {
-      "hits": 19,
+      "hits": 25,
+      "uniques": 12
+    },
+    "United Kingdom / England": {
+      "hits": 23,
       "uniques": 8
     },
-    "United States / Texas": {
-      "hits": 13,
+    "Bangladesh / Dhaka Division": {
+      "hits": 20,
       "uniques": 6
     },
     "United States / Iowa": {
-      "hits": 10,
-      "uniques": 6
-    },
-    "Italy / Lombardy": {
-      "hits": 9,
-      "uniques": 3
+      "hits": 18,
+      "uniques": 12
     },
     "Japan / Shiga": {
-      "hits": 9,
+      "hits": 15,
+      "uniques": 6
+    },
+    "Japan / Tokyo": {
+      "hits": 14,
+      "uniques": 7
+    },
+    "United States / Texas": {
+      "hits": 14,
+      "uniques": 7
+    },
+    "Italy / Lombardy": {
+      "hits": 11,
       "uniques": 4
     },
-    "United Kingdom / England": {
-      "hits": 9,
+    "Hong Kong": {
+      "hits": 10,
+      "uniques": 9
+    },
+    "Japan / Hyōgo": {
+      "hits": 10,
       "uniques": 5
+    },
+    "Japan / Osaka": {
+      "hits": 9,
+      "uniques": 4
     },
     "Sweden / Västra Götaland": {
       "hits": 8,
       "uniques": 1
     },
+    "United States / New York": {
+      "hits": 8,
+      "uniques": 7
+    },
+    "Japan / Kyoto": {
+      "hits": 7,
+      "uniques": 4
+    },
     "Macao": {
+      "hits": 7,
+      "uniques": 2
+    },
+    "South Korea / Seoul": {
       "hits": 7,
       "uniques": 2
     },
@@ -102,61 +162,61 @@
       "hits": 7,
       "uniques": 1
     },
-    "Bangladesh / Dhaka Division": {
-      "hits": 5,
-      "uniques": 2
-    },
-    "Hong Kong": {
-      "hits": 5,
-      "uniques": 5
-    },
-    "Japan / Hyōgo": {
-      "hits": 5,
-      "uniques": 3
+    "United States / Nevada": {
+      "hits": 6,
+      "uniques": 1
     },
     "Bangladesh / Mymensingh Division": {
       "hits": 4,
       "uniques": 2
     },
-    "Japan / Osaka": {
+    "United States / Michigan": {
       "hits": 4,
       "uniques": 2
+    },
+    "United States / Virginia": {
+      "hits": 4,
+      "uniques": 3
     },
     "Australia / Queensland": {
       "hits": 3,
       "uniques": 1
     },
-    "Japan / Kyoto": {
+    "Pakistan / Islamabad": {
       "hits": 3,
-      "uniques": 2
-    },
-    "Japan / Tokyo": {
-      "hits": 3,
-      "uniques": 2
+      "uniques": 1
     },
     "Switzerland / Zurich": {
       "hits": 3,
       "uniques": 1
     },
+    "United States / Illinois": {
+      "hits": 3,
+      "uniques": 2
+    },
     "United States / Kansas": {
       "hits": 3,
       "uniques": 1
-    },
-    "United States / New York": {
-      "hits": 3,
-      "uniques": 3
-    },
-    "United States / Virginia": {
-      "hits": 3,
-      "uniques": 2
     },
     "Germany / Hesse": {
       "hits": 2,
       "uniques": 1
     },
-    "South Korea / Seoul": {
+    "India / Delhi": {
       "hits": 2,
       "uniques": 1
+    },
+    "South Korea / Gwangju": {
+      "hits": 2,
+      "uniques": 1
+    },
+    "United States / Maryland": {
+      "hits": 2,
+      "uniques": 2
+    },
+    "United States / Minnesota": {
+      "hits": 2,
+      "uniques": 2
     },
     "United States / North Carolina": {
       "hits": 2,
@@ -174,11 +234,27 @@
       "hits": 2,
       "uniques": 1
     },
+    "Bangladesh / Khulna Division": {
+      "hits": 1,
+      "uniques": 1
+    },
+    "Germany / North Rhine-Westphalia": {
+      "hits": 1,
+      "uniques": 1
+    },
     "Italy / Emilia-Romagna": {
       "hits": 1,
       "uniques": 1
     },
     "Italy / Lazio": {
+      "hits": 1,
+      "uniques": 1
+    },
+    "South Korea / Incheon": {
+      "hits": 1,
+      "uniques": 1
+    },
+    "United States / Arkansas": {
       "hits": 1,
       "uniques": 1
     },
@@ -204,16 +280,16 @@
     }
   },
   "pages": {
-    "/index.html": 135,
-    "/sitestats.html": 66,
-    "/opensource.html": 28,
-    "/group.html": 25,
-    "/publications.html": 21,
-    "/research.html": 20,
-    "/teaching.html": 20,
-    "/hiring.html": 19,
-    "/service.html": 19
+    "/index.html": 221,
+    "/sitestats.html": 108,
+    "/group.html": 51,
+    "/opensource.html": 38,
+    "/hiring.html": 36,
+    "/research.html": 34,
+    "/publications.html": 32,
+    "/teaching.html": 31,
+    "/service.html": 28
   },
-  "updated_at": "2026-10-19T15:21:27.000Z",
-  "exported_at": "2026-10-19T17:52:49.517Z"
+  "updated_at": "2026-10-26T14:37:18.000Z",
+  "exported_at": "2026-10-26T17:47:16.538Z"
 }
