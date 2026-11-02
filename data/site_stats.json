@@ -1,46 +1,70 @@
 {
   "since": "2026-10-07",
-  "total_hits": 579,
-  "unique_visitors": 207,
-  "updated_at": "2026-10-26T17:47:16.538Z",
+  "total_hits": 689,
+  "unique_visitors": 259,
+  "updated_at": "2026-11-02T20:57:34.849Z",
   "locations": [
     {
       "country": "United States",
       "province": "Florida",
       "lat": 27.76,
       "lon": -81.46,
-      "visitors": 47,
-      "hits": 261
+      "visitors": 53,
+      "hits": 287
     },
     {
       "country": "United States",
       "province": "California",
       "lat": 36.7,
       "lon": -118.76,
-      "visitors": 25,
-      "hits": 43
-    },
-    {
-      "country": "Singapore",
-      "province": "",
-      "lat": 1.36,
-      "lon": 103.82,
-      "visitors": 12,
-      "hits": 25
+      "visitors": 29,
+      "hits": 52
     },
     {
       "country": "United States",
       "province": "Iowa",
       "lat": 41.92,
       "lon": -93.31,
-      "visitors": 12,
-      "hits": 18
+      "visitors": 16,
+      "hits": 25
+    },
+    {
+      "country": "Singapore",
+      "province": "",
+      "lat": 1.36,
+      "lon": 103.82,
+      "visitors": 15,
+      "hits": 34
     },
     {
       "country": "Hong Kong",
       "province": "",
-      "visitors": 9,
-      "hits": 10
+      "visitors": 12,
+      "hits": 15
+    },
+    {
+      "country": "United States",
+      "province": "Texas",
+      "lat": 31.26,
+      "lon": -98.55,
+      "visitors": 11,
+      "hits": 18
+    },
+    {
+      "country": "Japan",
+      "province": "Tokyo",
+      "lat": 35.68,
+      "lon": 139.76,
+      "visitors": 10,
+      "hits": 18
+    },
+    {
+      "country": "Bangladesh",
+      "province": "Dhaka Division",
+      "lat": 23.95,
+      "lon": 90.25,
+      "visitors": 8,
+      "hits": 23
     },
     {
       "country": "United Kingdom",
@@ -51,36 +75,12 @@
       "hits": 23
     },
     {
-      "country": "Japan",
-      "province": "Tokyo",
-      "lat": 35.68,
-      "lon": 139.76,
-      "visitors": 7,
-      "hits": 14
-    },
-    {
-      "country": "United States",
-      "province": "Texas",
-      "lat": 31.26,
-      "lon": -98.55,
-      "visitors": 7,
-      "hits": 14
-    },
-    {
       "country": "United States",
       "province": "New York",
       "lat": 43.16,
       "lon": -75.84,
-      "visitors": 7,
-      "hits": 8
-    },
-    {
-      "country": "Bangladesh",
-      "province": "Dhaka Division",
-      "lat": 23.95,
-      "lon": 90.25,
-      "visitors": 6,
-      "hits": 20
+      "visitors": 8,
+      "hits": 11
     },
     {
       "country": "Japan",
@@ -92,27 +92,27 @@
     },
     {
       "country": "Japan",
+      "province": "Osaka",
+      "lat": 34.62,
+      "lon": 135.49,
+      "visitors": 6,
+      "hits": 13
+    },
+    {
+      "country": "Japan",
       "province": "Hyōgo",
       "lat": 34.91,
       "lon": 134.86,
-      "visitors": 5,
-      "hits": 10
+      "visitors": 6,
+      "hits": 12
     },
     {
       "country": "Italy",
       "province": "Lombardy",
       "lat": 45.57,
       "lon": 9.77,
-      "visitors": 4,
-      "hits": 11
-    },
-    {
-      "country": "Japan",
-      "province": "Osaka",
-      "lat": 34.62,
-      "lon": 135.49,
-      "visitors": 4,
-      "hits": 9
+      "visitors": 5,
+      "hits": 12
     },
     {
       "country": "Japan",
@@ -124,6 +124,30 @@
     },
     {
       "country": "United States",
+      "province": "Oregon",
+      "lat": 43.98,
+      "lon": -120.74,
+      "visitors": 4,
+      "hits": 6
+    },
+    {
+      "country": "South Korea",
+      "province": "Seoul",
+      "lat": 37.57,
+      "lon": 126.98,
+      "visitors": 3,
+      "hits": 9
+    },
+    {
+      "country": "United States",
+      "province": "Illinois",
+      "lat": 40.08,
+      "lon": -89.43,
+      "visitors": 3,
+      "hits": 7
+    },
+    {
+      "country": "United States",
       "province": "Virginia",
       "lat": 37.12,
       "lon": -78.49,
@@ -131,16 +155,16 @@
       "hits": 4
     },
     {
-      "country": "Macao",
-      "province": "",
+      "country": "Brazil",
+      "province": "São Paulo",
+      "lat": -22.07,
+      "lon": -48.43,
       "visitors": 2,
       "hits": 7
     },
     {
-      "country": "South Korea",
-      "province": "Seoul",
-      "lat": 37.57,
-      "lon": 126.98,
+      "country": "Macao",
+      "province": "",
       "visitors": 2,
       "hits": 7
     },
@@ -153,6 +177,14 @@
       "hits": 4
     },
     {
+      "country": "Switzerland",
+      "province": "Zurich",
+      "lat": 47.41,
+      "lon": 8.66,
+      "visitors": 2,
+      "hits": 4
+    },
+    {
       "country": "United States",
       "province": "Michigan",
       "lat": 43.62,
@@ -161,10 +193,10 @@
       "hits": 4
     },
     {
-      "country": "United States",
-      "province": "Illinois",
-      "lat": 40.08,
-      "lon": -89.43,
+      "country": "Bangladesh",
+      "province": "Chittagong",
+      "lat": 22.68,
+      "lon": 91.88,
       "visitors": 2,
       "hits": 3
     },
@@ -197,6 +229,14 @@
       "province": "Oklahoma",
       "lat": 34.96,
       "lon": -97.27,
+      "visitors": 2,
+      "hits": 2
+    },
+    {
+      "country": "United States",
+      "province": "Pennsylvania",
+      "lat": 40.97,
+      "lon": -77.73,
       "visitors": 2,
       "hits": 2
     },
@@ -241,10 +281,10 @@
       "hits": 3
     },
     {
-      "country": "Switzerland",
-      "province": "Zurich",
-      "lat": 47.41,
-      "lon": 8.66,
+      "country": "United States",
+      "province": "Georgia",
+      "lat": 32.33,
+      "lon": -83.11,
       "visitors": 1,
       "hits": 3
     },
@@ -281,6 +321,14 @@
       "hits": 2
     },
     {
+      "country": "Taiwan",
+      "province": "",
+      "lat": 23.97,
+      "lon": 120.98,
+      "visitors": 1,
+      "hits": 2
+    },
+    {
       "country": "United States",
       "province": "Utah",
       "lat": 39.42,
@@ -301,6 +349,14 @@
       "province": "Khulna Division",
       "lat": 22.94,
       "lon": 89.29,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "Germany",
+      "province": "Baden-Wurttemberg",
+      "lat": 48.54,
+      "lon": 9.04,
       "visitors": 1,
       "hits": 1
     },
@@ -329,10 +385,42 @@
       "hits": 1
     },
     {
+      "country": "Malaysia",
+      "province": "Pahang",
+      "lat": 3.62,
+      "lon": 102.6,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "Nepal",
+      "province": "Bagmati Province",
+      "lat": 27.72,
+      "lon": 85.54,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "Netherlands",
+      "province": "Flevoland",
+      "lat": 52.45,
+      "lon": 5.42,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
       "country": "South Korea",
       "province": "Incheon",
       "lat": 37.46,
       "lon": 126.71,
+      "visitors": 1,
+      "hits": 1
+    },
+    {
+      "country": "Taiwan",
+      "province": "Taipei",
+      "lat": 25.04,
+      "lon": 121.56,
       "visitors": 1,
       "hits": 1
     },
@@ -357,22 +445,6 @@
       "province": "Missouri",
       "lat": 38.76,
       "lon": -92.56,
-      "visitors": 1,
-      "hits": 1
-    },
-    {
-      "country": "United States",
-      "province": "Oregon",
-      "lat": 43.98,
-      "lon": -120.74,
-      "visitors": 1,
-      "hits": 1
-    },
-    {
-      "country": "United States",
-      "province": "Pennsylvania",
-      "lat": 40.97,
-      "lon": -77.73,
       "visitors": 1,
       "hits": 1
     },

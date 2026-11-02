@@ -3,6 +3,10 @@
     "lat": -22.16,
     "lon": 144.58
   },
+  "Bangladesh / Chittagong": {
+    "lat": 22.68,
+    "lon": 91.88
+  },
   "Bangladesh / Dhaka Division": {
     "lat": 23.95,
     "lon": 90.25
@@ -14,6 +18,14 @@
   "Bangladesh / Mymensingh Division": {
     "lat": 24.89,
     "lon": 90.38
+  },
+  "Brazil / São Paulo": {
+    "lat": -22.07,
+    "lon": -48.43
+  },
+  "Germany / Baden-Wurttemberg": {
+    "lat": 48.54,
+    "lon": 9.04
   },
   "Germany / Hesse": {
     "lat": 50.61,
@@ -59,6 +71,18 @@
     "lat": 35.68,
     "lon": 139.76
   },
+  "Malaysia / Pahang": {
+    "lat": 3.62,
+    "lon": 102.6
+  },
+  "Nepal / Bagmati Province": {
+    "lat": 27.72,
+    "lon": 85.54
+  },
+  "Netherlands / Flevoland": {
+    "lat": 52.45,
+    "lon": 5.42
+  },
   "Pakistan / Islamabad": {
     "lat": 33.64,
     "lon": 73.2
@@ -87,6 +111,14 @@
     "lat": 47.41,
     "lon": 8.66
   },
+  "Taiwan": {
+    "lat": 23.97,
+    "lon": 120.98
+  },
+  "Taiwan / Taipei": {
+    "lat": 25.04,
+    "lon": 121.56
+  },
   "United Kingdom / England": {
     "lat": 52.53,
     "lon": -1.26
@@ -102,6 +134,10 @@
   "United States / Florida": {
     "lat": 27.76,
     "lon": -81.46
+  },
+  "United States / Georgia": {
+    "lat": 32.33,
+    "lon": -83.11
   },
   "United States / Illinois": {
     "lat": 40.08,
