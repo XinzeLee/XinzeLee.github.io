@@ -1,7 +1,15 @@
 {
+  "Argentina / Buenos Aires": {
+    "lat": -36.38,
+    "lon": -60.39
+  },
   "Australia / Queensland": {
     "lat": -22.16,
     "lon": 144.58
+  },
+  "Bangladesh / Barisal Division": {
+    "lat": 22.49,
+    "lon": 90.35
   },
   "Bangladesh / Chittagong": {
     "lat": 22.68,
@@ -18,6 +26,18 @@
   "Bangladesh / Mymensingh Division": {
     "lat": 24.89,
     "lon": 90.38
+  },
+  "Bangladesh / Rajshahi Division": {
+    "lat": 24.63,
+    "lon": 89.04
+  },
+  "Bangladesh / Rangpur Division": {
+    "lat": 25.64,
+    "lon": 89.08
+  },
+  "Bangladesh / Sylhet Division": {
+    "lat": 24.74,
+    "lon": 91.69
   },
   "Brazil / São Paulo": {
     "lat": -22.07,
@@ -71,9 +91,17 @@
     "lat": 35.68,
     "lon": 139.76
   },
+  "Kazakhstan / Astana": {
+    "lat": 51.12,
+    "lon": 71.47
+  },
   "Malaysia / Pahang": {
     "lat": 3.62,
     "lon": 102.6
+  },
+  "Morocco / Souss-Massa": {
+    "lat": 30.19,
+    "lon": -8.63
   },
   "Nepal / Bagmati Province": {
     "lat": 27.72,
@@ -87,9 +115,25 @@
     "lat": 33.64,
     "lon": 73.2
   },
+  "Pakistan / Punjab": {
+    "lat": 31,
+    "lon": 72
+  },
+  "Poland / Lesser Poland": {
+    "lat": 49.79,
+    "lon": 20.38
+  },
+  "Romania / Cluj County": {
+    "lat": 46.77,
+    "lon": 23.6
+  },
   "Singapore": {
     "lat": 1.36,
     "lon": 103.82
+  },
+  "South Korea / Daejeon": {
+    "lat": 36.35,
+    "lon": 127.38
   },
   "South Korea / Gwangju": {
     "lat": 35.16,
@@ -122,6 +166,10 @@
   "United Kingdom / England": {
     "lat": 52.53,
     "lon": -1.26
+  },
+  "United Kingdom / Scotland": {
+    "lat": 56.79,
+    "lon": -4.11
   },
   "United States / Arkansas": {
     "lat": 35.2,
@@ -214,6 +262,10 @@
   "United States / Washington": {
     "lat": 47.29,
     "lon": -120.21
+  },
+  "United States / Wisconsin": {
+    "lat": 44.43,
+    "lon": -89.69
   },
   "Vietnam / Thừa Thiên Huế Province": {
     "lat": 15.93,
