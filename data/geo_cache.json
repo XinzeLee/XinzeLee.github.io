@@ -39,6 +39,10 @@
     "lat": 24.74,
     "lon": 91.69
   },
+  "Brazil / Minas Gerais": {
+    "lat": -18.53,
+    "lon": -44.16
+  },
   "Brazil / São Paulo": {
     "lat": -22.07,
     "lon": -48.43
@@ -58,6 +62,10 @@
   "India / Delhi": {
     "lat": 28.63,
     "lon": 77.22
+  },
+  "India / Gujarat": {
+    "lat": 22.39,
+    "lon": 71.75
   },
   "Italy / Emilia-Romagna": {
     "lat": 44.53,
@@ -227,6 +235,10 @@
     "lat": 39.52,
     "lon": -116.85
   },
+  "United States / New Hampshire": {
+    "lat": 43.48,
+    "lon": -71.66
+  },
   "United States / New York": {
     "lat": 43.16,
     "lon": -75.84
@@ -234,6 +246,10 @@
   "United States / North Carolina": {
     "lat": 35.67,
     "lon": -79.04
+  },
+  "United States / North Dakota": {
+    "lat": 47.62,
+    "lon": -100.54
   },
   "United States / Oklahoma": {
     "lat": 34.96,
@@ -246,6 +262,10 @@
   "United States / Pennsylvania": {
     "lat": 40.97,
     "lon": -77.73
+  },
+  "United States / South Carolina": {
+    "lat": 33.69,
+    "lon": -80.44
   },
   "United States / Texas": {
     "lat": 31.26,
