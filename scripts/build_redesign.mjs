@@ -395,13 +395,13 @@ const teaching = layout({
     <section><h2 class="rule-title">Initiatives &amp; Service</h2><div class="stack-list">
       <article class="card card--purple"><h3>IEEE PELSTube</h3><p>Peer-reviewed educational videos introducing AI-driven power-electronics design.</p><p><a href="https://doi.org/10.17024/pelstube.2026.003">Introduction to AI in Power Electronics</a><br><a href="https://doi.org/10.17024/pelstube.2026.004">Core Concepts of AI in Power Electronics Design</a></p></article>
       <article class="card card--warm"><h3>Fundamentals of AI for PE</h3><p>Open notebooks, datasets, and guided examples that connect an IEEE TIE review article with hands-on learning.</p><a href="https://github.com/XinzeLee/Fundamentals_of_AI_for_PE">Open the learning repository</a></article>
-      <article class="card card--accent"><h3>AI for Power Electronics Education and Training</h3><p>Interactive resources connect neural-network concepts with power-electronics hardware and applications.</p>
+      <article class="card card--accent"><h3>AI for Power Electronics Education and Training</h3><p>Leverage AI to enhance teaching tools and explore diverse ways. Currently we have built interactive web apps and 3-D models to connect AI concepts with power-electronics hardware and applications.</p>
         <ul>
           <li><a href="https://github.com/XinzeLee/nn-playground">Neural Network Playground</a></li>
           <li><a href="https://github.com/XinzeLee/traction-inverter-explorer">Traction Inverter Explorer</a></li>
           <li><a href="https://github.com/XinzeLee/AI4PE-explorer">AI4PE Explorer</a></li>
         </ul>
-        <figure class="media-card education-preview"><img src="assets/ai4pe-explorer.png" alt="AI4PE Explorer showing an interactive 3D dual-active-bridge converter and its high-frequency transformer" width="1440" height="900" loading="lazy"><figcaption>AI4PE Explorer: an interactive view of a dual-active-bridge converter.</figcaption></figure>
+        <figure class="media-card education-preview"><img src="assets/ai4pe-explorer.png" alt="AI4PE Explorer showing an interactive 3D dual-active-bridge converter and its high-frequency transformer" width="1440" height="900" loading="lazy"><figcaption>AI4PE Explorer: an interactive view of a dual-active-bridge converter and illustrative demonstration of AI in power electronics.</figcaption></figure>
       </article>
     </div></section>`
 });
