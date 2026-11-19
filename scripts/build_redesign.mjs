@@ -144,7 +144,7 @@ const home = layout({
 
     <section class="section" id="openings">
       <h2 class="rule-title">Openings</h2>
-      <div class="opening"><h3>PhD students · Spring 2027–Spring 2028</h3><p>I am recruiting motivated PhD students to join my research group at Florida State University in AI for power electronics and semiconductor manufacturing.</p><a class="button button--primary" href="hiring.html">View position and application details</a></div>
+      <div class="opening"><h3>PhD students · Fall 2027–Fall 2028</h3><p>I am recruiting motivated PhD students to join my research group at Florida State University in AI for power electronics and semiconductor manufacturing.</p><a class="button button--primary" href="hiring.html">View position and application details</a></div>
     </section>
 
     <section class="section" id="contact">
@@ -195,7 +195,7 @@ const group = layout({
     </section>
     <section class="section" id="join-us">
       <h2 class="rule-title">Join the Group</h2>
-      <a class="button button--primary" href="hiring.html">PhD openings · Spring 2027–Spring 2028</a>
+      <a class="button button--primary" href="hiring.html">PhD openings · Fall 2027–Fall 2028</a>
     </section>`
 });
 
@@ -395,6 +395,14 @@ const teaching = layout({
     <section><h2 class="rule-title">Initiatives &amp; Service</h2><div class="stack-list">
       <article class="card card--purple"><h3>IEEE PELSTube</h3><p>Peer-reviewed educational videos introducing AI-driven power-electronics design.</p><p><a href="https://doi.org/10.17024/pelstube.2026.003">Introduction to AI in Power Electronics</a><br><a href="https://doi.org/10.17024/pelstube.2026.004">Core Concepts of AI in Power Electronics Design</a></p></article>
       <article class="card card--warm"><h3>Fundamentals of AI for PE</h3><p>Open notebooks, datasets, and guided examples that connect an IEEE TIE review article with hands-on learning.</p><a href="https://github.com/XinzeLee/Fundamentals_of_AI_for_PE">Open the learning repository</a></article>
+      <article class="card card--accent"><h3>AI for Power Electronics Education and Training</h3><p>Interactive resources connect neural-network concepts with power-electronics hardware and applications.</p>
+        <ul>
+          <li><a href="https://github.com/XinzeLee/nn-playground">Neural Network Playground</a></li>
+          <li><a href="https://github.com/XinzeLee/traction-inverter-explorer">Traction Inverter Explorer</a></li>
+          <li><a href="https://github.com/XinzeLee/AI4PE-explorer">AI4PE Explorer</a></li>
+        </ul>
+        <figure class="media-card education-preview"><img src="assets/ai4pe-explorer.png" alt="AI4PE Explorer showing an interactive 3D dual-active-bridge converter and its high-frequency transformer" width="1440" height="900" loading="lazy"><figcaption>AI4PE Explorer: an interactive view of a dual-active-bridge converter.</figcaption></figure>
+      </article>
     </div></section>`
 });
 
@@ -481,12 +489,17 @@ const opensource = layout({
     <header class="page-header"><p class="eyebrow">Code and learning resources</p><h1>Open-source Projects</h1><p class="lead">Research software and educational materials for AI, power electronics, and computer vision.</p></header>
     <section><h2 class="rule-title">Projects</h2><div class="stack-list">
       <article class="card card--accent"><h3><a class="project-link" href="https://github.com/XinzeLee/PolygonObjectDetection">Polygon Object Detection</a></h3><p>A YOLOv5-derived framework for polygon prediction boxes in perspective-sensitive object detection.</p></article>
-      <article class="card"><h3><a class="project-link" href="https://github.com/XinzeLee/Python_In_3Days">Python Learning Tutorials</a></h3><p>Notebook-based tutorials designed to help new learners acquire practical Python fundamentals quickly.</p></article>
       <article class="card card--purple"><h3><a class="project-link" href="https://github.com/XinzeLee/PANN">PANN</a></h3><p>Physics-in-architecture neural networks for explainable, data-light, and transferable power-converter modeling.</p><p><strong>Associated paper:</strong> “Temporal Modeling for Power Converters With Physics-in-Architecture Recurrent Neural Network.” <a href="https://doi.org/10.1109/TIE.2024.3352119">DOI</a></p></article>
       <article class="card card--warm"><h3><a class="project-link" href="https://github.com/XinzeLee/PE-GPT">PE-GPT</a></h3><p>A domain-specific generative-AI framework for power-electronics design, simulation, optimization, and verification.</p><p><strong>Associated paper:</strong> “PE-GPT: A New Paradigm for Power Electronics Design.” <a href="https://doi.org/10.1109/TIE.2024.3454408">DOI</a></p></article>
-      <article class="card card--accent"><h3><a class="project-link" href="https://github.com/XinzeLee/ECCE2025">ECCE2025 Tutorials</a></h3><p>Code and tutorial materials accompanying the ECCE 2025 AI-for-power-electronics tutorial.</p><p><strong>Associated paper:</strong> “Automatic Triple Phase-Shift Modulation for DAB Converter With Minimized Power Loss.” <a href="https://doi.org/10.1109/TIA.2021.3136501">DOI</a></p></article>
-      <article class="card card--purple"><h3><a class="project-link" href="https://github.com/XinzeLee/Fundamentals_of_AI_for_PE">Fundamentals of AI for PE</a></h3><p>Open notebooks, datasets, and a What–Which–How learning pathway for AI in power electronics.</p><p><strong>Associated paper:</strong> “Fundamentals of Artificial Intelligence for Power Electronics,” IEEE TIE (2026).</p></article>
-    </div></section>
+    </div>
+    <section class="project-education" aria-labelledby="education-projects-title"><h3 id="education-projects-title">Projects for Educational Purposes</h3><div class="stack-list">
+      <article class="card"><h4><a class="project-link" href="https://github.com/XinzeLee/Python_In_3Days">Python Learning Tutorials</a></h4><p>Notebook-based tutorials designed to help new learners acquire practical Python fundamentals quickly.</p></article>
+      <article class="card card--accent"><h4><a class="project-link" href="https://github.com/XinzeLee/ECCE2025">ECCE2025 Tutorials</a></h4><p>Code and tutorial materials accompanying the ECCE 2025 AI-for-power-electronics tutorial.</p><p><strong>Associated paper:</strong> “Automatic Triple Phase-Shift Modulation for DAB Converter With Minimized Power Loss.” <a href="https://doi.org/10.1109/TIA.2021.3136501">DOI</a></p></article>
+      <article class="card card--purple"><h4><a class="project-link" href="https://github.com/XinzeLee/Fundamentals_of_AI_for_PE">Fundamentals of AI for PE</a></h4><p>Open notebooks, datasets, and a What–Which–How learning pathway for AI in power electronics.</p><p><strong>Associated paper:</strong> “Fundamentals of Artificial Intelligence for Power Electronics,” IEEE TIE (2026).</p></article>
+      <article class="card"><h4><a class="project-link" href="https://github.com/XinzeLee/nn-playground">Neural Network Playground</a></h4><p>An interactive browser-based playground for exploring neural-network training, classification, and physics-in-architecture models.</p></article>
+      <article class="card"><h4><a class="project-link" href="https://github.com/XinzeLee/traction-inverter-explorer">Traction Inverter Explorer</a></h4><p>An interactive 3D model of an electric-vehicle traction inverter, its components, and its role in the vehicle power system.</p></article>
+      <article class="card"><h4><a class="project-link" href="https://github.com/XinzeLee/AI4PE-explorer">AI4PE Explorer</a></h4><p>An interactive 3D converter and neural-network examples introduce AI applications in power-electronics design, control, and maintenance.</p></article>
+    </div></section></section>
     <section><h2 class="rule-title">Tutorial Presentations</h2><div class="stack-list">
       <article class="card"><h3>IEEE ECCE Special Session 2024</h3><p>“Next Generation of AI for Power Electronics: Explainable, Light, and Flexible.”</p><a href="https://doi.org/10.5281/zenodo.14036281">Slides and DOI</a></article>
       <article class="card"><h3>IEEE APEC 2025 Professional Education Seminar</h3><p>“AI in Power Electronics Design: Present and Future.”</p><a href="https://doi.org/10.5281/zenodo.17922174">Slides and DOI</a></article>

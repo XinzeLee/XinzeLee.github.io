@@ -223,6 +223,10 @@ p { margin: .55rem 0 1rem; }
 .card--accent h3, .card--purple h3, .card--warm h3 { color: var(--navy); }
 .card p:last-child, .card ul:last-child { margin-bottom: 0; }
 .project-link { font-weight: 700; }
+.project-education > h3 { margin: 2.1rem 0 1rem; font: 500 1.2rem/1.3 Georgia, "Times New Roman", serif; }
+.project-education .card h4 { margin: 0 0 .42rem; font-size: 1rem; }
+.education-preview { max-width: 700px; margin-top: 1.15rem; }
+.education-preview figcaption { min-height: 0; }
 
 .opening {
   padding: 1.35rem 1.5rem 1.45rem;
@@ -338,6 +342,7 @@ p { margin: .55rem 0 1rem; }
   background: #111;
 }
 .media-card img { object-fit: cover; }
+.media-card.education-preview img { aspect-ratio: auto; height: auto; object-fit: contain; background: #f7f8f6; }
 .media-card video { object-fit: contain; }
 .media-card figcaption,
 .media-card__caption {

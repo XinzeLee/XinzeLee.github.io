@@ -64,6 +64,19 @@ html[data-page="postdoc"] .hiring-kicker {
   letter-spacing: .16em;
 }
 
+html[data-page="hiring"] .hiring-candidate-highlight {
+  max-width: 800px;
+  margin: 1.35rem 0;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--brand);
+  background: #f0f5f8;
+}
+html[data-page="hiring"] .hiring-candidate-highlight strong { color: var(--brand); }
+html[data-page="hiring"] .hiring-candidate-highlight p { margin: .35rem 0; }
+html[data-page="hiring"] .hiring-candidate-highlight a { color: var(--brand); font-weight: 600; }
+html[data-page="hiring"] .hiring-pdf-note { display: block; margin-top: .45rem; color: var(--muted); font-size: .85rem; }
+html[data-page="hiring"] .hiring-section a { overflow-wrap: anywhere; }
+
 html[data-page="hiring"] .hiring-chips,
 html[data-page="postdoc"] .hiring-chips {
   position: static;
