@@ -7,6 +7,10 @@
     "lat": -22.16,
     "lon": 144.58
   },
+  "Austria / Styria": {
+    "lat": 47.25,
+    "lon": 15.17
+  },
   "Bangladesh / Barisal Division": {
     "lat": 22.49,
     "lon": 90.35
@@ -47,6 +51,10 @@
     "lat": -22.07,
     "lon": -48.43
   },
+  "Canada / British Columbia": {
+    "lat": 55,
+    "lon": -125
+  },
   "Germany / Baden-Wurttemberg": {
     "lat": 48.54,
     "lon": 9.04
@@ -59,6 +67,10 @@
     "lat": 51.48,
     "lon": 7.55
   },
+  "Ghana / Greater Accra": {
+    "lat": 5.81,
+    "lon": 0.1
+  },
   "India / Delhi": {
     "lat": 28.63,
     "lon": 77.22
@@ -66,6 +78,10 @@
   "India / Gujarat": {
     "lat": 22.39,
     "lon": 71.75
+  },
+  "India / Puducherry": {
+    "lat": 10.92,
+    "lon": 79.81
   },
   "Italy / Emilia-Romagna": {
     "lat": 44.53,
@@ -126,6 +142,10 @@
   "Pakistan / Punjab": {
     "lat": 31,
     "lon": 72
+  },
+  "Philippines / National Capital Region": {
+    "lat": 14.57,
+    "lon": 121.03
   },
   "Poland / Lesser Poland": {
     "lat": 49.79,

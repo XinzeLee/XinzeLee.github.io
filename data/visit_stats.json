@@ -1,8 +1,8 @@
 {
   "ok": true,
   "since": "2026-10-07",
-  "total_hits": 888,
-  "unique_visitors": 361,
+  "total_hits": 1056,
+  "unique_visitors": 425,
   "daily": {
     "2026-10-07": {
       "hits": 31,
@@ -165,56 +165,92 @@
       "uniques": 5
     },
     "2026-11-16": {
-      "hits": 15,
-      "uniques": 7
+      "hits": 23,
+      "uniques": 8
+    },
+    "2026-11-17": {
+      "hits": 20,
+      "uniques": 9
+    },
+    "2026-11-18": {
+      "hits": 23,
+      "uniques": 10
+    },
+    "2026-11-19": {
+      "hits": 38,
+      "uniques": 13
+    },
+    "2026-11-20": {
+      "hits": 52,
+      "uniques": 16
+    },
+    "2026-11-21": {
+      "hits": 2,
+      "uniques": 1
+    },
+    "2026-11-22": {
+      "hits": 7,
+      "uniques": 5
+    },
+    "2026-11-23": {
+      "hits": 18,
+      "uniques": 9
     }
   },
   "provinces": {
     "United States / Florida": {
-      "hits": 336,
-      "uniques": 70
-    },
-    "United States / California": {
-      "hits": 61,
-      "uniques": 33
+      "hits": 393,
+      "uniques": 80
     },
     "Singapore": {
-      "hits": 49,
-      "uniques": 25
+      "hits": 76,
+      "uniques": 34
+    },
+    "United States / California": {
+      "hits": 69,
+      "uniques": 39
     },
     "United States / Iowa": {
-      "hits": 37,
-      "uniques": 23
-    },
-    "Japan / Tokyo": {
-      "hits": 31,
-      "uniques": 14
+      "hits": 43,
+      "uniques": 27
     },
     "Bangladesh / Dhaka Division": {
-      "hits": 27,
-      "uniques": 10
+      "hits": 34,
+      "uniques": 14
+    },
+    "Japan / Tokyo": {
+      "hits": 34,
+      "uniques": 15
     },
     "Hong Kong": {
-      "hits": 25,
-      "uniques": 17
+      "hits": 33,
+      "uniques": 21
+    },
+    "United States / Texas": {
+      "hits": 26,
+      "uniques": 19
     },
     "United Kingdom / England": {
       "hits": 23,
       "uniques": 8
     },
-    "United States / Texas": {
-      "hits": 22,
-      "uniques": 15
+    "United States / New York": {
+      "hits": 23,
+      "uniques": 13
+    },
+    "Japan / Shiga": {
+      "hits": 19,
+      "uniques": 7
+    },
+    "Japan / Hyōgo": {
+      "hits": 17,
+      "uniques": 8
     },
     "Japan / Osaka": {
       "hits": 17,
       "uniques": 10
     },
     "Brazil / São Paulo": {
-      "hits": 15,
-      "uniques": 6
-    },
-    "Japan / Shiga": {
       "hits": 15,
       "uniques": 6
     },
@@ -226,21 +262,13 @@
       "hits": 14,
       "uniques": 7
     },
-    "United States / New York": {
-      "hits": 13,
-      "uniques": 10
-    },
-    "Japan / Hyōgo": {
-      "hits": 12,
-      "uniques": 6
-    },
     "South Korea / Seoul": {
-      "hits": 12,
-      "uniques": 4
+      "hits": 13,
+      "uniques": 5
     },
     "Japan / Kyoto": {
-      "hits": 10,
-      "uniques": 7
+      "hits": 12,
+      "uniques": 8
     },
     "Bangladesh / Barisal Division": {
       "hits": 9,
@@ -250,9 +278,21 @@
       "hits": 8,
       "uniques": 3
     },
+    "South Korea / Daejeon": {
+      "hits": 8,
+      "uniques": 3
+    },
     "Sweden / Västra Götaland": {
       "hits": 8,
       "uniques": 1
+    },
+    "South Korea / Incheon": {
+      "hits": 7,
+      "uniques": 4
+    },
+    "Taiwan": {
+      "hits": 7,
+      "uniques": 4
     },
     "United States / Illinois": {
       "hits": 7,
@@ -290,10 +330,6 @@
       "hits": 4,
       "uniques": 2
     },
-    "South Korea / Daejeon": {
-      "hits": 4,
-      "uniques": 2
-    },
     "Switzerland / Zurich": {
       "hits": 4,
       "uniques": 2
@@ -314,6 +350,10 @@
       "hits": 3,
       "uniques": 2
     },
+    "Philippines / National Capital Region": {
+      "hits": 3,
+      "uniques": 1
+    },
     "United States / Georgia": {
       "hits": 3,
       "uniques": 1
@@ -330,7 +370,15 @@
       "hits": 2,
       "uniques": 1
     },
+    "Canada / British Columbia": {
+      "hits": 2,
+      "uniques": 1
+    },
     "Germany / Hesse": {
+      "hits": 2,
+      "uniques": 1
+    },
+    "Ghana / Greater Accra": {
       "hits": 2,
       "uniques": 1
     },
@@ -346,19 +394,19 @@
       "hits": 2,
       "uniques": 2
     },
+    "Nepal / Bagmati Province": {
+      "hits": 2,
+      "uniques": 2
+    },
+    "Netherlands / Flevoland": {
+      "hits": 2,
+      "uniques": 2
+    },
     "Romania / Cluj County": {
       "hits": 2,
       "uniques": 1
     },
     "South Korea / Gwangju": {
-      "hits": 2,
-      "uniques": 1
-    },
-    "South Korea / Incheon": {
-      "hits": 2,
-      "uniques": 2
-    },
-    "Taiwan": {
       "hits": 2,
       "uniques": 1
     },
@@ -378,6 +426,10 @@
       "hits": 2,
       "uniques": 1
     },
+    "United States / Washington": {
+      "hits": 2,
+      "uniques": 2
+    },
     "United States / Wisconsin": {
       "hits": 2,
       "uniques": 1
@@ -387,6 +439,10 @@
       "uniques": 1
     },
     "Argentina / Buenos Aires": {
+      "hits": 1,
+      "uniques": 1
+    },
+    "Austria / Styria": {
       "hits": 1,
       "uniques": 1
     },
@@ -410,6 +466,10 @@
       "hits": 1,
       "uniques": 1
     },
+    "India / Puducherry": {
+      "hits": 1,
+      "uniques": 1
+    },
     "Italy / Emilia-Romagna": {
       "hits": 1,
       "uniques": 1
@@ -419,14 +479,6 @@
       "uniques": 1
     },
     "Morocco / Souss-Massa": {
-      "hits": 1,
-      "uniques": 1
-    },
-    "Nepal / Bagmati Province": {
-      "hits": 1,
-      "uniques": 1
-    },
-    "Netherlands / Flevoland": {
       "hits": 1,
       "uniques": 1
     },
@@ -465,23 +517,19 @@
     "United States / South Carolina": {
       "hits": 1,
       "uniques": 1
-    },
-    "United States / Washington": {
-      "hits": 1,
-      "uniques": 1
     }
   },
   "pages": {
-    "/index.html": 342,
-    "/sitestats.html": 159,
-    "/hiring.html": 78,
-    "/group.html": 77,
-    "/opensource.html": 54,
-    "/research.html": 50,
-    "/publications.html": 47,
-    "/teaching.html": 45,
-    "/service.html": 36
+    "/index.html": 399,
+    "/sitestats.html": 175,
+    "/hiring.html": 97,
+    "/group.html": 93,
+    "/opensource.html": 67,
+    "/research.html": 64,
+    "/teaching.html": 60,
+    "/publications.html": 58,
+    "/service.html": 43
   },
-  "updated_at": "2026-11-16T13:45:09.000Z",
-  "exported_at": "2026-11-16T21:22:04.752Z"
+  "updated_at": "2026-11-23T14:29:02.000Z",
+  "exported_at": "2026-11-23T22:59:24.105Z"
 }
